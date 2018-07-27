@@ -21,5 +21,6 @@ public class ScaffoldApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ScaffoldApplication.class, args);
+		System.out.println("\n(♥◠‿◠)ﾉﾞ Scaffold 启动成功 ლ(´ڡ`ლ)ﾞ\n");
 	}
 }

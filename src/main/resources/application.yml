@@ -1,4 +1,64 @@
+# 自定义配置
+scaffold:
+  # 名称
+  name: Scaffold
+  # 版本
+  version: 0.0.1
+  # 版权年份
+  copyrightYear: 2018
+  # 作者
+  developer: Yangkai.Shen
+
+# 服务器配置
 server:
+  # 端口号
   port: 8080
   servlet:
+    # 上下文路径
     context-path: /scaffold
+  tomcat:
+    uri-encoding: utf-8
+
+#日志配置
+logging:
+  level:
+    com.xkcoding: debug
+    org.springframework: WARN
+    com.xkcoding.scaffold.mapper: debug
+
+# 数据源配置
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/scaffold?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      connection-test-query: SELECT 1 FROM DUAL
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: ScaffoldHikariCP
+      max-lifetime: 60000
+      connection-timeout: 30000
+
+# mybatis 配置
+mybatis:
+  type-aliases-package: com.xkcoding.scaffold.model
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+# 通用 Mapper 配置
+mapper:
+  mappers: tk.mybatis.mapper.common.Mapper
+  notEmpty: true
+
+# PageHelper 配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

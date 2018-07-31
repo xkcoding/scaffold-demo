@@ -29,7 +29,7 @@ logging:
 # 数据源配置
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/scaffold?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true
+    url: jdbc:mysql://localhost:3306/scaffold?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
@@ -47,7 +47,7 @@ spring:
 # mybatis 配置
 mybatis:
   type-aliases-package: com.xkcoding.scaffold.model
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
 

@@ -48,8 +48,8 @@ CREATE TABLE sys_user (
 -- ----------------------------
 -- 3、岗位信息表
 -- ----------------------------
-drop table if exists sys_job;
-CREATE TABLE sys_job (
+drop table if exists sys_work;
+CREATE TABLE sys_work (
   id INT ( 11 ) NOT NULL auto_increment COMMENT '岗位ID',
   job_code VARCHAR ( 64 ) NOT NULL COMMENT '岗位编码',
   job_name VARCHAR ( 50 ) NOT NULL COMMENT '岗位名称',
@@ -126,11 +126,11 @@ CREATE TABLE sys_role_menu (
 -- ----------------------------
 -- 8、用户与岗位关联表  用户1-N岗位
 -- ----------------------------
-drop table if exists sys_user_job;
-CREATE TABLE sys_user_job (
+drop table if exists sys_user_work;
+CREATE TABLE sys_user_work (
   user_id VARCHAR ( 64 ) NOT NULL COMMENT '用户ID',
-  job_id VARCHAR ( 64 ) NOT NULL COMMENT '岗位ID',
-  PRIMARY KEY ( user_id, job_id )
+  work_id VARCHAR ( 64 ) NOT NULL COMMENT '岗位ID',
+  PRIMARY KEY ( user_id, work_id )
 ) ENGINE = INNODB DEFAULT charset = utf8 COMMENT = '用户与岗位关联表';
 
 -- ----------------------------

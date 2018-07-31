@@ -22,10 +22,10 @@ insert into sys_user values(2,  9, 'xkcoding',    'xkcoding', '00', '237497819@q
 -- ----------------------------
 -- 初始化-岗位信息表数据
 -- ----------------------------
-insert into sys_job values(1, 'ceo',  '董事长',    1, '1', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_job values(2, 'se',   '项目经理',  2, '1', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_job values(3, 'hr',   '人力资源',  3, '1', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_job values(4, 'user', '普通员工',  4, '1', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_work values(1, 'ceo',  '董事长',    1, '1', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_work values(2, 'se',   '项目经理',  2, '1', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_work values(3, 'hr',   '人力资源',  3, '1', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_work values(4, 'user', '普通员工',  4, '1', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
 
 -- ----------------------------
 -- 初始化-角色信息表数据
@@ -154,8 +154,8 @@ insert into sys_role_menu values ('1', '1037');
 -- ----------------------------
 -- 初始化-用户与岗位关联表数据
 -- ----------------------------
-insert into sys_user_job values ('1', '1');
-insert into sys_user_job values ('2', '2');
+insert into sys_user_work values ('1', '1');
+insert into sys_user_work values ('2', '2');
 
 -- ----------------------------
 -- 初始化-字典类型表

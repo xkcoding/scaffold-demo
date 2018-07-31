@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xkcoding.scaffold.mapper.SysWorkMapper">
+	<resultMap id="BaseResultMap" type="com.xkcoding.scaffold.model.SysWork">
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="job_code" jdbcType="VARCHAR" property="jobCode"/>
+		<result column="job_name" jdbcType="VARCHAR" property="jobName"/>
+		<result column="job_sort" jdbcType="INTEGER" property="jobSort"/>
+		<result column="status" jdbcType="BIT" property="status"/>
+		<result column="create_by" jdbcType="VARCHAR" property="createBy"/>
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+		<result column="update_by" jdbcType="VARCHAR" property="updateBy"/>
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+		<result column="remark" jdbcType="VARCHAR" property="remark"/>
+	</resultMap>
+</mapper>

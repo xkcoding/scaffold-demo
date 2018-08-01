@@ -1,7 +1,7 @@
 # 自定义配置
 scaffold:
   # 名称
-  name: Scaffold
+  name: scaffold
   # 版本
   version: 0.0.1
   # 版权年份
@@ -28,6 +28,8 @@ logging:
 
 # 数据源配置
 spring:
+  application:
+    name: ${scaffold.name}
   datasource:
     url: jdbc:mysql://localhost:3306/scaffold?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false
     username: root

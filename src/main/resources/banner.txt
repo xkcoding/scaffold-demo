@@ -13,3 +13,4 @@ Application 版本: ${scaffold.name} - ${scaffold.version}
 Application 开发: ${scaffold.developer}
 Application 时间: ${scaffold.copyrightYear}
 Spring Boot 版本: ${spring-boot.version}
+${AnsiColor.BRIGHT_WHITE}

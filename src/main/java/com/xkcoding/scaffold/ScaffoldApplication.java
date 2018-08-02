@@ -1,5 +1,6 @@
 package com.xkcoding.scaffold;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -17,6 +18,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @modified: yangkai.shen
  */
 @SpringBootApplication
+@MapperScan(basePackages = {"com.xkcoding.scaffold.mapper.*"})
 public class ScaffoldApplication {
 
 	public static void main(String[] args) {

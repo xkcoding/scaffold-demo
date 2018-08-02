@@ -76,6 +76,12 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- SpringBoot Security 安全集成 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 		<!-- Mysql驱动包 -->
 		<dependency>
 			<groupId>mysql</groupId>

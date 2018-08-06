@@ -23,6 +23,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -98,7 +99,7 @@ public class LogAspect {
 		operationLog.setStatus(OperateStatus.SUCCESS);
 
 		// TODO: 获取当前用户登录 IP
-		String ip = "127.0.0.1" ;
+		String ip = "127.0.0.1";
 		operationLog.setOperationIp(ip);
 		// TODO: 根据 IP 查地址
 		operationLog.setOperationLocation("");
@@ -111,6 +112,7 @@ public class LogAspect {
 			}
 		}
 
+		// 如果存在异常，操作日志填充异常信息
 		if (e != null) {
 			operationLog.setStatus(OperateStatus.FAIL);
 			operationLog.setErrorMsg(StrUtil.sub(e.getMessage(), 0, 2000));
@@ -121,6 +123,8 @@ public class LogAspect {
 		operationLog.setMethod(className + "." + methodName + "()");
 		// 处理设置注解上的参数
 		getControllerMethodDescription(controllerLog, operationLog);
+		// 设置操作时间
+		operationLog.setOperationTime(new Date());
 		// 保存数据库
 		sysOperationLogService.insert(operationLog);
 	}

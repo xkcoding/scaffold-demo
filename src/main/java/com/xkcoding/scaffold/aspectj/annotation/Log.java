@@ -15,19 +15,19 @@ import java.lang.annotation.*;
  * @version: V1.0
  * @modified: yangkai.shen
  */
-@Target({ElementType.PARAMETER, ElementType.METHOD})
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Log {
 	/**
 	 * 模块名
 	 */
-	String title() default "" ;
+	String title() default "";
 
 	/**
 	 * 功能
 	 */
-	String action() default "" ;
+	String action() default "";
 
 	/**
 	 * 是否保存请求参数

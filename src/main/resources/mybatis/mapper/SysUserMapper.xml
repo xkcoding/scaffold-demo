@@ -9,11 +9,11 @@
 		<result column="user_type" jdbcType="VARCHAR" property="userType"/>
 		<result column="email" jdbcType="VARCHAR" property="email"/>
 		<result column="phonenumber" jdbcType="VARCHAR" property="phonenumber"/>
-		<result column="sex" jdbcType="BIT" property="sex"/>
+		<result column="sex" jdbcType="INTEGER" property="sex"/>
 		<result column="avatar" jdbcType="VARCHAR" property="avatar"/>
 		<result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
-		<result column="status" jdbcType="BIT" property="status"/>
-		<result column="del_flag" jdbcType="BIT" property="delFlag"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
+		<result column="del_flag" jdbcType="INTEGER" property="delFlag"/>
 		<result column="login_ip" jdbcType="VARCHAR" property="loginIp"/>
 		<result column="login_date" jdbcType="TIMESTAMP" property="loginDate"/>
 		<result column="create_by" jdbcType="VARCHAR" property="createBy"/>

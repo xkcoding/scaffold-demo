@@ -12,12 +12,33 @@ insert into sys_dept values(8,  2, '研发二部', 2, 'xkcoding', '15888888888',
 insert into sys_dept values(9,  3, '市场一部', 1, 'xkcoding', '15888888888', '237497819@qq.com', '1', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00');
 insert into sys_dept values(10,  3, '市场二部', 2, 'xkcoding', '15888888888', '237497819@qq.com', '0', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00');
 
-
+CREATE TABLE sys_user (
+  id INT ( 11 ) NOT NULL auto_increment COMMENT '用户ID',
+  dept_id INT ( 11 ) DEFAULT NULL COMMENT '部门ID',
+  login_name VARCHAR ( 30 ) NOT NULL COMMENT '登录账号',
+  user_name VARCHAR ( 30 ) NOT NULL COMMENT '用户昵称',
+  user_type VARCHAR ( 2 ) DEFAULT '00' COMMENT '用户类型（00系统用户）',
+  email VARCHAR ( 50 ) DEFAULT '' COMMENT '用户邮箱',
+  phonenumber VARCHAR ( 11 ) DEFAULT '' COMMENT '手机号码',
+  sex TINYINT ( 1 ) DEFAULT 0 COMMENT '用户性别（0男 1女 2未知）',
+  avatar VARCHAR ( 100 ) DEFAULT '' COMMENT '头像路径',
+  PASSWORD VARCHAR ( 100 ) DEFAULT '' COMMENT '密码',
+  status TINYINT ( 1 ) DEFAULT 1 COMMENT '帐号状态（0停用 1正常）',
+  del_flag TINYINT ( 1 ) DEFAULT 0 COMMENT '删除标志（0代表存在 1代表删除）',
+  login_ip VARCHAR ( 20 ) DEFAULT '' COMMENT '最后登陆IP',
+  login_date datetime COMMENT '最后登陆时间',
+  create_by VARCHAR ( 64 ) DEFAULT '' COMMENT '创建者',
+  create_time datetime COMMENT '创建时间',
+  update_by VARCHAR ( 64 ) DEFAULT '' COMMENT '更新者',
+  update_time datetime COMMENT '更新时间',
+  remark VARCHAR ( 500 ) DEFAULT '' COMMENT '备注',
+  PRIMARY KEY ( id )
+) ENGINE = INNODB DEFAULT charset = utf8 COMMENT = '用户信息表';
 -- ----------------------------
 -- 初始化-用户信息表数据
 -- ----------------------------
-insert into sys_user values(1,  7, 'admin', 'xkcoding', '00', '237497819@qq.com', '15888888888', '1', '', '29c67a30398638269fe600f73a054934', '1', '0', '127.0.0.1', '2018-07-30 18-00-00', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '管理员');
-insert into sys_user values(2,  9, 'xkcoding',    'xkcoding', '00', '237497819@qq.com',  '15666666666', '1', '', '8e6d98b90472783cc73c17047ddccf36', '1', '0', '127.0.0.1', '2018-07-30 18-00-00', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '测试员');
+insert into sys_user values(1,  7, 'admin', 'xkcoding', '00', '237497819@qq.com', '15888888888', '1', '', '$2a$10$NG9t0BI6ZxOuoB4GjQI8aeiD4KFbXH.bauTZTuquCjJpZnUeCq0fm', '1', '0', '127.0.0.1', '2018-07-30 18-00-00', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '管理员');
+insert into sys_user values(2,  9, 'xkcoding',    'xkcoding', '00', '237497819@qq.com',  '15666666666', '1', '', '$2a$10$OCGlv4ACVYO7aMearTHff.cqNmt1yJYujan7U4q2bGqYpEN3o5Bxy', '1', '0', '127.0.0.1', '2018-07-30 18-00-00', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '测试员');
 
 -- ----------------------------
 -- 初始化-岗位信息表数据

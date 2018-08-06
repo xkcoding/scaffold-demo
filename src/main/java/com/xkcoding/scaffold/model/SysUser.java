@@ -69,7 +69,7 @@ public class SysUser {
 	 * 用户性别（0男 1女 2未知）
 	 */
 	@Column(name = "sex")
-	private Boolean sex;
+	private Integer sex;
 
 	/**
 	 * 头像路径
@@ -87,13 +87,13 @@ public class SysUser {
 	 * 帐号状态（0停用 1正常）
 	 */
 	@Column(name = "status")
-	private Boolean status;
+	private Integer status;
 
 	/**
 	 * 删除标志（0代表存在 1代表删除）
 	 */
 	@Column(name = "del_flag")
-	private Boolean delFlag;
+	private Integer delFlag;
 
 	/**
 	 * 最后登陆IP
@@ -268,7 +268,7 @@ public class SysUser {
 	 *
 	 * @return sex - 用户性别（0男 1女 2未知）
 	 */
-	public Boolean getSex() {
+	public Integer getSex() {
 		return sex;
 	}
 
@@ -277,7 +277,7 @@ public class SysUser {
 	 *
 	 * @param sex 用户性别（0男 1女 2未知）
 	 */
-	public void setSex(Boolean sex) {
+	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
 
@@ -322,7 +322,7 @@ public class SysUser {
 	 *
 	 * @return status - 帐号状态（0停用 1正常）
 	 */
-	public Boolean getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
@@ -331,7 +331,7 @@ public class SysUser {
 	 *
 	 * @param status 帐号状态（0停用 1正常）
 	 */
-	public void setStatus(Boolean status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
@@ -340,7 +340,7 @@ public class SysUser {
 	 *
 	 * @return del_flag - 删除标志（0代表存在 1代表删除）
 	 */
-	public Boolean getDelFlag() {
+	public Integer getDelFlag() {
 		return delFlag;
 	}
 
@@ -349,7 +349,7 @@ public class SysUser {
 	 *
 	 * @param delFlag 删除标志（0代表存在 1代表删除）
 	 */
-	public void setDelFlag(Boolean delFlag) {
+	public void setDelFlag(Integer delFlag) {
 		this.delFlag = delFlag;
 	}
 

@@ -9,8 +9,8 @@
 		<result column="dict_type" jdbcType="VARCHAR" property="dictType"/>
 		<result column="css_class" jdbcType="VARCHAR" property="cssClass"/>
 		<result column="list_class" jdbcType="VARCHAR" property="listClass"/>
-		<result column="is_default" jdbcType="BIT" property="isDefault"/>
-		<result column="status" jdbcType="BIT" property="status"/>
+		<result column="is_default" jdbcType="INTEGER" property="isDefault"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
 		<result column="create_by" jdbcType="VARCHAR" property="createBy"/>
 		<result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
 		<result column="update_by" jdbcType="VARCHAR" property="updateBy"/>

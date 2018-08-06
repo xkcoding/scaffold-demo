@@ -51,7 +51,7 @@ public class SysWork {
 	 * 状态（0停用 1正常）
 	 */
 	@Column(name = "status")
-	private Boolean status;
+	private Integer status;
 
 	/**
 	 * 创建者
@@ -160,7 +160,7 @@ public class SysWork {
 	 *
 	 * @return status - 状态（0停用 1正常）
 	 */
-	public Boolean getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
@@ -169,7 +169,7 @@ public class SysWork {
 	 *
 	 * @param status 状态（0停用 1正常）
 	 */
-	public void setStatus(Boolean status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 

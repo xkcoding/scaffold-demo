@@ -10,7 +10,7 @@
 		<property name="endingDelimiter" value="`"/>
 
 		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-			<property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+			<property name="mappers" value="com.xkcoding.scaffold.common.MyMapper"/>
 			<property name="forceAnnotation" value="true"/>
 			<property name="caseSensitive" value="false"/>
 		</plugin>

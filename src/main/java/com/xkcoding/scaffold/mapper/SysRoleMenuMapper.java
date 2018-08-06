@@ -1,7 +1,8 @@
 package com.xkcoding.scaffold.mapper;
 
+import com.xkcoding.scaffold.common.MyMapper;
 import com.xkcoding.scaffold.model.SysRoleMenu;
-import tk.mybatis.mapper.common.Mapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -16,5 +17,6 @@ import tk.mybatis.mapper.common.Mapper;
  * @version: V1.0
  * @modified: yangkai.shen
  */
-public interface SysRoleMenuMapper extends Mapper<SysRoleMenu> {
+@Repository
+public interface SysRoleMenuMapper extends MyMapper<SysRoleMenu> {
 }

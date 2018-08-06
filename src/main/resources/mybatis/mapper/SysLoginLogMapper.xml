@@ -8,7 +8,7 @@
 		<result column="login_location" jdbcType="VARCHAR" property="loginLocation"/>
 		<result column="browser" jdbcType="VARCHAR" property="browser"/>
 		<result column="os" jdbcType="VARCHAR" property="os"/>
-		<result column="status" jdbcType="BIT" property="status"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
 		<result column="msg" jdbcType="VARCHAR" property="msg"/>
 		<result column="login_time" jdbcType="TIMESTAMP" property="loginTime"/>
 	</resultMap>

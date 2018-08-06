@@ -6,7 +6,7 @@
 		<result column="config_name" jdbcType="VARCHAR" property="configName"/>
 		<result column="config_key" jdbcType="VARCHAR" property="configKey"/>
 		<result column="config_value" jdbcType="VARCHAR" property="configValue"/>
-		<result column="config_type" jdbcType="BIT" property="configType"/>
+		<result column="config_type" jdbcType="INTEGER" property="configType"/>
 		<result column="create_by" jdbcType="VARCHAR" property="createBy"/>
 		<result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
 		<result column="update_by" jdbcType="VARCHAR" property="updateBy"/>

@@ -51,7 +51,7 @@ public class SysConfig {
 	 * 系统内置（0否 1是）
 	 */
 	@Column(name = "config_type")
-	private Boolean configType;
+	private Integer configType;
 
 	/**
 	 * 创建者
@@ -160,7 +160,7 @@ public class SysConfig {
 	 *
 	 * @return config_type - 系统内置（0否 1是）
 	 */
-	public Boolean getConfigType() {
+	public Integer getConfigType() {
 		return configType;
 	}
 
@@ -169,7 +169,7 @@ public class SysConfig {
 	 *
 	 * @param configType 系统内置（0否 1是）
 	 */
-	public void setConfigType(Boolean configType) {
+	public void setConfigType(Integer configType) {
 		this.configType = configType;
 	}
 

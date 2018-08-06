@@ -7,8 +7,8 @@
 		<result column="parent_id" jdbcType="INTEGER" property="parentId"/>
 		<result column="order_num" jdbcType="INTEGER" property="orderNum"/>
 		<result column="url" jdbcType="VARCHAR" property="url"/>
-		<result column="menu_type" jdbcType="BIT" property="menuType"/>
-		<result column="visible" jdbcType="BIT" property="visible"/>
+		<result column="menu_type" jdbcType="INTEGER" property="menuType"/>
+		<result column="visible" jdbcType="INTEGER" property="visible"/>
 		<result column="perms" jdbcType="VARCHAR" property="perms"/>
 		<result column="icon" jdbcType="VARCHAR" property="icon"/>
 		<result column="create_by" jdbcType="VARCHAR" property="createBy"/>

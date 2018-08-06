@@ -69,13 +69,13 @@ public class SysDictData {
 	 * 是否默认（0否 1是）
 	 */
 	@Column(name = "is_default")
-	private Boolean isDefault;
+	private Integer isDefault;
 
 	/**
 	 * 状态（0停用 1正常）
 	 */
 	@Column(name = "status")
-	private Boolean status;
+	private Integer status;
 
 	/**
 	 * 创建者
@@ -238,7 +238,7 @@ public class SysDictData {
 	 *
 	 * @return is_default - 是否默认（0否 1是）
 	 */
-	public Boolean getIsDefault() {
+	public Integer getIsDefault() {
 		return isDefault;
 	}
 
@@ -247,7 +247,7 @@ public class SysDictData {
 	 *
 	 * @param isDefault 是否默认（0否 1是）
 	 */
-	public void setIsDefault(Boolean isDefault) {
+	public void setIsDefault(Integer isDefault) {
 		this.isDefault = isDefault;
 	}
 
@@ -256,7 +256,7 @@ public class SysDictData {
 	 *
 	 * @return status - 状态（0停用 1正常）
 	 */
-	public Boolean getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
@@ -265,7 +265,7 @@ public class SysDictData {
 	 *
 	 * @param status 状态（0停用 1正常）
 	 */
-	public void setStatus(Boolean status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 

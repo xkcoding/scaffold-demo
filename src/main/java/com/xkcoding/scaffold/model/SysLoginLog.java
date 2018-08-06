@@ -63,7 +63,7 @@ public class SysLoginLog {
 	 * 登录状态（0失败 1成功）
 	 */
 	@Column(name = "status")
-	private Boolean status;
+	private Integer status;
 
 	/**
 	 * 提示消息
@@ -190,7 +190,7 @@ public class SysLoginLog {
 	 *
 	 * @return status - 登录状态（0失败 1成功）
 	 */
-	public Boolean getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
@@ -199,7 +199,7 @@ public class SysLoginLog {
 	 *
 	 * @param status 登录状态（0失败 1成功）
 	 */
-	public void setStatus(Boolean status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 

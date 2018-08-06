@@ -69,7 +69,7 @@ public class SysDept {
 	 * 部门状态（0停用 1正常）
 	 */
 	@Column(name = "status")
-	private Boolean status;
+	private Integer status;
 
 	/**
 	 * 创建者
@@ -226,7 +226,7 @@ public class SysDept {
 	 *
 	 * @return status - 部门状态（0停用 1正常）
 	 */
-	public Boolean getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
@@ -235,7 +235,7 @@ public class SysDept {
 	 *
 	 * @param status 部门状态（0停用 1正常）
 	 */
-	public void setStatus(Boolean status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 

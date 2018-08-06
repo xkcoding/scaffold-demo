@@ -6,14 +6,14 @@
 		<result column="title" jdbcType="VARCHAR" property="title"/>
 		<result column="action" jdbcType="VARCHAR" property="action"/>
 		<result column="method" jdbcType="VARCHAR" property="method"/>
-		<result column="oper_name" jdbcType="VARCHAR" property="operName"/>
+		<result column="oper_name" jdbcType="VARCHAR" property="operationName"/>
 		<result column="dept_name" jdbcType="VARCHAR" property="deptName"/>
-		<result column="oper_url" jdbcType="VARCHAR" property="operUrl"/>
-		<result column="oper_ip" jdbcType="VARCHAR" property="operIp"/>
-		<result column="oper_location" jdbcType="VARCHAR" property="operLocation"/>
-		<result column="oper_param" jdbcType="VARCHAR" property="operParam"/>
-		<result column="status" jdbcType="BIT" property="status"/>
+		<result column="oper_url" jdbcType="VARCHAR" property="operationUrl"/>
+		<result column="oper_ip" jdbcType="VARCHAR" property="operationIp"/>
+		<result column="oper_location" jdbcType="VARCHAR" property="operationLocation"/>
+		<result column="oper_param" jdbcType="VARCHAR" property="operationParam"/>
+		<result column="status" jdbcType="INTEGER" property="status"/>
 		<result column="error_msg" jdbcType="VARCHAR" property="errorMsg"/>
-		<result column="oper_time" jdbcType="TIMESTAMP" property="operTime"/>
+		<result column="oper_time" jdbcType="TIMESTAMP" property="operationTime"/>
 	</resultMap>
 </mapper>

@@ -1,7 +1,8 @@
 package com.xkcoding.scaffold.mapper;
 
+import com.xkcoding.scaffold.common.MyMapper;
 import com.xkcoding.scaffold.model.SysWork;
-import tk.mybatis.mapper.common.Mapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -16,5 +17,6 @@ import tk.mybatis.mapper.common.Mapper;
  * @version: V1.0
  * @modified: yangkai.shen
  */
-public interface SysWorkMapper extends Mapper<SysWork> {
+@Repository
+public interface SysWorkMapper extends MyMapper<SysWork> {
 }

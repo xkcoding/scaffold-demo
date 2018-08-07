@@ -15,7 +15,7 @@ import java.lang.annotation.*;
  * @version: V1.0
  * @modified: yangkai.shen
  */
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Log {

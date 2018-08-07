@@ -2,8 +2,11 @@ package com.xkcoding.scaffold.util;
 
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
 import com.xkcoding.scaffold.common.constant.ContentType;
 import com.xkcoding.scaffold.common.constant.FileSuffix;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -11,6 +14,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 /**
  * <p>
@@ -25,6 +29,7 @@ import javax.servlet.http.HttpSession;
  * @version: V1.0
  * @modified: yangkai.shen
  */
+@Slf4j
 public class ServletUtil {
 	/**
 	 * 获取当前请求的 RequestAttributes
@@ -81,6 +86,25 @@ public class ServletUtil {
 	 */
 	public static Integer getParameterToInt(String name, Integer defaultValue) {
 		return Convert.toInt(getRequest().getParameter(name), defaultValue);
+	}
+
+	/**
+	 * 使用 Response 渲染 json 数据到客户端
+	 *
+	 * @param response 输出流
+	 * @param data     渲染数据
+	 */
+	public static void renderJson(HttpServletResponse response, Object data) {
+		try {
+			response.setContentType("application/json");
+			response.setCharacterEncoding("utf-8");
+			JSONObject jsonData = JSONUtil.parseObj(data, false);
+			String json = JSONUtil.toJsonStr(jsonData);
+			response.getWriter().print(json);
+		} catch (IOException e) {
+			log.error("【JSON 渲染】使用 Response 渲染 json 数据到客户端，[json]：{}", JSONUtil.toJsonStr(data));
+			log.error("【JSON 渲染】发生异常！", e);
+		}
 	}
 
 	/**

@@ -28,6 +28,16 @@ public enum Status {
 	BAD_REQUEST(400, "请求错误"),
 
 	/**
+	 * 尚未登录
+	 */
+	UNAUTHORIZED(401, "尚未登录"),
+
+	/**
+	 * 权限不够
+	 */
+	FORBIDDEN(403, "权限不够"),
+
+	/**
 	 * 请求不存在
 	 */
 	REQUEST_NOT_FOUND(404, "请求不存在"),
@@ -35,7 +45,12 @@ public enum Status {
 	/**
 	 * 服务器内部错误
 	 */
-	INTERNAL_SERVER_ERROR(500, "服务器内部错误");
+	INTERNAL_SERVER_ERROR(500, "服务器内部错误"),
+
+	/**
+	 * 登录失败
+	 */
+	LOGIN_ERROR(50000, "登录失败");
 
 	private Integer code;
 	private String msg;

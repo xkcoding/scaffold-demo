@@ -1,7 +1,7 @@
 package com.xkcoding.scaffold.config.security;
 
 import com.xkcoding.scaffold.common.Api;
-import com.xkcoding.scaffold.common.Status;
+import com.xkcoding.scaffold.common.status.Status;
 import com.xkcoding.scaffold.util.ServletUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;

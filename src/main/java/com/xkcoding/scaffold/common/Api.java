@@ -1,5 +1,6 @@
 package com.xkcoding.scaffold.common;
 
+import com.xkcoding.scaffold.common.status.Status;
 import lombok.Data;
 
 import java.io.Serializable;

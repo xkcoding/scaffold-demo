@@ -4,7 +4,7 @@ import cn.hutool.core.util.ObjectUtil;
 import com.xkcoding.scaffold.aspectj.annotation.Log;
 import com.xkcoding.scaffold.aspectj.constant.ActionType;
 import com.xkcoding.scaffold.common.Api;
-import com.xkcoding.scaffold.common.Status;
+import com.xkcoding.scaffold.common.status.Status;
 import com.xkcoding.scaffold.exception.ScaffoldException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

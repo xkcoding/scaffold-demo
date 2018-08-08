@@ -1,4 +1,4 @@
-package com.xkcoding.scaffold.common;
+package com.xkcoding.scaffold.common.status;
 
 import lombok.Getter;
 

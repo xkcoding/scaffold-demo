@@ -1,6 +1,6 @@
 package com.xkcoding.scaffold.exception;
 
-import com.xkcoding.scaffold.common.Status;
+import com.xkcoding.scaffold.common.status.Status;
 import lombok.Getter;
 
 /**

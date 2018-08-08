@@ -1,7 +1,7 @@
 package com.xkcoding.scaffold.controller;
 
 import com.xkcoding.scaffold.common.Api;
-import com.xkcoding.scaffold.common.Status;
+import com.xkcoding.scaffold.common.status.Status;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

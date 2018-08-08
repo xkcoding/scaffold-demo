@@ -11,7 +11,7 @@
 		<result column="phonenumber" jdbcType="VARCHAR" property="phonenumber"/>
 		<result column="sex" jdbcType="INTEGER" property="sex"/>
 		<result column="avatar" jdbcType="VARCHAR" property="avatar"/>
-		<result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
+		<result column="password" jdbcType="VARCHAR" property="password"/>
 		<result column="status" jdbcType="INTEGER" property="status"/>
 		<result column="del_flag" jdbcType="INTEGER" property="delFlag"/>
 		<result column="login_ip" jdbcType="VARCHAR" property="loginIp"/>

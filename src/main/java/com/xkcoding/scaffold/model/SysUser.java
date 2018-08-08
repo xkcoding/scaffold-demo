@@ -80,7 +80,7 @@ public class SysUser {
 	/**
 	 * 密码
 	 */
-	@Column(name = "PASSWORD")
+	@Column(name = "password")
 	private String password;
 
 	/**
@@ -302,7 +302,7 @@ public class SysUser {
 	/**
 	 * 获取密码
 	 *
-	 * @return PASSWORD - 密码
+	 * @return password - 密码
 	 */
 	public String getPassword() {
 		return password;

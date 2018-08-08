@@ -32,7 +32,7 @@ CREATE TABLE sys_user (
   phonenumber VARCHAR ( 11 ) DEFAULT '' COMMENT '手机号码',
   sex INT ( 2 ) DEFAULT 0 COMMENT '用户性别（0男 1女 2未知）',
   avatar VARCHAR ( 100 ) DEFAULT '' COMMENT '头像路径',
-  PASSWORD VARCHAR ( 100 ) DEFAULT '' COMMENT '密码',
+  password VARCHAR ( 100 ) DEFAULT '' COMMENT '密码',
   status INT ( 2 ) DEFAULT 1 COMMENT '帐号状态（0停用 1正常）',
   del_flag INT ( 2 ) DEFAULT 0 COMMENT '删除标志（0代表存在 1代表删除）',
   login_ip VARCHAR ( 20 ) DEFAULT '' COMMENT '最后登陆IP',

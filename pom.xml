@@ -45,7 +45,8 @@
 		<mapper.spring.boot.starter.version>2.0.3</mapper.spring.boot.starter.version>
 		<pagehelper.spring.boot.starter.version>1.2.5</pagehelper.spring.boot.starter.version>
 		<hutool.version>4.1.5</hutool.version>
-		<guava.version>25.1-jre</guava.version>
+		<guava.version>26.0-jre</guava.version>
+		<modelmapper.version>2.1.0</modelmapper.version>
 		<useragent.version>1.19</useragent.version>
 		<lombok.version>1.16.22</lombok.version>
 	</properties>
@@ -123,12 +124,17 @@
 			<version>${hutool.version}</version>
 		</dependency>
 
-
 		<!-- guava 工具类 -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>${modelmapper.version}</version>
 		</dependency>
 
 		<!-- 解析客户端操作系统、浏览器等 -->

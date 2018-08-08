@@ -4,6 +4,7 @@ import com.xkcoding.scaffold.common.Api;
 import com.xkcoding.scaffold.common.status.Status;
 import com.xkcoding.scaffold.exception.ScaffoldException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,8 +30,11 @@ public class GlobalExceptionHandler {
 	@ResponseBody
 	public Api handlerException(Exception e) {
 		if (e instanceof ScaffoldException) {
-			log.error("【全局异常拦截-MetaDataException】: 状态码 {}, 异常信息 {}", ((ScaffoldException) e).getCode(), e.getMessage());
+			log.error("【全局异常拦截】ScaffoldException: 状态码 {}, 异常信息 {}", ((ScaffoldException) e).getCode(), e.getMessage());
 			return new Api(((ScaffoldException) e).getCode(), e.getMessage(), ((ScaffoldException) e).getData());
+		} else if (e instanceof AccessDeniedException) {
+			log.error("【全局异常拦截】AccessDeniedException: 异常信息 {}", ((AccessDeniedException) e).getMessage());
+			return Api.ofStatus(Status.FORBIDDEN);
 		}
 		log.error("【全局异常拦截】: 异常信息 {} ", e.getMessage());
 		return Api.ofStatus(Status.INTERNAL_SERVER_ERROR);

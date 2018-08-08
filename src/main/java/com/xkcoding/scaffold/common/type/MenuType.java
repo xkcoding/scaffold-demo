@@ -1,37 +1,42 @@
-package com.xkcoding.scaffold.common.status;
+package com.xkcoding.scaffold.common.type;
 
 import com.xkcoding.scaffold.common.BaseEnum;
 import lombok.Getter;
 
 /**
  * <p>
- * 用户状态枚举
+ * 菜单类型枚举
  * </p>
  *
  * @package: com.xkcoding.scaffold.common.status
- * @description： 用户状态枚举
+ * @description： 菜单类型枚举
  * @author: yangkai.shen
- * @date: Created in 2018/8/8 上午10:26
+ * @date: Created in 2018/8/8 下午9:56
  * @copyright: Copyright (c) 2018
  * @version: V1.0
  * @modified: yangkai.shen
  */
 @Getter
-public enum UserStatus implements BaseEnum {
+public enum MenuType implements BaseEnum {
 	/**
-	 * 启用
+	 * 目录
 	 */
-	ENABLE(1, "启用"),
+	directory(0, "目录"),
 
 	/**
-	 * 禁用
+	 * 菜单
 	 */
-	DISABLE(0, "禁用");
+	menu(1, "菜单"),
+
+	/**
+	 * 按钮
+	 */
+	button(2, "按钮");
 
 	private Integer code;
 	private String msg;
 
-	UserStatus(Integer code, String msg) {
+	MenuType(Integer code, String msg) {
 		this.code = code;
 		this.msg = msg;
 	}

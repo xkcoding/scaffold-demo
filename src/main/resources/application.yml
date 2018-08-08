@@ -45,10 +45,6 @@ spring:
       pool-name: ScaffoldHikariCP
       max-lifetime: 60000
       connection-timeout: 30000
-  security:
-    user:
-      name: xkcoding
-      password: $2a$10$NG9t0BI6ZxOuoB4GjQI8aeiD4KFbXH.bauTZTuquCjJpZnUeCq0fm
 
 # mybatis 配置
 mybatis:

@@ -5,4 +5,17 @@
 		<id column="role_id" jdbcType="INTEGER" property="roleId"/>
 		<id column="menu_id" jdbcType="INTEGER" property="menuId"/>
 	</resultMap>
+
+	<select id="selectSysRoleMenuByRoleIdList" resultType="com.xkcoding.scaffold.model.SysRoleMenu">
+		SELECT * FROM sys_role_menu
+		<where>
+			<if test="roleIdList != null and roleIdList.size() > 0">
+				role_id IN
+				<foreach collection="roleIdList" index="index" item="item" open="(" close=")" separator=",">
+					#{item}
+				</foreach>
+			</if>
+		</where>
+		ORDER BY role_id
+	</select>
 </mapper>

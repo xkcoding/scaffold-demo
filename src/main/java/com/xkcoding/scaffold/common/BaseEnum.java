@@ -1,4 +1,4 @@
-package com.xkcoding.scaffold.common.status;
+package com.xkcoding.scaffold.common;
 
 /**
  * <p>
@@ -13,7 +13,7 @@ package com.xkcoding.scaffold.common.status;
  * @version: V1.0
  * @modified: yangkai.shen
  */
-public interface BaseStatus {
+public interface BaseEnum {
 	/**
 	 * 获取状态码
 	 *

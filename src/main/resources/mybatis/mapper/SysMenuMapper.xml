@@ -17,4 +17,17 @@
 		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
 		<result column="remark" jdbcType="VARCHAR" property="remark"/>
 	</resultMap>
+
+	<select id="selectSysMenuByRoleList" resultType="com.xkcoding.scaffold.model.SysMenu">
+		SELECT * FROM sys_menu
+		<where>
+			<if test="roleIdList != null and roleIdList.size() > 0">
+				id IN
+				<foreach collection="roleIdList" index="index" item="item" open="(" close=")" separator=",">
+					#{item}
+				</foreach>
+			</if>
+		</where>
+		ORDER BY id
+	</select>
 </mapper>

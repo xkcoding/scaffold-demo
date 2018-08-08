@@ -5,7 +5,10 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.xkcoding.scaffold.aspectj.annotation.Log;
 import com.xkcoding.scaffold.aspectj.constant.OperateStatus;
+import com.xkcoding.scaffold.mapper.SysDeptMapper;
+import com.xkcoding.scaffold.model.SysDept;
 import com.xkcoding.scaffold.model.SysOperationLog;
+import com.xkcoding.scaffold.model.dto.SysUserDTO;
 import com.xkcoding.scaffold.service.SysOperationLogService;
 import com.xkcoding.scaffold.util.SecurityUtil;
 import com.xkcoding.scaffold.util.ServletUtil;
@@ -47,6 +50,9 @@ import java.util.Map;
 public class LogAspect {
 	@Autowired
 	private SysOperationLogService sysOperationLogService;
+
+	@Autowired
+	private SysDeptMapper sysDeptMapper;
 
 	/**
 	 * 切入点
@@ -92,7 +98,7 @@ public class LogAspect {
 			return;
 		}
 
-		UserDetails currentUser = SecurityUtil.getCurrentUser();
+		SysUserDTO currentUser = SecurityUtil.getCurrentUser();
 
 		// 构造操作日志对象
 		SysOperationLog operationLog = new SysOperationLog();
@@ -104,9 +110,9 @@ public class LogAspect {
 		operationLog.setOperationUrl(ServletUtil.getRequest().getRequestURI());
 		if (currentUser != null) {
 			operationLog.setOperationName(currentUser.getUsername());
-			if (ObjectUtil.isNotNull(currentUser.getUsername())) {
-				// TODO: 根据 deptId 查询 Dept
-				operationLog.setDeptName("");
+			if (ObjectUtil.isNotNull(currentUser.getDeptId())) {
+				SysDept sysDept = sysDeptMapper.selectByPrimaryKey(currentUser.getDeptId());
+				operationLog.setDeptName(sysDept.getDeptName());
 			}
 		}
 

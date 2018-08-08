@@ -2,7 +2,10 @@ package com.xkcoding.scaffold.mapper;
 
 import com.xkcoding.scaffold.common.MyMapper;
 import com.xkcoding.scaffold.model.SysRole;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * <p>
@@ -19,4 +22,12 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface SysRoleMapper extends MyMapper<SysRole> {
+
+	/**
+	 * 根据角色 id 列表查询角色列表
+	 *
+	 * @param roleIdList 用户 id 列表
+	 * @return 角色列表
+	 */
+	List<SysRole> selectSysRoleByRoleList(@Param("roleIdList") List<Integer> roleIdList);
 }

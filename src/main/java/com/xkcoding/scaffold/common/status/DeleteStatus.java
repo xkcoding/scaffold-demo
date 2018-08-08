@@ -1,5 +1,6 @@
 package com.xkcoding.scaffold.common.status;
 
+import com.xkcoding.scaffold.common.BaseEnum;
 import lombok.Getter;
 
 /**
@@ -16,7 +17,7 @@ import lombok.Getter;
  * @modified: yangkai.shen
  */
 @Getter
-public enum DeleteStatus implements BaseStatus {
+public enum DeleteStatus implements BaseEnum {
 	/**
 	 * 已删除
 	 */

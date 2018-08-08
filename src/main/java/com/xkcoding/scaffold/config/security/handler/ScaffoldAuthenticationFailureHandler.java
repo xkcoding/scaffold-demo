@@ -1,4 +1,4 @@
-package com.xkcoding.scaffold.config.security;
+package com.xkcoding.scaffold.config.security.handler;
 
 import com.xkcoding.scaffold.common.Api;
 import com.xkcoding.scaffold.common.status.Status;

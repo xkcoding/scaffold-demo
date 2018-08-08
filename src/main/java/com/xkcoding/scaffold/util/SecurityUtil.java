@@ -1,8 +1,8 @@
 package com.xkcoding.scaffold.util;
 
+import com.xkcoding.scaffold.model.dto.SysUserDTO;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
 /**
@@ -60,11 +60,17 @@ public class SecurityUtil {
 	 *
 	 * @return 当前登录用户
 	 */
-	public static UserDetails getCurrentUser() {
+	public static SysUserDTO getCurrentUser() {
 		Object principal = getAuthentication().getPrincipal();
-		if (principal instanceof UserDetails) {
-			return (UserDetails) principal;
+		if (principal instanceof SysUserDTO) {
+			return (SysUserDTO) principal;
 		}
 		return null;
+	}
+
+	/**
+	 * 登出当前登录用户
+	 */
+	public static void logout() {
 	}
 }

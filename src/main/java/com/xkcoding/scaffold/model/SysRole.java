@@ -1,5 +1,7 @@
 package com.xkcoding.scaffold.model;
 
+import com.google.common.base.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -261,5 +263,22 @@ public class SysRole {
 	 */
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof SysRole)) {
+			return false;
+		}
+		SysRole sysRole = (SysRole) o;
+		return Objects.equal(getId(), sysRole.getId()) && Objects.equal(getRoleName(), sysRole.getRoleName()) && Objects.equal(getRoleKey(), sysRole.getRoleKey()) && Objects.equal(getRoleSort(), sysRole.getRoleSort()) && Objects.equal(getStatus(), sysRole.getStatus()) && Objects.equal(getCreateBy(), sysRole.getCreateBy()) && Objects.equal(getCreateTime(), sysRole.getCreateTime()) && Objects.equal(getUpdateBy(), sysRole.getUpdateBy()) && Objects.equal(getUpdateTime(), sysRole.getUpdateTime()) && Objects.equal(getRemark(), sysRole.getRemark());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId(), getRoleName(), getRoleKey(), getRoleSort(), getStatus(), getCreateBy(), getCreateTime(), getUpdateBy(), getUpdateTime(), getRemark());
 	}
 }

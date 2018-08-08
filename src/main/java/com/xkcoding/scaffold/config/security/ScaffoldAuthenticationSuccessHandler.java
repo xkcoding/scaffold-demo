@@ -27,6 +27,10 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 @Slf4j
 public class ScaffoldAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
+
+	/**
+	 * 认证成功时触发
+	 */
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
 		log.info("【登录认证】{} 登录成功！", ((UserDetails) authentication.getPrincipal()).getUsername());

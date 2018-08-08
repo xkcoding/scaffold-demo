@@ -27,6 +27,10 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 @Slf4j
 public class ScaffoldLogoutSuccessHandler implements LogoutSuccessHandler {
+
+	/**
+	 * 登出成功时触发
+	 */
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
 		log.info("【退出登录】{} 登出成功！", ((UserDetails) authentication.getPrincipal()).getUsername());

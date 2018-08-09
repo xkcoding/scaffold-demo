@@ -10,6 +10,7 @@ import com.xkcoding.scaffold.model.SysDept;
 import com.xkcoding.scaffold.model.SysOperationLog;
 import com.xkcoding.scaffold.model.dto.SysUserDTO;
 import com.xkcoding.scaffold.service.SysOperationLogService;
+import com.xkcoding.scaffold.util.Ip2AddressUtil;
 import com.xkcoding.scaffold.util.SecurityUtil;
 import com.xkcoding.scaffold.util.ServletUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,6 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -98,15 +98,20 @@ public class LogAspect {
 			return;
 		}
 
+		// 获取当前登录用户
 		SysUserDTO currentUser = SecurityUtil.getCurrentUser();
 
 		// 构造操作日志对象
 		SysOperationLog operationLog = new SysOperationLog();
 		operationLog.setStatus(OperateStatus.SUCCESS);
 
-		operationLog.setOperationIp(SecurityUtil.getIp());
-		// TODO: 根据 IP 查地址
-		operationLog.setOperationLocation("");
+		// 获取登录用户 IP
+		String ip = SecurityUtil.getIp();
+		operationLog.setOperationIp(ip);
+
+		// 根据 IP 获取地址
+		operationLog.setOperationLocation(Ip2AddressUtil.getAddressInLocal(ip));
+		// 设置请求地址
 		operationLog.setOperationUrl(ServletUtil.getRequest().getRequestURI());
 		if (currentUser != null) {
 			operationLog.setOperationName(currentUser.getUsername());

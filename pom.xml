@@ -48,6 +48,7 @@
 		<guava.version>26.0-jre</guava.version>
 		<modelmapper.version>2.1.0</modelmapper.version>
 		<useragent.version>1.19</useragent.version>
+		<ip2region.version>1.7</ip2region.version>
 		<lombok.version>1.16.22</lombok.version>
 	</properties>
 
@@ -142,6 +143,13 @@
 			<groupId>eu.bitwalker</groupId>
 			<artifactId>UserAgentUtils</artifactId>
 			<version>${useragent.version}</version>
+		</dependency>
+
+		<!-- ip2region: ip地理位置解析 -->
+		<dependency>
+			<groupId>org.lionsoul</groupId>
+			<artifactId>ip2region</artifactId>
+			<version>${ip2region.version}</version>
 		</dependency>
 
 		<!-- lombok 插件 -->

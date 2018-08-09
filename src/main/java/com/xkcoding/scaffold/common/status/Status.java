@@ -50,7 +50,12 @@ public enum Status {
 	/**
 	 * 登录失败
 	 */
-	LOGIN_ERROR(50000, "登录失败");
+	LOGIN_ERROR(50000, "登录失败"),
+
+	/**
+	 * Session 已过期
+	 */
+	SESSION_INVALID(50001, "Session 已过期");
 
 	private Integer code;
 	private String msg;

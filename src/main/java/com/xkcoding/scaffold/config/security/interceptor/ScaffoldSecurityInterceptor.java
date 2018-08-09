@@ -1,7 +1,7 @@
 package com.xkcoding.scaffold.config.security.interceptor;
 
 import com.xkcoding.scaffold.config.security.handler.ScaffoldAccessDecisionManager;
-import com.xkcoding.scaffold.config.security.service.ScaffoldFilterInvocationSecurityMetadataSourceService;
+import com.xkcoding.scaffold.config.security.handler.ScaffoldFilterInvocationSecurityMetadataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.SecurityMetadataSource;
 import org.springframework.security.access.intercept.AbstractSecurityInterceptor;
@@ -28,7 +28,7 @@ import java.io.IOException;
 @Component
 public class ScaffoldSecurityInterceptor extends AbstractSecurityInterceptor implements Filter {
 	@Autowired
-	private ScaffoldFilterInvocationSecurityMetadataSourceService securityMetadataSource;
+	private ScaffoldFilterInvocationSecurityMetadataSource securityMetadataSource;
 
 	@Autowired
 	public void setAccessDecisionManager(ScaffoldAccessDecisionManager accessDecisionManager) {

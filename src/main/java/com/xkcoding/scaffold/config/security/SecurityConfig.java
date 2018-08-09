@@ -2,7 +2,6 @@ package com.xkcoding.scaffold.config.security;
 
 import com.xkcoding.scaffold.config.security.handler.*;
 import com.xkcoding.scaffold.config.security.interceptor.ScaffoldSecurityInterceptor;
-import com.xkcoding.scaffold.config.security.service.ScaffoldFilterInvocationSecurityMetadataSourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +9,8 @@ import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
@@ -46,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private ScaffoldAccessDecisionManager accessDecisionManager;
 
 	@Autowired
-	private ScaffoldFilterInvocationSecurityMetadataSourceService securityMetadataSource;
+	private ScaffoldFilterInvocationSecurityMetadataSource securityMetadataSource;
 
 	@Autowired
 	private ScaffoldSecurityInterceptor interceptor;
@@ -69,16 +70,42 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.formLogin().loginPage("/authentication/require").loginProcessingUrl("/authentication/login").successHandler(successHandler).failureHandler(failureHandler).and().logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler).deleteCookies("JSESSIONID").permitAll().and().authorizeRequests().withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+		// 允许iframe 嵌套
+		http.headers().frameOptions().disable();
+
+		// 配置 登录成功、登录失败、退出登录 处理器
+		http.formLogin().loginPage("/authentication/require").loginProcessingUrl("/authentication/login").successHandler(successHandler).failureHandler(failureHandler).and().logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler).deleteCookies("JSESSIONID").permitAll();
+
+		// 允许访问指定资源
+		http.authorizeRequests().antMatchers("/authentication/require").permitAll().anyRequest().authenticated();
+
+		// 一个自定义的filter，必须包含 authenticationManager,accessDecisionManager,securityMetadataSource三个属性，
+		// 我们的所有控制将在这三个类中实现，解释详见具体配置
+		http.authorizeRequests().withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
 			@Override
 			public <O extends FilterSecurityInterceptor> O postProcess(O object) {
 				object.setSecurityMetadataSource(securityMetadataSource);
 				object.setAccessDecisionManager(accessDecisionManager);
 				return object;
 			}
-		}).accessDecisionManager(accessDecisionManager).antMatchers("/authentication/require").permitAll().anyRequest().authenticated();
+		});
+
+		// 关闭 csrf
 		http.csrf().disable();
+
+		// 拒绝访问 处理器
 		http.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+
+		// 添加自定义拦截器
 		http.addFilterBefore(interceptor, FilterSecurityInterceptor.class);
+
+		// session管理
+		http.sessionManagement().maximumSessions(1).sessionRegistry(getSessionRegistry());
+
+	}
+
+	@Bean
+	public SessionRegistry getSessionRegistry() {
+		return new SessionRegistryImpl();
 	}
 }

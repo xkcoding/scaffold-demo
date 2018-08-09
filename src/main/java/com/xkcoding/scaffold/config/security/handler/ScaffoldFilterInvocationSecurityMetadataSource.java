@@ -1,13 +1,11 @@
-package com.xkcoding.scaffold.config.security.service;
+package com.xkcoding.scaffold.config.security.handler;
 
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.xkcoding.scaffold.common.type.MenuType;
 import com.xkcoding.scaffold.mapper.SysMenuMapper;
 import com.xkcoding.scaffold.model.SysMenu;
-import com.xkcoding.scaffold.util.EnumUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
@@ -36,11 +34,11 @@ import java.util.Map;
  * @modified: yangkai.shen
  */
 @Component
-public class ScaffoldFilterInvocationSecurityMetadataSourceService implements FilterInvocationSecurityMetadataSource {
+public class ScaffoldFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 	@Autowired
 	private SysMenuMapper sysMenuMapper;
 
-	private HashMap<String, Collection<ConfigAttribute>> cache = Maps.newHashMap();
+	private static final HashMap<String, Collection<ConfigAttribute>> cache = Maps.newHashMap();
 
 	/**
 	 * 为了判定用户请求的url 是否在权限表中，如果在权限表中，则返回给 decide 方法，用来判定用户是否有此权限。如果不在权限表中则放行。
@@ -65,9 +63,12 @@ public class ScaffoldFilterInvocationSecurityMetadataSourceService implements Fi
 		return null;
 	}
 
-	private void loadSysMenuList() {
+	public void loadSysMenuList() {
 		List<SysMenu> sysMenuList = sysMenuMapper.selectAll();
 		for (SysMenu sysMenu : sysMenuList) {
+			if (StrUtil.equals(sysMenu.getUrl(), "#")) {
+				continue;
+			}
 			List<ConfigAttribute> configAttributes = Lists.newArrayList();
 
 			// 将菜单的权限表达式和菜单类型添加进权限信息
@@ -76,16 +77,17 @@ public class ScaffoldFilterInvocationSecurityMetadataSourceService implements Fi
 				configAttributes.add(permAttr);
 			}
 
-			ConfigAttribute typeAttr = new SecurityConfig(EnumUtil.getStatusByCode(sysMenu.getMenuType(), MenuType.class).getMsg());
-			configAttributes.add(typeAttr);
-
 			cache.put(sysMenu.getUrl(), configAttributes);
 		}
 	}
 
 	@Override
 	public Collection<ConfigAttribute> getAllConfigAttributes() {
-		return null;
+		Collection<ConfigAttribute> configAttributes = Lists.newArrayList();
+		for (Collection<ConfigAttribute> value : cache.values()) {
+			configAttributes.addAll(value);
+		}
+		return configAttributes;
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package com.xkcoding.scaffold.model.dto;
 
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.google.common.base.Objects;
 import com.google.common.collect.Sets;
 import com.xkcoding.scaffold.common.status.DeleteStatus;
 import com.xkcoding.scaffold.common.status.UserStatus;
@@ -198,5 +199,22 @@ public class SysUserDTO implements UserDetails {
 	public boolean isEnabled() {
 		DeleteStatus deleteStatus = EnumUtil.getStatusByCode(delFlag, DeleteStatus.class);
 		return ObjectUtil.equal(deleteStatus, DeleteStatus.NOT_DELETED);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof SysUserDTO)) {
+			return false;
+		}
+		SysUserDTO that = (SysUserDTO) o;
+		return Objects.equal(getId(), that.getId()) && Objects.equal(getDeptId(), that.getDeptId()) && Objects.equal(getLoginName(), that.getLoginName()) && Objects.equal(userName, that.userName) && Objects.equal(getUserType(), that.getUserType()) && Objects.equal(getEmail(), that.getEmail()) && Objects.equal(getPhonenumber(), that.getPhonenumber()) && Objects.equal(getSex(), that.getSex()) && Objects.equal(getAvatar(), that.getAvatar()) && Objects.equal(getPassword(), that.getPassword()) && Objects.equal(getStatus(), that.getStatus()) && Objects.equal(getDelFlag(), that.getDelFlag()) && Objects.equal(getLoginIp(), that.getLoginIp()) && Objects.equal(getLoginDate(), that.getLoginDate()) && Objects.equal(getCreateBy(), that.getCreateBy()) && Objects.equal(getCreateTime(), that.getCreateTime()) && Objects.equal(getUpdateBy(), that.getUpdateBy()) && Objects.equal(getUpdateTime(), that.getUpdateTime()) && Objects.equal(getRemark(), that.getRemark());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(getId(), getDeptId(), getLoginName(), userName, getUserType(), getEmail(), getPhonenumber(), getSex(), getAvatar(), getPassword(), getStatus(), getDelFlag(), getLoginIp(), getLoginDate(), getCreateBy(), getCreateTime(), getUpdateBy(), getUpdateTime(), getRemark());
 	}
 }

@@ -31,7 +31,8 @@ public class Ip2AddressTest extends ScaffoldApplicationTests {
 		String ip3 = "47.95.196.158";
 		String ip4 = "101.105.35.57";
 		String ip5 = "101.105.35.57";
-		List<String> ipList = Lists.newArrayList(ip0, ip1, ip2, ip3, ip4, ip5);
+		String ip6 = "101.47.19.139";
+		List<String> ipList = Lists.newArrayList(ip0, ip1, ip2, ip3, ip4, ip5, ip6);
 
 		for (String ip : ipList) {
 			String addressInfo1 = Ip2AddressUtil.getAddressInLocal(ip);

@@ -7,8 +7,6 @@ import com.xkcoding.scaffold.common.Api;
 import com.xkcoding.scaffold.common.status.Status;
 import com.xkcoding.scaffold.exception.ScaffoldException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,7 +36,7 @@ public class TestController {
 	 * @return {@link Api}
 	 * @throws ScaffoldException 全局异常
 	 */
-	@Log(title = "测试日志", action = ActionType.OTHER)
+	@Log(title = "测试模块-操作日志", action = ActionType.INSERT)
 	@GetMapping("/operate/log")
 	public Api testOperateLog(Boolean hasError) throws ScaffoldException {
 		log.info("【测试】AOP 记录操作日志");

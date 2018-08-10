@@ -1,6 +1,10 @@
 package com.xkcoding.scaffold.config.security.handler;
 
+import cn.hutool.core.util.ObjectUtil;
 import com.xkcoding.scaffold.common.Api;
+import com.xkcoding.scaffold.common.status.LogStatus;
+import com.xkcoding.scaffold.common.status.Status;
+import com.xkcoding.scaffold.util.LoginLogUtil;
 import com.xkcoding.scaffold.util.ServletUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -33,7 +37,12 @@ public class ScaffoldLogoutSuccessHandler implements LogoutSuccessHandler {
 	 */
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-		log.info("【退出登录】{} 登出成功！", ((UserDetails) authentication.getPrincipal()).getUsername());
-		ServletUtil.renderJson(response, Api.ofMessage("退出成功"));
+		if (ObjectUtil.isNotNull(authentication)){
+			log.info("【退出登录】{} 登出成功！", ((UserDetails) authentication.getPrincipal()).getUsername());
+			LoginLogUtil.saveLog(authentication.getName(), Status.LOGOUT_SUCCESS, LogStatus.SUCCESS);
+			ServletUtil.renderJson(response, Api.ofMessage(Status.LOGOUT_SUCCESS.getMsg()));
+		}else {
+			ServletUtil.renderJson(response, Api.ofStatus(Status.UNAUTHORIZED));
+		}
 	}
 }

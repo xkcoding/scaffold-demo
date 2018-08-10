@@ -40,6 +40,13 @@ public class ServletUtil {
 	}
 
 	/**
+	 * 获取 IP
+	 */
+	public static String getIp() {
+		return IpUtil.getUserIP(getRequest());
+	}
+
+	/**
 	 * 获取 Request
 	 */
 	public static HttpServletRequest getRequest() {

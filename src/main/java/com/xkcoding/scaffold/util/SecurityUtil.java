@@ -1,5 +1,6 @@
 package com.xkcoding.scaffold.util;
 
+import cn.hutool.core.util.StrUtil;
 import com.xkcoding.scaffold.model.dto.SysUserDTO;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -53,7 +54,11 @@ public class SecurityUtil {
 	 * @return IP
 	 */
 	public static String getIp() {
-		return getWebAuthenticationDetails().getRemoteAddress();
+		String ip = getWebAuthenticationDetails().getRemoteAddress();
+		if (StrUtil.equals(ip, IpUtil.LOCAL_INNER_LOOP_IP)) {
+			return IpUtil.LOCAL_IP;
+		}
+		return ip;
 	}
 
 	/**

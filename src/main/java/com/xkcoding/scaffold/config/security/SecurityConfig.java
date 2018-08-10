@@ -1,11 +1,14 @@
 package com.xkcoding.scaffold.config.security;
 
+import com.xkcoding.scaffold.config.security.filter.ScaffoldFilterInvocationSecurityMetadataSource;
+import com.xkcoding.scaffold.config.security.filter.ScaffoldSecurityInterceptor;
 import com.xkcoding.scaffold.config.security.handler.*;
-import com.xkcoding.scaffold.config.security.interceptor.ScaffoldSecurityInterceptor;
+import com.xkcoding.scaffold.config.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -52,6 +55,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private ScaffoldSecurityInterceptor interceptor;
 
+	@Autowired
+	private UserDetailsServiceImpl userDetailsService;
+
 	/**
 	 * 构造一个 BCryptPasswordEncoder，放入 Spring 容器
 	 *
@@ -60,6 +66,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+
+	/**
+	 * 自定义数据库账号认证
+	 *
+	 * @return {@link ScaffoldDaoAuthenticationProvider}
+	 */
+	@Bean
+	public ScaffoldDaoAuthenticationProvider scaffoldDaoAuthenticationProvider() {
+		ScaffoldDaoAuthenticationProvider scaffoldDaoAuthenticationProvider = new ScaffoldDaoAuthenticationProvider();
+		scaffoldDaoAuthenticationProvider.setHideUserNotFoundExceptions(false);
+		scaffoldDaoAuthenticationProvider.setUserDetailsService(userDetailsService);
+		scaffoldDaoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+		return scaffoldDaoAuthenticationProvider;
+	}
+
+	/**
+	 * 启用自定义认证器
+	 *
+	 * @param auth 认证管理器
+	 */
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) {
+		auth.authenticationProvider(scaffoldDaoAuthenticationProvider());
 	}
 
 	/**
@@ -103,6 +133,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.sessionManagement().maximumSessions(1).sessionRegistry(getSessionRegistry());
 
 	}
+
 
 	@Bean
 	public SessionRegistry getSessionRegistry() {

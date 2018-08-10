@@ -1,10 +1,12 @@
 package com.xkcoding.scaffold.config.security.handler;
 
 import com.xkcoding.scaffold.common.Api;
+import com.xkcoding.scaffold.common.status.LogStatus;
+import com.xkcoding.scaffold.common.status.Status;
+import com.xkcoding.scaffold.util.LoginLogUtil;
 import com.xkcoding.scaffold.util.ServletUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +35,9 @@ public class ScaffoldAuthenticationSuccessHandler extends SavedRequestAwareAuthe
 	 */
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-		log.info("【登录认证】{} 登录成功！", ((UserDetails) authentication.getPrincipal()).getUsername());
-		ServletUtil.renderJson(response, Api.ofSuccess(authentication));
+		log.info("【登录认证】{} 登录成功！", authentication.getPrincipal());
+		// 保存登录成功日志
+		LoginLogUtil.saveLog(authentication.getName(), Status.LOGIN_SUCCESS, LogStatus.SUCCESS);
+		ServletUtil.renderJson(response, Api.ofMessage(Status.LOGIN_SUCCESS.getMsg()));
 	}
 }

@@ -42,24 +42,14 @@ public class Ip2AddressUtil {
 	public static final String IP_URL = "http://ip.taobao.com/service/getIpInfo.php";
 
 	/**
-	 * 本机回环地址
-	 */
-	public static final String LOCAL_INNER_LOOP_IP = "0:0:0:0:0:0:0:1";
-
-	/**
-	 * 本机IP地址
-	 */
-	public static final String LOCAL_IP = "127.0.0.1";
-
-	/**
 	 * 利用 ip2region 库进行 IP 地理位置转换
 	 *
 	 * @param ip IP地址
 	 * @return 地址信息
 	 */
 	public static String getAddressInLocal(String ip) {
-		if (StrUtil.equals(ip, LOCAL_INNER_LOOP_IP)) {
-			ip = LOCAL_IP;
+		if (StrUtil.equals(ip, IpUtil.LOCAL_INNER_LOOP_IP)) {
+			ip = IpUtil.LOCAL_IP;
 		}
 		String address = "";
 		boolean ipAddress = Util.isIpAddress(ip);

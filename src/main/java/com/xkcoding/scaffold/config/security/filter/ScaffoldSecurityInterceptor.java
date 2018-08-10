@@ -1,7 +1,6 @@
-package com.xkcoding.scaffold.config.security.interceptor;
+package com.xkcoding.scaffold.config.security.filter;
 
 import com.xkcoding.scaffold.config.security.handler.ScaffoldAccessDecisionManager;
-import com.xkcoding.scaffold.config.security.handler.ScaffoldFilterInvocationSecurityMetadataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.SecurityMetadataSource;
 import org.springframework.security.access.intercept.AbstractSecurityInterceptor;
@@ -17,7 +16,7 @@ import java.io.IOException;
  * 自定义拦截器
  * </p>
  *
- * @package: com.xkcoding.scaffold.config.security.interceptor
+ * @package: com.xkcoding.scaffold.config.security.filter
  * @description： 自定义拦截器
  * @author: yangkai.shen
  * @date: Created in 2018/8/8 下午9:29

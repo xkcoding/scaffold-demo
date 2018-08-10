@@ -1,5 +1,6 @@
 package com.xkcoding.scaffold.common.status;
 
+import com.xkcoding.scaffold.common.BaseEnum;
 import lombok.Getter;
 
 /**
@@ -16,7 +17,7 @@ import lombok.Getter;
  * @modified: yangkai.shen
  */
 @Getter
-public enum Status {
+public enum Status implements BaseEnum {
 	/**
 	 * 成功
 	 */
@@ -48,14 +49,39 @@ public enum Status {
 	INTERNAL_SERVER_ERROR(500, "服务器内部错误"),
 
 	/**
-	 * 登录失败
+	 * 用户名或密码错误
 	 */
-	LOGIN_ERROR(50000, "登录失败"),
+	USERNAME_OR_PASSWORD_ERROR(50000, "用户名或密码错误"),
 
 	/**
-	 * Session 已过期
+	 * 用户不存在
 	 */
-	SESSION_INVALID(50001, "Session 已过期");
+	USER_NOT_EXIST(50001, "账号不存在"),
+
+	/**
+	 * 用户已被禁用
+	 */
+	USER_DISABLE(50002, "账号已被禁用"),
+
+	/**
+	 * 账号已删除
+	 */
+	USER_DELETED(50003, "账号已删除"),
+
+	/**
+	 * 验证码错误
+	 */
+	VERIFY_CODE_ERROR(50004, "验证码错误"),
+
+	/**
+	 * 登录成功
+	 */
+	LOGIN_SUCCESS(50005, "登录成功"),
+
+	/**
+	 * 退出成功
+	 */
+	LOGOUT_SUCCESS(50006, "退出成功");
 
 	private Integer code;
 	private String msg;

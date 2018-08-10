@@ -1,7 +1,9 @@
 package com.xkcoding.scaffold.config.security.handler;
 
+import cn.hutool.core.convert.Convert;
 import com.xkcoding.scaffold.common.Api;
 import com.xkcoding.scaffold.common.status.Status;
+import com.xkcoding.scaffold.util.EnumUtil;
 import com.xkcoding.scaffold.util.ServletUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 /**
  * <p>
@@ -34,6 +37,8 @@ public class ScaffoldAuthenticationFailureHandler extends SimpleUrlAuthenticatio
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) {
 		log.error("【登录认证】登录失败！", exception);
-		ServletUtil.renderJson(response, Api.ofStatus(Status.LOGIN_ERROR));
+		Integer errorCode = Convert.toInt(exception.getMessage(), 500);
+		Status status = EnumUtil.getStatusByCode(errorCode, Status.class);
+		ServletUtil.renderJson(response, Api.ofStatus(Objects.requireNonNull(status)));
 	}
 }

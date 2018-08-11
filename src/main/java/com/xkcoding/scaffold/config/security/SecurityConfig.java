@@ -1,7 +1,7 @@
 package com.xkcoding.scaffold.config.security;
 
 import com.xkcoding.scaffold.config.security.filter.ScaffoldFilterInvocationSecurityMetadataSource;
-import com.xkcoding.scaffold.config.security.filter.ScaffoldSecurityInterceptor;
+import com.xkcoding.scaffold.config.security.filter.ScaffoldSecurityAuthoritiesInterceptor;
 import com.xkcoding.scaffold.config.security.handler.*;
 import com.xkcoding.scaffold.config.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private ScaffoldFilterInvocationSecurityMetadataSource securityMetadataSource;
 
 	@Autowired
-	private ScaffoldSecurityInterceptor interceptor;
+	private ScaffoldSecurityAuthoritiesInterceptor authoritiesInterceptor;
 
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
@@ -127,7 +127,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
 
 		// 添加自定义拦截器
-		http.addFilterBefore(interceptor, FilterSecurityInterceptor.class);
+		http.addFilterBefore(authoritiesInterceptor, FilterSecurityInterceptor.class);
 
 		// session管理
 		http.sessionManagement().maximumSessions(1).sessionRegistry(getSessionRegistry());

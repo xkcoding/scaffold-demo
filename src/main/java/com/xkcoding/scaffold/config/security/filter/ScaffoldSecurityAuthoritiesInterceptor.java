@@ -25,7 +25,7 @@ import java.io.IOException;
  * @modified: yangkai.shen
  */
 @Component
-public class ScaffoldSecurityInterceptor extends AbstractSecurityInterceptor implements Filter {
+public class ScaffoldSecurityAuthoritiesInterceptor extends AbstractSecurityInterceptor implements Filter {
 	@Autowired
 	private ScaffoldFilterInvocationSecurityMetadataSource securityMetadataSource;
 

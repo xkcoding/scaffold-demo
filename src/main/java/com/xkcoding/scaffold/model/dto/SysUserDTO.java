@@ -149,11 +149,6 @@ public class SysUserDTO implements UserDetails {
 				authorities.add(new SimpleGrantedAuthority("ROLE_" + StrUtil.trim(role.getRoleKey())));
 			}
 		}
-		for (SysMenu menu : menus) {
-			if (StrUtil.isNotBlank(menu.getPerms())) {
-				authorities.add(new SimpleGrantedAuthority(StrUtil.trim(menu.getPerms())));
-			}
-		}
 		return authorities;
 	}
 

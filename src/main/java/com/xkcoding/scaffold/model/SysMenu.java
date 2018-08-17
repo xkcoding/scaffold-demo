@@ -68,10 +68,16 @@ public class SysMenu {
 	private Integer visible;
 
 	/**
-	 * 权限标识
+	 * vue路由
 	 */
-	@Column(name = "perms")
-	private String perms;
+	@Column(name = "path")
+	private String path;
+
+	/**
+	 * vue组件
+	 */
+	@Column(name = "component")
+	private String component;
 
 	/**
 	 * 菜单图标
@@ -236,21 +242,39 @@ public class SysMenu {
 	}
 
 	/**
-	 * 获取权限标识
+	 * 获取vue路由
 	 *
-	 * @return perms - 权限标识
+	 * @return path - vue路由
 	 */
-	public String getPerms() {
-		return perms;
+	public String getPath() {
+		return path;
 	}
 
 	/**
-	 * 设置权限标识
+	 * 设置vue路由
 	 *
-	 * @param perms 权限标识
+	 * @param path vue路由
 	 */
-	public void setPerms(String perms) {
-		this.perms = perms;
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	/**
+	 * 获取权限标识
+	 *
+	 * @return component - 权限标识
+	 */
+	public String getComponent() {
+		return component;
+	}
+
+	/**
+	 * 设置vue组件
+	 *
+	 * @param component vue组件
+	 */
+	public void setComponent(String component) {
+		this.component = component;
 	}
 
 	/**
@@ -370,11 +394,11 @@ public class SysMenu {
 			return false;
 		}
 		SysMenu sysMenu = (SysMenu) o;
-		return Objects.equal(getId(), sysMenu.getId()) && Objects.equal(getMenuName(), sysMenu.getMenuName()) && Objects.equal(getParentId(), sysMenu.getParentId()) && Objects.equal(getOrderNum(), sysMenu.getOrderNum()) && Objects.equal(getUrl(), sysMenu.getUrl()) && Objects.equal(getMenuType(), sysMenu.getMenuType()) && Objects.equal(getVisible(), sysMenu.getVisible()) && Objects.equal(getPerms(), sysMenu.getPerms()) && Objects.equal(getIcon(), sysMenu.getIcon()) && Objects.equal(getCreateBy(), sysMenu.getCreateBy()) && Objects.equal(getCreateTime(), sysMenu.getCreateTime()) && Objects.equal(getUpdateBy(), sysMenu.getUpdateBy()) && Objects.equal(getUpdateTime(), sysMenu.getUpdateTime()) && Objects.equal(getRemark(), sysMenu.getRemark());
+		return Objects.equal(getId(), sysMenu.getId()) && Objects.equal(getMenuName(), sysMenu.getMenuName()) && Objects.equal(getParentId(), sysMenu.getParentId()) && Objects.equal(getOrderNum(), sysMenu.getOrderNum()) && Objects.equal(getUrl(), sysMenu.getUrl()) && Objects.equal(getMenuType(), sysMenu.getMenuType()) && Objects.equal(getVisible(), sysMenu.getVisible()) && Objects.equal(getComponent(), sysMenu.getComponent()) && Objects.equal(getIcon(), sysMenu.getIcon()) && Objects.equal(getCreateBy(), sysMenu.getCreateBy()) && Objects.equal(getCreateTime(), sysMenu.getCreateTime()) && Objects.equal(getUpdateBy(), sysMenu.getUpdateBy()) && Objects.equal(getUpdateTime(), sysMenu.getUpdateTime()) && Objects.equal(getRemark(), sysMenu.getRemark());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(getId(), getMenuName(), getParentId(), getOrderNum(), getUrl(), getMenuType(), getVisible(), getPerms(), getIcon(), getCreateBy(), getCreateTime(), getUpdateBy(), getUpdateTime(), getRemark());
+		return Objects.hashCode(getId(), getMenuName(), getParentId(), getOrderNum(), getUrl(), getMenuType(), getVisible(), getComponent(), getIcon(), getCreateBy(), getCreateTime(), getUpdateBy(), getUpdateTime(), getRemark());
 	}
 }

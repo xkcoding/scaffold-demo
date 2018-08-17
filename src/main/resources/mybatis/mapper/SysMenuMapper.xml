@@ -9,7 +9,8 @@
 		<result column="url" jdbcType="VARCHAR" property="url"/>
 		<result column="menu_type" jdbcType="INTEGER" property="menuType"/>
 		<result column="visible" jdbcType="INTEGER" property="visible"/>
-		<result column="perms" jdbcType="VARCHAR" property="perms"/>
+		<result column="path" jdbcType="VARCHAR" property="path"/>
+		<result column="component" jdbcType="VARCHAR" property="component"/>
 		<result column="icon" jdbcType="VARCHAR" property="icon"/>
 		<result column="create_by" jdbcType="VARCHAR" property="createBy"/>
 		<result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
@@ -40,7 +41,8 @@
 		t.`url`,
 		t.`menu_type`,
 		t.`visible`,
-		t.`perms`,
+		t.`path`,
+		t.`component`,
 		t.`icon`,
 		t.`create_by`,
 		t.`create_time`,
@@ -60,7 +62,8 @@
 		sys_menu.`url`,
 		sys_menu.`menu_type`,
 		sys_menu.`visible`,
-		sys_menu.`perms`,
+		sys_menu.`path`,
+		sys_menu.`component`,
 		sys_menu.`icon`,
 		sys_menu.`create_by`,
 		sys_menu.`create_time`,

@@ -36,63 +36,63 @@ insert into sys_role values('2', '普通角色', 'common', 2,  1, 'admin', '2018
 -- 初始化-菜单信息表数据
 -- ----------------------------
 -- 一级菜单
-insert into sys_menu values('1', '系统管理', '0', '1', '#', '0', '1', '', 'fa fa-gear',         'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '系统管理目录');
+insert into sys_menu values('1', '系统管理', '0', '1', '#', '0', '1', '','', 'fa fa-gear',         'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '系统管理目录');
 -- 二级菜单
-insert into sys_menu values('100',  '用户管理', '1', '1', '/system/user',        '1', '1', 'system:user:view',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '用户管理菜单');
-insert into sys_menu values('101',  '角色管理', '1', '2', '/system/role',        '1', '1', 'system:role:view',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '角色管理菜单');
-insert into sys_menu values('102',  '菜单管理', '1', '3', '/system/menu',        '1', '1', 'system:menu:view',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '菜单管理菜单');
-insert into sys_menu values('103',  '部门管理', '1', '4', '/system/dept',        '1', '1', 'system:dept:view',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '部门管理菜单');
-insert into sys_menu values('104',  '岗位管理', '1', '5', '/system/job',        '1', '1', 'system:post:view',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '岗位管理菜单');
-insert into sys_menu values('105',  '字典管理', '1', '6', '/system/dict',        '1', '1', 'system:dict:view',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '字典管理菜单');
-insert into sys_menu values('106',  '参数设置', '1', '7', '/system/config',      '1', '1', 'system:config:view',       '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '参数设置菜单');
-insert into sys_menu values('107',  '通知公告', '1', '8', '/system/notice',      '1', '1', 'system:notice:view',       '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '通知公告菜单');
-insert into sys_menu values('108',  '日志管理', '1', '9', '#',                   '0', '1', '',                         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '日志管理菜单');
+insert into sys_menu values('100',  '用户管理', '1', '1', '/system/user',        '1', '1', '','system:user:view',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '用户管理菜单');
+insert into sys_menu values('101',  '角色管理', '1', '2', '/system/role',        '1', '1', '','system:role:view',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '角色管理菜单');
+insert into sys_menu values('102',  '菜单管理', '1', '3', '/system/menu',        '1', '1', '','system:menu:view',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '菜单管理菜单');
+insert into sys_menu values('103',  '部门管理', '1', '4', '/system/dept',        '1', '1', '','system:dept:view',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '部门管理菜单');
+insert into sys_menu values('104',  '岗位管理', '1', '5', '/system/job',        '1', '1', '','system:post:view',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '岗位管理菜单');
+insert into sys_menu values('105',  '字典管理', '1', '6', '/system/dict',        '1', '1', '','system:dict:view',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '字典管理菜单');
+insert into sys_menu values('106',  '参数设置', '1', '7', '/system/config',      '1', '1', '','system:config:view',       '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '参数设置菜单');
+insert into sys_menu values('107',  '通知公告', '1', '8', '/system/notice',      '1', '1', '','system:notice:view',       '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '通知公告菜单');
+insert into sys_menu values('108',  '日志管理', '1', '9', '#',                   '0', '1','', '',                         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '日志管理菜单');
 -- 三级菜单
-insert into sys_menu values('500',  '操作日志', '108', '1', '/monitor/operlog',    '1', '1', 'monitor:operlog:view',     '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '操作日志菜单');
-insert into sys_menu values('501',  '登录日志', '108', '2', '/monitor/logininfor', '1', '1', 'monitor:logininfor:view',  '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '登录日志菜单');
+insert into sys_menu values('500',  '操作日志', '108', '1', '/monitor/operlog',    '1', '1', '','monitor:operlog:view',     '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '操作日志菜单');
+insert into sys_menu values('501',  '登录日志', '108', '2', '/monitor/logininfor', '1', '1', '','monitor:logininfor:view',  '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '登录日志菜单');
 -- 用户管理按钮
-insert into sys_menu values('1000', '用户查询', '100', '1',  '#',  '2', '1', 'system:user:list',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1001', '用户新增', '100', '2',  '#',  '2', '1', 'system:user:add',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1002', '用户修改', '100', '3',  '#',  '2', '1', 'system:user:edit',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1003', '用户删除', '100', '4',  '#',  '2', '1', 'system:user:remove',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1004', '重置密码', '100', '5',  '#',  '2', '1', 'system:user:resetPwd',    '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1000', '用户查询', '100', '1',  '#',  '2', '1','', 'system:user:list',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1001', '用户新增', '100', '2',  '#',  '2', '1','', 'system:user:add',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1002', '用户修改', '100', '3',  '#',  '2', '1', '','system:user:edit',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1003', '用户删除', '100', '4',  '#',  '2', '1', '','system:user:remove',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1004', '重置密码', '100', '5',  '#',  '2', '1', '','system:user:resetPwd',    '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
 -- 角色管理按钮
-insert into sys_menu values('1005', '角色查询', '101', '1',  '#',  '2', '1', 'system:role:list',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1006', '角色新增', '101', '2',  '#',  '2', '1', 'system:role:add',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1007', '角色修改', '101', '3',  '#',  '2', '1', 'system:role:edit',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1008', '角色删除', '101', '4',  '#',  '2', '1', 'system:role:remove',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1005', '角色查询', '101', '1',  '#',  '2', '1', '','system:role:list',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1006', '角色新增', '101', '2',  '#',  '2', '1', '','system:role:add',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1007', '角色修改', '101', '3',  '#',  '2', '1', '','system:role:edit',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1008', '角色删除', '101', '4',  '#',  '2', '1', '','system:role:remove',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
 -- 菜单管理按钮
-insert into sys_menu values('1009', '菜单查询', '102', '1',  '#',  '2', '1', 'system:menu:list',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1010', '菜单新增', '102', '2',  '#',  '2', '1', 'system:menu:add',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1011', '菜单修改', '102', '3',  '#',  '2', '1', 'system:menu:edit',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1012', '菜单删除', '102', '4',  '#',  '2', '1', 'system:menu:remove',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1009', '菜单查询', '102', '1',  '#',  '2', '1', '','system:menu:list',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1010', '菜单新增', '102', '2',  '#',  '2', '1', '','system:menu:add',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1011', '菜单修改', '102', '3',  '#',  '2', '1', '','system:menu:edit',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1012', '菜单删除', '102', '4',  '#',  '2', '1', '','system:menu:remove',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
 -- 部门管理按钮
-insert into sys_menu values('1013', '部门查询', '103', '1',  '#',  '2', '1', 'system:dept:list',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1014', '部门新增', '103', '2',  '#',  '2', '1', 'system:dept:add',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1015', '部门修改', '103', '3',  '#',  '2', '1', 'system:dept:edit',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1016', '部门删除', '103', '4',  '#',  '2', '1', 'system:dept:remove',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1013', '部门查询', '103', '1',  '#',  '2', '1','', 'system:dept:list',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1014', '部门新增', '103', '2',  '#',  '2', '1', '','system:dept:add',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1015', '部门修改', '103', '3',  '#',  '2', '1', '','system:dept:edit',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1016', '部门删除', '103', '4',  '#',  '2', '1', '','system:dept:remove',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
 -- 岗位管理按钮
-insert into sys_menu values('1017', '岗位查询', '104', '1',  '#',  '2', '1', 'system:job:list',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1018', '岗位新增', '104', '2',  '#',  '2', '1', 'system:job:add',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1019', '岗位修改', '104', '3',  '#',  '2', '1', 'system:job:edit',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1020', '岗位删除', '104', '4',  '#',  '2', '1', 'system:job:remove',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1017', '岗位查询', '104', '1',  '#',  '2', '1', '','system:job:list',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1018', '岗位新增', '104', '2',  '#',  '2', '1', '','system:job:add',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1019', '岗位修改', '104', '3',  '#',  '2', '1', '','system:job:edit',        '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1020', '岗位删除', '104', '4',  '#',  '2', '1', '','system:job:remove',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
 -- 字典管理按钮
-insert into sys_menu values('1021', '字典查询', '105', '1', '#',  '2', '1', 'system:dict:list',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1022', '字典新增', '105', '2', '#',  '2', '1', 'system:dict:add',          '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1023', '字典修改', '105', '3', '#',  '2', '1', 'system:dict:edit',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1024', '字典删除', '105', '4', '#',  '2', '1', 'system:dict:remove',       '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1021', '字典查询', '105', '1', '#',  '2', '1', '','system:dict:list',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1022', '字典新增', '105', '2', '#',  '2', '1', '','system:dict:add',          '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1023', '字典修改', '105', '3', '#',  '2', '1', '','system:dict:edit',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1024', '字典删除', '105', '4', '#',  '2', '1', '','system:dict:remove',       '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
 -- 参数设置按钮
-insert into sys_menu values('1025', '参数查询', '106', '1', '#',  '2', '1', 'system:config:list',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1026', '参数新增', '106', '2', '#',  '2', '1', 'system:config:add',       '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1027', '参数修改', '106', '3', '#',  '2', '1', 'system:config:edit',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1028', '参数删除', '106', '4', '#',  '2', '1', 'system:config:remove',    '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1025', '参数查询', '106', '1', '#',  '2', '1', '','system:config:list',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1026', '参数新增', '106', '2', '#',  '2', '1', '','system:config:add',       '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1027', '参数修改', '106', '3', '#',  '2', '1', '','system:config:edit',      '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1028', '参数删除', '106', '4', '#',  '2', '1', '','system:config:remove',    '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
 -- 操作日志按钮
-insert into sys_menu values('1033', '操作查询', '500', '1', '#',  '2', '1', 'monitor:operationlog:list',    '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1034', '操作删除', '500', '2', '#',  '2', '1', 'monitor:operationlog:remove',  '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1035', '详细信息', '500', '3', '#',  '2', '1', 'monitor:operationlog:detail',  '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1033', '操作查询', '500', '1', '#',  '2', '1', '','monitor:operationlog:list',    '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1034', '操作删除', '500', '2', '#',  '2', '1', '','monitor:operationlog:remove',  '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1035', '详细信息', '500', '3', '#',  '2', '1', '','monitor:operationlog:detail',  '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
 -- 登录日志按钮
-insert into sys_menu values('1036', '登录查询', '501', '1', '#',  '2', '1', 'monitor:loginlog:list',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
-insert into sys_menu values('1037', '登录删除', '501', '2', '#',  '2', '1', 'monitor:loginlog:remove',       '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1036', '登录查询', '501', '1', '#',  '2', '1', '','monitor:loginlog:list',         '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
+insert into sys_menu values('1037', '登录删除', '501', '2', '#',  '2', '1', '','monitor:loginlog:remove',       '#', 'admin', '2018-07-30 18-00-00', 'xkcoding', '2018-07-30 18-00-00', '');
 
 -- ----------------------------
 -- 初始化-用户和角色关联表数据

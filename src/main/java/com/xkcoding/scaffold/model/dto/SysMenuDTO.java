@@ -2,6 +2,7 @@ package com.xkcoding.scaffold.model.dto;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import java.util.Date;
 
 /**
@@ -55,9 +56,16 @@ public class SysMenuDTO {
 	private Integer visible;
 
 	/**
-	 * 权限标识
+	 * vue路由
 	 */
-	private String perms;
+	@Column(name = "path")
+	private String path;
+
+	/**
+	 * vue组件
+	 */
+	@Column(name = "component")
+	private String component;
 
 	/**
 	 * 菜单图标

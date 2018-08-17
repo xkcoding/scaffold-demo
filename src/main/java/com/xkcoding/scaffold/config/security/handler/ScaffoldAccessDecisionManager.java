@@ -6,13 +6,14 @@ import com.xkcoding.scaffold.common.status.Status;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * <p>
@@ -36,6 +37,14 @@ public class ScaffoldAccessDecisionManager implements AccessDecisionManager {
 		}
 		for (ConfigAttribute configAttribute : configAttributes) {
 			String needPermission = configAttribute.getAttribute();
+
+			if ("ROLE_LOGIN".equals(needPermission)) {
+				if (authentication instanceof AnonymousAuthenticationToken) {
+					throw new BadCredentialsException(Status.UNAUTHORIZED.getCode() + "");
+				}
+				return;
+			}
+
 			Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 			for (GrantedAuthority authority : authorities) {
 				if (StrUtil.equals(StrUtil.trim(needPermission), authority.getAuthority())) {

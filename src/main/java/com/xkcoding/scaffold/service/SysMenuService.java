@@ -2,6 +2,7 @@ package com.xkcoding.scaffold.service;
 
 import com.xkcoding.scaffold.model.SysMenu;
 import com.xkcoding.scaffold.model.SysRole;
+import com.xkcoding.scaffold.model.dto.SysMenuDTO;
 
 import java.util.List;
 
@@ -35,4 +36,12 @@ public interface SysMenuService {
 	 * @return 菜单列表
 	 */
 	List<SysMenu> listSysMenusByRoleList(List<SysRole> roleList);
+
+	/**
+	 * 菜单列表 包含权限基础信息
+	 *
+	 * @param visible 菜单是否可见
+	 * @return 菜单列表
+	 */
+	List<SysMenuDTO> listAllSysMenu(Integer visible);
 }

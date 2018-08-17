@@ -2,7 +2,7 @@ package com.xkcoding.scaffold.mapper;
 
 import com.xkcoding.scaffold.common.MyMapper;
 import com.xkcoding.scaffold.model.SysMenu;
-import com.xkcoding.scaffold.model.SysRole;
+import com.xkcoding.scaffold.model.dto.SysMenuDTO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -31,4 +31,12 @@ public interface SysMenuMapper extends MyMapper<SysMenu> {
 	 * @return 菜单列表
 	 */
 	List<SysMenu> selectSysMenuByRoleList(@Param("roleIdList") List<Integer> roleIdList);
+
+	/**
+	 * 所有菜单列表，包含权限基础信息
+	 *
+	 * @param visible 菜单是否可见
+	 * @return 所有菜单列表，包含权限基础信息
+	 */
+	List<SysMenuDTO> selectSysMenuList(@Param("visible") Integer visible);
 }

@@ -30,4 +30,57 @@
 		</where>
 		ORDER BY id
 	</select>
+
+	<select id="selectSysMenuList" resultType="com.xkcoding.scaffold.model.dto.SysMenuDTO">
+		SELECT
+		t.`id`,
+		t.`menu_name`,
+		t.`parent_id`,
+		t.`order_num`,
+		t.`url`,
+		t.`menu_type`,
+		t.`visible`,
+		t.`perms`,
+		t.`icon`,
+		t.`create_by`,
+		t.`create_time`,
+		t.`update_by`,
+		t.`update_time`,
+		t.`remark`,
+		GROUP_CONCAT( t.role_id ) AS role_id,
+		GROUP_CONCAT( t.role_name ) AS role_name,
+		GROUP_CONCAT( t.role_key ) AS role_key
+		FROM
+		(
+		SELECT
+		sys_menu.`id`,
+		sys_menu.`menu_name`,
+		sys_menu.`parent_id`,
+		sys_menu.`order_num`,
+		sys_menu.`url`,
+		sys_menu.`menu_type`,
+		sys_menu.`visible`,
+		sys_menu.`perms`,
+		sys_menu.`icon`,
+		sys_menu.`create_by`,
+		sys_menu.`create_time`,
+		sys_menu.`update_by`,
+		sys_menu.`update_time`,
+		sys_menu.`remark`,
+		sys_role.`id` AS role_id,
+		sys_role.`role_name`,
+		sys_role.`role_key`
+		FROM
+		sys_menu
+		LEFT JOIN sys_role_menu ON sys_menu.`id` = sys_role_menu.`menu_id`
+		LEFT JOIN sys_role ON sys_role_menu.`role_id` = sys_role.`id`
+		<where>
+			<if test="visible != null">
+				sys_menu.`visible` = #{visible}
+			</if>
+		</where>
+		) t
+		GROUP BY
+		id
+	</select>
 </mapper>

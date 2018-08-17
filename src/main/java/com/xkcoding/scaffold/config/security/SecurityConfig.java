@@ -1,7 +1,6 @@
 package com.xkcoding.scaffold.config.security;
 
-import com.xkcoding.scaffold.config.security.filter.ScaffoldFilterInvocationSecurityMetadataSource;
-import com.xkcoding.scaffold.config.security.filter.ScaffoldSecurityAuthoritiesInterceptor;
+import com.xkcoding.scaffold.common.constant.ScaffoldConst;
 import com.xkcoding.scaffold.config.security.handler.*;
 import com.xkcoding.scaffold.config.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.session.SessionRegistry;
@@ -53,9 +53,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private ScaffoldFilterInvocationSecurityMetadataSource securityMetadataSource;
 
 	@Autowired
-	private ScaffoldSecurityAuthoritiesInterceptor authoritiesInterceptor;
-
-	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 
 	/**
@@ -92,6 +89,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.authenticationProvider(scaffoldDaoAuthenticationProvider());
 	}
 
+	@Override
+	public void configure(WebSecurity web) {
+		// 忽略指定资源
+		web.ignoring().antMatchers(ScaffoldConst.AUTHENTICATION_LOGIN_PAGE);
+	}
+
 	/**
 	 * 自定义 Spring Security 配置
 	 *
@@ -104,10 +107,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.headers().frameOptions().disable();
 
 		// 配置 登录成功、登录失败、退出登录 处理器
-		http.formLogin().loginPage("/authentication/require").loginProcessingUrl("/authentication/login").successHandler(successHandler).failureHandler(failureHandler).and().logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler).deleteCookies("JSESSIONID").permitAll();
-
-		// 允许访问指定资源
-		http.authorizeRequests().antMatchers("/authentication/require").permitAll().anyRequest().authenticated();
+		http.formLogin().loginPage(ScaffoldConst.AUTHENTICATION_LOGIN_PAGE).loginProcessingUrl("/authentication/login").successHandler(successHandler).failureHandler(failureHandler).and().logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler).deleteCookies("JSESSIONID").permitAll();
 
 		// 一个自定义的filter，必须包含 authenticationManager,accessDecisionManager,securityMetadataSource三个属性，
 		// 我们的所有控制将在这三个类中实现，解释详见具体配置
@@ -125,9 +125,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// 拒绝访问 处理器
 		http.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
-
-		// 添加自定义拦截器
-		http.addFilterBefore(authoritiesInterceptor, FilterSecurityInterceptor.class);
 
 		// session管理
 		http.sessionManagement().maximumSessions(1).sessionRegistry(getSessionRegistry());

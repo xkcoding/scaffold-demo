@@ -7,6 +7,7 @@ import com.xkcoding.scaffold.mapper.SysRoleMenuMapper;
 import com.xkcoding.scaffold.model.SysMenu;
 import com.xkcoding.scaffold.model.SysRole;
 import com.xkcoding.scaffold.model.SysRoleMenu;
+import com.xkcoding.scaffold.model.dto.SysMenuDTO;
 import com.xkcoding.scaffold.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -70,6 +71,17 @@ public class SysMenuServiceImpl implements SysMenuService {
 
 		// 根据对应关系，获取角色 id 列表，查询所有role
 		return getMenusByRelations(relations);
+	}
+
+	/**
+	 * 菜单列表 包含权限基础信息
+	 *
+	 * @param visible 菜单是否可见
+	 * @return 菜单列表
+	 */
+	@Override
+	public List<SysMenuDTO> listAllSysMenu(Integer visible) {
+		return sysMenuMapper.selectSysMenuList(visible);
 	}
 
 	/**

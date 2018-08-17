@@ -44,8 +44,6 @@ public class ScaffoldFilterInvocationSecurityMetadataSource implements FilterInv
 	@Autowired
 	private SysMenuService sysMenuService;
 
-	private AntPathMatcher antPathMatcher = new AntPathMatcher();
-
 	private static final HashMap<String, Collection<ConfigAttribute>> cache = Maps.newHashMap();
 
 	/**

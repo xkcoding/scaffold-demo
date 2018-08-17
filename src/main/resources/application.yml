@@ -1,35 +1,41 @@
-# 自定义配置
+### 自定义配置 ###
 scaffold:
-  # 名称
-  name: scaffold
-  # 版本
-  version: 0.0.1
-  # 版权年份
-  copyrightYear: 2018
-  # 作者
-  developer: Yangkai.Shen
+  ### 通用配置 ###
+  common:
+    ### 名称 ###
+    name: ${spring.application.name}
+    ### 版本 ###
+    version: 0.0.1
+    ### 版权年份 ###
+    copyrightYear: 2018
+    ### 作者 ###
+    developer: Yangkai.Shen
+  ### 安全配置 ###
+  security:
+    ### 登录页配置 ###
+    login-page: /authentication/require
 
-# 服务器配置
+### 服务器配置 ###
 server:
-  # 端口号
+  ### 端口号 ###
   port: 8080
   servlet:
-    # 上下文路径
+    ### 上下文路径 ###
     context-path: /scaffold
   tomcat:
     uri-encoding: utf-8
 
-#日志配置
+### 日志配置 ###
 logging:
   level:
     com.xkcoding: debug
     org.springframework: WARN
     com.xkcoding.scaffold.mapper: debug
 
-# 数据源配置
+### 数据源配置 ###
 spring:
   application:
-    name: ${scaffold.name}
+    name: scaffold
   datasource:
     url: jdbc:mysql://localhost:3306/scaffold?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false
     username: root
@@ -45,20 +51,26 @@ spring:
       pool-name: ScaffoldHikariCP
       max-lifetime: 60000
       connection-timeout: 30000
+  ### 开启404异常抛出 ###
+  mvc:
+    throw-exception-if-no-handler-found: true
+  ### 关闭静态资源映射（项目存在静态资源，建议打开）###
+  resources:
+    add-mappings: false
 
-# mybatis 配置
+### mybatis 配置 ###
 mybatis:
   type-aliases-package: com.xkcoding.scaffold.model
   mapper-locations: classpath:mybatis/mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
 
-# 通用 Mapper 配置
+### 通用 Mapper 配置 ###
 mapper:
   mappers: tk.mybatis.mapper.common.Mapper
   notEmpty: true
 
-# PageHelper 配置
+### PageHelper 配置 ###
 pagehelper:
   helper-dialect: mysql
   reasonable: true

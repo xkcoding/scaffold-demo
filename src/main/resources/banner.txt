@@ -9,8 +9,8 @@ ${AnsiColor.BRIGHT_GREEN}
  ######   ######  ##     ## ##       ##        #######  ######## ########
 
 ${AnsiColor.BRIGHT_RED}
-Application 版本: ${scaffold.name} - ${scaffold.version}
-Application 开发: ${scaffold.developer}
-Application 时间: ${scaffold.copyrightYear}
+Application 版本: ${scaffold.common.name} - ${scaffold.common.version}
+Application 开发: ${scaffold.common.developer}
+Application 时间: ${scaffold.common.copyrightYear}
 Spring Boot 版本: ${spring-boot.version}
 ${AnsiColor.BRIGHT_WHITE}

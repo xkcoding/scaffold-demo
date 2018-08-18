@@ -1,9 +1,12 @@
 package com.xkcoding.scaffold.config.security;
 
 import com.xkcoding.scaffold.common.constant.ScaffoldConst;
+import com.xkcoding.scaffold.common.property.ScaffoldProperties;
+import com.xkcoding.scaffold.config.security.code.config.ScaffoldSecurityCodeConfig;
 import com.xkcoding.scaffold.config.security.handler.*;
 import com.xkcoding.scaffold.config.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
@@ -32,6 +35,7 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
  * @modified: yangkai.shen
  */
 @Configuration
+@EnableConfigurationProperties(ScaffoldProperties.class)
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
@@ -54,6 +58,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
+
+	@Autowired
+	private ScaffoldSecurityCodeConfig scaffoldSecurityCodeConfig;
 
 	/**
 	 * 构造一个 BCryptPasswordEncoder，放入 Spring 容器
@@ -103,11 +110,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		// 验证码配置
+		http.apply(scaffoldSecurityCodeConfig);
+
 		// 允许iframe 嵌套
 		http.headers().frameOptions().disable();
 
 		// 配置 登录成功、登录失败、退出登录 处理器
-		http.formLogin().loginPage(ScaffoldConst.AUTHENTICATION_LOGIN_PAGE).loginProcessingUrl("/authentication/login").successHandler(successHandler).failureHandler(failureHandler).and().logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler).deleteCookies("JSESSIONID").permitAll();
+		http.formLogin().loginPage(ScaffoldConst.AUTHENTICATION_LOGIN_PAGE).loginProcessingUrl(ScaffoldConst.DEFAULT_LOGIN_PROCESSING_URL_FORM).successHandler(successHandler).failureHandler(failureHandler).and().logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler).deleteCookies("JSESSIONID").permitAll();
 
 		// 一个自定义的filter，必须包含 authenticationManager,accessDecisionManager,securityMetadataSource三个属性，
 		// 我们的所有控制将在这三个类中实现，解释详见具体配置

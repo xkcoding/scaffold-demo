@@ -30,6 +30,11 @@ public interface ScaffoldConst {
 	String AUTHENTICATION_LOGIN_PAGE = "/authentication/require";
 
 	/**
+	 * 默认的用户名密码登录请求处理url
+	 */
+	String DEFAULT_LOGIN_PROCESSING_URL_FORM = "/authentication/login";
+
+	/**
 	 * 验证图片验证码时，http请求中默认的携带图片验证码信息的参数的名称
 	 */
 	String DEFAULT_PARAMETER_NAME_CODE_IMAGE = "imageCode";

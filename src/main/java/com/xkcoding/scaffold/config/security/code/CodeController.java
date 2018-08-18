@@ -31,10 +31,6 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/code")
 @Slf4j
 public class CodeController {
-	private static final String IMAGE_CODE_SESSION_KEY = "SCAFFOLD_IMAGE_CODE_SESSION_KEY";
-
-	private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
-
 	@Autowired
 	private CodeProcessorHolder codeProcessorHolder;
 

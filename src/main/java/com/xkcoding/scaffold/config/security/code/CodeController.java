@@ -1,19 +1,18 @@
 package com.xkcoding.scaffold.config.security.code;
 
-import cn.hutool.captcha.CaptchaUtil;
+import com.xkcoding.scaffold.exception.ScaffoldException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.ServletWebRequest;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 /**
  * <p>
@@ -31,16 +30,17 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/code")
 @Slf4j
-public class ValidateCodeController {
+public class CodeController {
 	private static final String IMAGE_CODE_SESSION_KEY = "SCAFFOLD_IMAGE_CODE_SESSION_KEY";
 
 	private SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
 
-	@GetMapping("/image")
-	public void createImageCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		BufferedImage image = (BufferedImage)CaptchaUtil.createLineCaptcha(200, 100).createImage("12345");
-		sessionStrategy.setAttribute(new ServletWebRequest(request), IMAGE_CODE_SESSION_KEY, image);
-		ImageIO.write(image, "JPEG", response.getOutputStream());
+	@Autowired
+	private CodeProcessorHolder codeProcessorHolder;
+
+	@GetMapping("/{type}")
+	public void createImageCode(HttpServletRequest request, HttpServletResponse response, @PathVariable String type) throws ScaffoldException {
+		codeProcessorHolder.findCodeProcessor(type).create(new ServletWebRequest(request, response));
 	}
 
 }

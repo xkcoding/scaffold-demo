@@ -1,5 +1,6 @@
 package com.xkcoding.scaffold.common.property;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -16,5 +17,16 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @modified: yangkai.shen
  */
 @ConfigurationProperties(prefix = "scaffold")
+@Data
 public class ScaffoldProperties {
+	/**
+	 * Common 配置
+	 */
+	private CommonProperties common = new CommonProperties();
+
+	/**
+	 * Security 配置
+	 */
+	private ScaffoldSecurityProperties security = new ScaffoldSecurityProperties();
+
 }

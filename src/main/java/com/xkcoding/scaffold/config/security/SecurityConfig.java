@@ -92,7 +92,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) {
 		// 忽略指定资源
-		web.ignoring().antMatchers(ScaffoldConst.AUTHENTICATION_LOGIN_PAGE);
+		web.ignoring().antMatchers(ScaffoldConst.AUTHENTICATION_LOGIN_PAGE, ScaffoldConst.DEFAULT_VALIDATE_CODE_URL_PREFIX + "/*");
 	}
 
 	/**

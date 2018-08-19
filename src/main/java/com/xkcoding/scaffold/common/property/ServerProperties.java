@@ -29,6 +29,6 @@ public class ServerProperties {
 	/**
 	 * 端口号
 	 */
-	@Value("${server.port}")
+	@Value("${server.port:8080}")
 	private String port;
 }

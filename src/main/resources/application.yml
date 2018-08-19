@@ -19,9 +19,9 @@ scaffold:
 server:
   ### 端口号 ###
   port: 8080
-#  servlet:
+  servlet:
     ### 上下文路径 ###
-#    context-path: /scaffold
+    context-path: /scaffold
   tomcat:
     uri-encoding: utf-8
 

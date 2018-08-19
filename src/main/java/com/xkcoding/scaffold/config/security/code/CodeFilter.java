@@ -88,7 +88,7 @@ public class CodeFilter extends OncePerRequestFilter implements InitializingBean
 	public void afterPropertiesSet() throws ServletException {
 		super.afterPropertiesSet();
 
-		urlMap.put(serverProperties.getContextPath() + ScaffoldConst.DEFAULT_LOGIN_PROCESSING_URL_FORM, CodeType.IMAGE);
+		urlMap.put(adjustUrl(serverProperties.getContextPath() + ScaffoldConst.DEFAULT_LOGIN_PROCESSING_URL_FORM), CodeType.IMAGE);
 		addUrlToMap(scaffoldProperties.getSecurity().getCode().getImage().getUrl(), CodeType.IMAGE);
 
 	}
@@ -103,9 +103,21 @@ public class CodeFilter extends OncePerRequestFilter implements InitializingBean
 		if (StrUtil.isNotEmpty(urlString)) {
 			String[] urls = StrUtil.split(urlString, ",");
 			for (String url : urls) {
-				urlMap.put(serverProperties.getContextPath() + url, type);
+				urlMap.put(adjustUrl(serverProperties.getContextPath() + url), type);
 			}
 		}
+	}
+
+	/**
+	 * 调整 URL，比如: <br>
+	 * <code>/scaffold/user -> /scaffold/user</code> <br>
+	 * <code>//user -> /user</code>
+	 *
+	 * @param url 原先字符串
+	 * @return
+	 */
+	private String adjustUrl(String url) {
+		return StrUtil.replace(url, "//", "/");
 	}
 
 	@Override

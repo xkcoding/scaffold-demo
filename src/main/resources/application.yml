@@ -32,10 +32,11 @@ logging:
     org.springframework: WARN
     com.xkcoding.scaffold.mapper: debug
 
-### 数据源配置 ###
+### Spring 配置 ###
 spring:
   application:
     name: scaffold
+  ### 数据源配置 ###
   datasource:
     url: jdbc:mysql://localhost:3306/scaffold?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false
     username: root
@@ -54,9 +55,9 @@ spring:
   ### 开启404异常抛出 ###
   mvc:
     throw-exception-if-no-handler-found: true
-  ### 关闭静态资源映射（项目存在静态资源，建议打开）###
+  ### 关闭静态资源映射（项目中若存在静态资源，建议打开）###
   resources:
-    add-mappings: false
+    add-mappings: true
 
 ### mybatis 配置 ###
 mybatis:

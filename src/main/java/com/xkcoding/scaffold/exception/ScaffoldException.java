@@ -19,14 +19,14 @@ import lombok.Getter;
 @Getter
 public class ScaffoldException extends Exception {
 	/**
-	 * 模块名称
-	 */
-	private String module;
-
-	/**
 	 * 异常码
 	 */
 	private Integer code;
+
+	/**
+	 * 返回信息
+	 */
+	private String msg;
 
 	/**
 	 * 返回内容
@@ -36,30 +36,26 @@ public class ScaffoldException extends Exception {
 	public ScaffoldException(Integer code, String msg) {
 		super(msg);
 		this.code = code;
+		this.msg = msg;
 	}
 
 	public ScaffoldException(Integer code, String msg, Object data) {
 		super(msg);
 		this.code = code;
-		this.data = data;
-	}
-
-
-	public ScaffoldException(String module, String msg, Integer code, Object data) {
-		super(msg);
-		this.module = module;
-		this.code = code;
+		this.msg = msg;
 		this.data = data;
 	}
 
 	public ScaffoldException(Status status) {
 		super(status.getMsg());
 		this.code = status.getCode();
+		this.msg = status.getMsg();
 	}
 
 	public ScaffoldException(Status status, Object data) {
 		super(status.getMsg());
 		this.code = status.getCode();
+		this.msg = status.getMsg();
 		this.data = data;
 	}
 }

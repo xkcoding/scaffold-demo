@@ -68,7 +68,7 @@ mybatis:
 
 ### 通用 Mapper 配置 ###
 mapper:
-  mappers: tk.mybatis.mapper.common.Mapper
+  mappers: com.xkcoding.scaffold.common.MyMapper
   notEmpty: true
 
 ### PageHelper 配置 ###

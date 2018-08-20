@@ -52,6 +52,7 @@
 		<useragent.version>1.19</useragent.version>
 		<ip2region.version>1.7</ip2region.version>
 		<lombok.version>1.16.22</lombok.version>
+		<mysql.version>8.0.12</mysql.version>
 	</properties>
 
 	<dependencies>
@@ -119,6 +120,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
 		</dependency>
 
 		<!-- SpringBoot 集成 mybatis 框架 -->

@@ -55,9 +55,9 @@ spring:
   ### 开启404异常抛出 ###
   mvc:
     throw-exception-if-no-handler-found: true
-  ### 关闭静态资源映射（项目中若存在静态资源，建议打开）###
+  ### 关闭静态资源映射 ###
   resources:
-    add-mappings: true
+    add-mappings: false
 
 ### mybatis 配置 ###
 mybatis:

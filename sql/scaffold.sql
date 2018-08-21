@@ -200,7 +200,7 @@ CREATE TABLE sys_dict_data (
 -- ----------------------------
 drop table if exists sys_config;
 CREATE TABLE sys_config (
-  id INT ( 5 ) NOT NULL auto_increment COMMENT '参数主键',
+  id INT ( 11 ) NOT NULL auto_increment COMMENT '参数主键',
   config_name VARCHAR ( 100 ) DEFAULT '' COMMENT '参数名称',
   config_key VARCHAR ( 100 ) DEFAULT '' COMMENT '参数键名',
   config_value VARCHAR ( 100 ) DEFAULT '' COMMENT '参数键值',

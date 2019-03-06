@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xkcoding.scaffold.mapper.SysUserWorkMapper">
-	<resultMap id="BaseResultMap" type="com.xkcoding.scaffold.model.SysUserWork">
-		<id column="user_id" jdbcType="VARCHAR" property="userId"/>
-		<id column="work_id" jdbcType="VARCHAR" property="workId"/>
-	</resultMap>
+    <resultMap id="BaseResultMap" type="com.xkcoding.scaffold.model.SysUserWork">
+        <id column="user_id" jdbcType="VARCHAR" property="userId"/>
+        <id column="work_id" jdbcType="VARCHAR" property="workId"/>
+    </resultMap>
 </mapper>

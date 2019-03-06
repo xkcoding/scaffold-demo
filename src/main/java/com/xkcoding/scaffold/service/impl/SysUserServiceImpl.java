@@ -21,19 +21,19 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysUserServiceImpl implements SysUserService {
-	@Autowired
-	private SysUserMapper sysUserMapper;
+    @Autowired
+    private SysUserMapper sysUserMapper;
 
-	/**
-	 * 根据用户名（登录名）获取用户信息
-	 *
-	 * @param loginName 登录名
-	 * @return 用户对象
-	 */
-	@Override
-	public SysUser getUserByLoginName(String loginName) {
-		SysUser query = new SysUser();
-		query.setLoginName(loginName);
-		return sysUserMapper.selectOne(query);
-	}
+    /**
+     * 根据用户名（登录名）获取用户信息
+     *
+     * @param loginName 登录名
+     * @return 用户对象
+     */
+    @Override
+    public SysUser getUserByLoginName(String loginName) {
+        SysUser query = new SysUser();
+        query.setLoginName(loginName);
+        return sysUserMapper.selectOne(query);
+    }
 }

@@ -44,115 +44,116 @@ import java.util.Set;
 @Slf4j
 public class CodeFilter extends OncePerRequestFilter implements InitializingBean {
 
-	/**
-	 * 验证码校验失败处理器
-	 */
-	@Autowired
-	private ScaffoldAuthenticationFailureHandler scaffoldAuthenticationFailureHandler;
+    /**
+     * 验证码校验失败处理器
+     */
+    @Autowired
+    private ScaffoldAuthenticationFailureHandler scaffoldAuthenticationFailureHandler;
 
-	/**
-	 * 系统中的验证码处理器
-	 */
-	@Autowired
-	private CodeProcessorHolder codeProcessorHolder;
+    /**
+     * 系统中的验证码处理器
+     */
+    @Autowired
+    private CodeProcessorHolder codeProcessorHolder;
 
-	/**
-	 * 系统配置信息
-	 */
-	@Autowired
-	private ScaffoldProperties scaffoldProperties;
+    /**
+     * 系统配置信息
+     */
+    @Autowired
+    private ScaffoldProperties scaffoldProperties;
 
-	/**
-	 * 服务器配置
-	 */
-	@Autowired
-	private ServerProperties serverProperties;
+    /**
+     * 服务器配置
+     */
+    @Autowired
+    private ServerProperties serverProperties;
 
-	@Autowired
-	private Environment env;
+    @Autowired
+    private Environment env;
 
-	/**
-	 * 存放所有需要校验验证码的url
-	 */
-	private Map<String, CodeType> urlMap = Maps.newHashMap();
+    /**
+     * 存放所有需要校验验证码的url
+     */
+    private Map<String, CodeType> urlMap = Maps.newHashMap();
 
-	/**
-	 * 验证请求url与配置的url是否匹配的工具类
-	 */
-	private AntPathMatcher pathMatcher = new AntPathMatcher();
+    /**
+     * 验证请求url与配置的url是否匹配的工具类
+     */
+    private AntPathMatcher pathMatcher = new AntPathMatcher();
 
-	/**
-	 * 配置项设置完毕，初始化要拦截的url配置信息
-	 */
-	@Override
-	public void afterPropertiesSet() throws ServletException {
-		super.afterPropertiesSet();
+    /**
+     * 配置项设置完毕，初始化要拦截的url配置信息
+     */
+    @Override
+    public void afterPropertiesSet() throws ServletException {
+        super.afterPropertiesSet();
 
-		urlMap.put(adjustUrl(serverProperties.getContextPath() + ScaffoldConst.DEFAULT_LOGIN_PROCESSING_URL_FORM), CodeType.IMAGE);
-		addUrlToMap(scaffoldProperties.getSecurity().getCode().getImage().getUrl(), CodeType.IMAGE);
+        urlMap.put(adjustUrl(serverProperties.getContextPath() + ScaffoldConst.DEFAULT_LOGIN_PROCESSING_URL_FORM), CodeType.IMAGE);
+        addUrlToMap(scaffoldProperties.getSecurity().getCode().getImage().getUrl(), CodeType.IMAGE);
 
-	}
+    }
 
-	/**
-	 * 将系统中配置的需要校验验证码的URL根据校验的类型放入map
-	 *
-	 * @param urlString url
-	 * @param type      验证码类型
-	 */
-	protected void addUrlToMap(String urlString, CodeType type) {
-		if (StrUtil.isNotEmpty(urlString)) {
-			String[] urls = StrUtil.split(urlString, ",");
-			for (String url : urls) {
-				urlMap.put(adjustUrl(serverProperties.getContextPath() + url), type);
-			}
-		}
-	}
+    /**
+     * 将系统中配置的需要校验验证码的URL根据校验的类型放入map
+     *
+     * @param urlString url
+     * @param type      验证码类型
+     */
+    protected void addUrlToMap(String urlString, CodeType type) {
+        if (StrUtil.isNotEmpty(urlString)) {
+            String[] urls = StrUtil.split(urlString, ",");
+            for (String url : urls) {
+                urlMap.put(adjustUrl(serverProperties.getContextPath() + url), type);
+            }
+        }
+    }
 
-	/**
-	 * 调整 URL，比如: <br>
-	 * <code>/scaffold/user -> /scaffold/user</code> <br>
-	 * <code>//user -> /user</code>
-	 *
-	 * @param url 原先字符串
-	 * @return
-	 */
-	private String adjustUrl(String url) {
-		return StrUtil.replace(url, "//", "/");
-	}
+    /**
+     * 调整 URL，比如: <br>
+     * <code>/scaffold/user -> /scaffold/user</code> <br>
+     * <code>//user -> /user</code>
+     *
+     * @param url 原先字符串
+     * @return
+     */
+    private String adjustUrl(String url) {
+        return StrUtil.replace(url, "//", "/");
+    }
 
-	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-		CodeType type = getCodeType(request);
-		if (type != null) {
-			log.info("校验请求(" + request.getRequestURI() + ")中的验证码,验证码类型" + type);
-			try {
-				codeProcessorHolder.findCodeProcessor(type).validate(new ServletWebRequest(request, response));
-				log.info("验证码校验通过");
-			} catch (ScaffoldException exception) {
-				scaffoldAuthenticationFailureHandler.onAuthenticationFailure(request, response, new BadCredentialsException(exception.getCode() + ""));
-				return;
-			}
-		}
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        CodeType type = getCodeType(request);
+        if (type != null) {
+            log.info("校验请求(" + request.getRequestURI() + ")中的验证码,验证码类型" + type);
+            try {
+                codeProcessorHolder.findCodeProcessor(type).validate(new ServletWebRequest(request, response));
+                log.info("验证码校验通过");
+            } catch (ScaffoldException exception) {
+                scaffoldAuthenticationFailureHandler.onAuthenticationFailure(request, response, new BadCredentialsException(exception
+                        .getCode() + ""));
+                return;
+            }
+        }
 
-		filterChain.doFilter(request, response);
-	}
+        filterChain.doFilter(request, response);
+    }
 
-	/**
-	 * 获取校验码的类型，如果当前请求不需要校验，则返回null
-	 *
-	 * @param request HttpServletRequest
-	 * @return 验证码类型
-	 */
-	private CodeType getCodeType(HttpServletRequest request) {
-		CodeType result = null;
-		if (!StrUtil.equalsIgnoreCase(request.getMethod(), HttpMethod.GET.name())) {
-			Set<String> urls = urlMap.keySet();
-			for (String url : urls) {
-				if (pathMatcher.match(request.getRequestURI(), url)) {
-					result = urlMap.get(url);
-				}
-			}
-		}
-		return result;
-	}
+    /**
+     * 获取校验码的类型，如果当前请求不需要校验，则返回null
+     *
+     * @param request HttpServletRequest
+     * @return 验证码类型
+     */
+    private CodeType getCodeType(HttpServletRequest request) {
+        CodeType result = null;
+        if (!StrUtil.equalsIgnoreCase(request.getMethod(), HttpMethod.GET.name())) {
+            Set<String> urls = urlMap.keySet();
+            for (String url : urls) {
+                if (pathMatcher.match(request.getRequestURI(), url)) {
+                    result = urlMap.get(url);
+                }
+            }
+        }
+        return result;
+    }
 }

@@ -17,20 +17,20 @@ import com.xkcoding.scaffold.common.BaseEnum;
  */
 public class EnumUtil {
 
-	/**
-	 * 根据状态码获取状态枚举
-	 *
-	 * @param code      状态码
-	 * @param enumClass 枚举类
-	 * @param <T>       泛型 {@link BaseEnum}
-	 * @return 状态枚举
-	 */
-	public static <T extends BaseEnum> T getStatusByCode(Integer code, Class<T> enumClass) {
-		for (T each : enumClass.getEnumConstants()) {
-			if (code.equals(each.getCode())) {
-				return each;
-			}
-		}
-		return null;
-	}
+    /**
+     * 根据状态码获取状态枚举
+     *
+     * @param code      状态码
+     * @param enumClass 枚举类
+     * @param <T>       泛型 {@link BaseEnum}
+     * @return 状态枚举
+     */
+    public static <T extends BaseEnum> T getStatusByCode(Integer code, Class<T> enumClass) {
+        for (T each : enumClass.getEnumConstants()) {
+            if (code.equals(each.getCode())) {
+                return each;
+            }
+        }
+        return null;
+    }
 }

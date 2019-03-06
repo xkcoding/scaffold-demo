@@ -18,44 +18,44 @@ import lombok.Getter;
  */
 @Getter
 public class ScaffoldException extends Exception {
-	/**
-	 * 异常码
-	 */
-	private Integer code;
+    /**
+     * 异常码
+     */
+    private Integer code;
 
-	/**
-	 * 返回信息
-	 */
-	private String msg;
+    /**
+     * 返回信息
+     */
+    private String msg;
 
-	/**
-	 * 返回内容
-	 */
-	private Object data;
+    /**
+     * 返回内容
+     */
+    private Object data;
 
-	public ScaffoldException(Integer code, String msg) {
-		super(msg);
-		this.code = code;
-		this.msg = msg;
-	}
+    public ScaffoldException(Integer code, String msg) {
+        super(msg);
+        this.code = code;
+        this.msg = msg;
+    }
 
-	public ScaffoldException(Integer code, String msg, Object data) {
-		super(msg);
-		this.code = code;
-		this.msg = msg;
-		this.data = data;
-	}
+    public ScaffoldException(Integer code, String msg, Object data) {
+        super(msg);
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
 
-	public ScaffoldException(Status status) {
-		super(status.getMsg());
-		this.code = status.getCode();
-		this.msg = status.getMsg();
-	}
+    public ScaffoldException(Status status) {
+        super(status.getMsg());
+        this.code = status.getCode();
+        this.msg = status.getMsg();
+    }
 
-	public ScaffoldException(Status status, Object data) {
-		super(status.getMsg());
-		this.code = status.getCode();
-		this.msg = status.getMsg();
-		this.data = data;
-	}
+    public ScaffoldException(Status status, Object data) {
+        super(status.getMsg());
+        this.code = status.getCode();
+        this.msg = status.getMsg();
+        this.data = data;
+    }
 }

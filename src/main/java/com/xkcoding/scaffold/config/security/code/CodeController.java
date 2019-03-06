@@ -31,12 +31,12 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/code")
 @Slf4j
 public class CodeController {
-	@Autowired
-	private CodeProcessorHolder codeProcessorHolder;
+    @Autowired
+    private CodeProcessorHolder codeProcessorHolder;
 
-	@GetMapping("/{type}")
-	public void createImageCode(HttpServletRequest request, HttpServletResponse response, @PathVariable String type) throws ScaffoldException {
-		codeProcessorHolder.findCodeProcessor(type).create(new ServletWebRequest(request, response));
-	}
+    @GetMapping("/{type}")
+    public void createImageCode(HttpServletRequest request, HttpServletResponse response, @PathVariable String type) throws ScaffoldException {
+        codeProcessorHolder.findCodeProcessor(type).create(new ServletWebRequest(request, response));
+    }
 
 }

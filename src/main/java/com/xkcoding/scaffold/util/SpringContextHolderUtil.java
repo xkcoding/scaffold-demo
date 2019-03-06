@@ -21,32 +21,32 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringContextHolderUtil implements ApplicationContextAware {
 
-	private static ApplicationContext applicationContext;
+    private static ApplicationContext applicationContext;
 
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		SpringContextHolderUtil.applicationContext = applicationContext;
-	}
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        SpringContextHolderUtil.applicationContext = applicationContext;
+    }
 
-	public static ApplicationContext getApplicationContext() {
-		assertApplicationContext();
-		return applicationContext;
-	}
+    public static ApplicationContext getApplicationContext() {
+        assertApplicationContext();
+        return applicationContext;
+    }
 
-	@SuppressWarnings("unchecked")
-	public static <T> T getBean(String beanName) {
-		assertApplicationContext();
-		return (T) applicationContext.getBean(beanName);
-	}
+    @SuppressWarnings("unchecked")
+    public static <T> T getBean(String beanName) {
+        assertApplicationContext();
+        return (T) applicationContext.getBean(beanName);
+    }
 
-	public static <T> T getBean(Class<T> requiredType) {
-		assertApplicationContext();
-		return applicationContext.getBean(requiredType);
-	}
+    public static <T> T getBean(Class<T> requiredType) {
+        assertApplicationContext();
+        return applicationContext.getBean(requiredType);
+    }
 
-	private static void assertApplicationContext() {
-		if (SpringContextHolderUtil.applicationContext == null) {
-			throw new RuntimeException("applicaitonContext属性为null,请检查是否注入了SpringContextHolder!");
-		}
-	}
+    private static void assertApplicationContext() {
+        if (SpringContextHolderUtil.applicationContext == null) {
+            throw new RuntimeException("applicaitonContext属性为null,请检查是否注入了SpringContextHolder!");
+        }
+    }
 }

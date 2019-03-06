@@ -17,285 +17,285 @@ import lombok.Getter;
  */
 @Getter
 public enum FileSuffix {
-	/**
-	 * JPEG (jpg)
-	 */
-	JPG(".jpg"),
+    /**
+     * JPEG (jpg)
+     */
+    JPG(".jpg"),
 
-	/**
-	 * PNG (png)
-	 */
-	PNG(".png"),
+    /**
+     * PNG (png)
+     */
+    PNG(".png"),
 
-	/**
-	 * GIF (gif)
-	 */
-	GIF(".gif"),
+    /**
+     * GIF (gif)
+     */
+    GIF(".gif"),
 
-	/**
-	 * TIFF (tif)
-	 */
-	TIFF(".tif"),
+    /**
+     * TIFF (tif)
+     */
+    TIFF(".tif"),
 
-	/**
-	 * 位图(bmp)
-	 */
-	BMP(".bmp"),
+    /**
+     * 位图(bmp)
+     */
+    BMP(".bmp"),
 
-	/**
-	 * CAD (dwg)
-	 */
-	CAD(".dwg"),
+    /**
+     * CAD (dwg)
+     */
+    CAD(".dwg"),
 
-	/**
-	 * HTML (html)
-	 */
-	HTML(".html"),
+    /**
+     * HTML (html)
+     */
+    HTML(".html"),
 
-	/**
-	 * HTM (htm)
-	 */
-	HTM(".htm"),
+    /**
+     * HTM (htm)
+     */
+    HTM(".htm"),
 
-	/**
-	 * css
-	 */
-	CSS(".css"),
+    /**
+     * css
+     */
+    CSS(".css"),
 
-	/**
-	 * js
-	 */
-	JS(".js"),
+    /**
+     * js
+     */
+    JS(".js"),
 
-	/**
-	 * json
-	 */
-	JSON(".json"),
+    /**
+     * json
+     */
+    JSON(".json"),
 
-	/**
-	 * Rich Text Format (rtf)
-	 */
-	RTF(".rtf"),
+    /**
+     * Rich Text Format (rtf)
+     */
+    RTF(".rtf"),
 
-	/**
-	 * Photoshop (psd)
-	 */
-	PSD(".psd"),
+    /**
+     * Photoshop (psd)
+     */
+    PSD(".psd"),
 
-	/**
-	 * Email [Outlook Express 6] (eml)
-	 */
-	EML(".eml"),
+    /**
+     * Email [Outlook Express 6] (eml)
+     */
+    EML(".eml"),
 
-	/**
-	 * doc文件
-	 */
-	DOC(".doc"),
+    /**
+     * doc文件
+     */
+    DOC(".doc"),
 
-	/**
-	 * docx文件
-	 */
-	DOCX(".docx"),
+    /**
+     * docx文件
+     */
+    DOCX(".docx"),
 
-	/**
-	 * Visio 绘图
-	 */
-	VSD(".vsd"),
+    /**
+     * Visio 绘图
+     */
+    VSD(".vsd"),
 
-	/**
-	 * MS Access (mdb)
-	 */
-	MDB(".mdb"),
+    /**
+     * MS Access (mdb)
+     */
+    MDB(".mdb"),
 
-	/**
-	 * Adobe Acrobat (pdf)
-	 */
-	PDF(".pdf"),
+    /**
+     * Adobe Acrobat (pdf)
+     */
+    PDF(".pdf"),
 
-	/**
-	 * rmvb/rm相同
-	 */
-	RMVB(".rmvb"),
+    /**
+     * rmvb/rm相同
+     */
+    RMVB(".rmvb"),
 
-	/**
-	 * flv与f4v相同
-	 */
-	FLV(".flv"),
+    /**
+     * flv与f4v相同
+     */
+    FLV(".flv"),
 
-	/**
-	 * mp4
-	 */
-	MP4(".mp4"),
+    /**
+     * mp4
+     */
+    MP4(".mp4"),
 
-	/**
-	 * mp3
-	 */
-	MP3(".mp3"),
+    /**
+     * mp3
+     */
+    MP3(".mp3"),
 
-	/**
-	 * mpg
-	 */
-	MPG(".mpg"),
+    /**
+     * mpg
+     */
+    MPG(".mpg"),
 
-	/**
-	 * wmv与asf相同
-	 */
-	WMV(".wmv"),
+    /**
+     * wmv与asf相同
+     */
+    WMV(".wmv"),
 
-	/**
-	 * Wave (wav)
-	 */
-	WAV(".wav"),
+    /**
+     * Wave (wav)
+     */
+    WAV(".wav"),
 
-	/**
-	 * avi
-	 */
-	AVI(".avi"),
+    /**
+     * avi
+     */
+    AVI(".avi"),
 
-	/**
-	 * MIDI(mid)
-	 */
-	MID(".mid"),
+    /**
+     * MIDI(mid)
+     */
+    MID(".mid"),
 
-	/**
-	 * WinRAR
-	 */
-	RAR(".rar"),
+    /**
+     * WinRAR
+     */
+    RAR(".rar"),
 
-	/**
-	 * ini
-	 */
-	INI(".ini"),
+    /**
+     * ini
+     */
+    INI(".ini"),
 
-	/**
-	 * jar
-	 */
-	JAR(".jar"),
+    /**
+     * jar
+     */
+    JAR(".jar"),
 
-	/**
-	 * xls文件
-	 */
-	XLS(".xls"),
+    /**
+     * xls文件
+     */
+    XLS(".xls"),
 
-	/**
-	 * xlsx文件
-	 */
-	XLSX(".xlsx"),
+    /**
+     * xlsx文件
+     */
+    XLSX(".xlsx"),
 
-	/**
-	 * zip 压缩文件
-	 */
-	ZIP(".zip"),
+    /**
+     * zip 压缩文件
+     */
+    ZIP(".zip"),
 
-	/**
-	 * 可执行文件
-	 */
-	EXE(".exe"),
+    /**
+     * 可执行文件
+     */
+    EXE(".exe"),
 
-	/**
-	 * jsp文件
-	 */
-	JSP(".jsp"),
+    /**
+     * jsp文件
+     */
+    JSP(".jsp"),
 
-	/**
-	 * MF文件
-	 */
-	MF(".mf"),
+    /**
+     * MF文件
+     */
+    MF(".mf"),
 
-	/**
-	 * xml文件
-	 */
-	XML(".xml"),
+    /**
+     * xml文件
+     */
+    XML(".xml"),
 
-	/**
-	 * sql文件
-	 */
-	SQL(".sql"),
+    /**
+     * sql文件
+     */
+    SQL(".sql"),
 
-	/**
-	 * java文件
-	 */
-	JAVA(".java"),
+    /**
+     * java文件
+     */
+    JAVA(".java"),
 
-	/**
-	 * bat文件
-	 */
-	BAT(".bat"),
+    /**
+     * bat文件
+     */
+    BAT(".bat"),
 
-	/**
-	 * gz文件
-	 */
-	GZ(".gz"),
+    /**
+     * gz文件
+     */
+    GZ(".gz"),
 
-	/**
-	 * properties文件
-	 */
-	PROPERTIES(".properties"),
+    /**
+     * properties文件
+     */
+    PROPERTIES(".properties"),
 
-	/**
-	 * class文件
-	 */
-	CLASS(".class"),
+    /**
+     * class文件
+     */
+    CLASS(".class"),
 
-	/**
-	 * chm文件
-	 */
-	CHM(".chm"),
+    /**
+     * chm文件
+     */
+    CHM(".chm"),
 
-	/**
-	 * mxp文件
-	 */
-	MXP(".mxp"),
+    /**
+     * mxp文件
+     */
+    MXP(".mxp"),
 
-	/**
-	 * WPS文字wps、表格et、演示dps都是一样的
-	 */
-	WPS(".wps"),
+    /**
+     * WPS文字wps、表格et、演示dps都是一样的
+     */
+    WPS(".wps"),
 
-	/**
-	 * torrent文件
-	 */
-	TORRENT(".torrent"),
+    /**
+     * torrent文件
+     */
+    TORRENT(".torrent"),
 
-	/**
-	 * Quicktime(mov)
-	 */
-	MOV(".mov"),
+    /**
+     * Quicktime(mov)
+     */
+    MOV(".mov"),
 
-	/**
-	 * WordPerfect (wpd)
-	 */
-	WPD(".wpd"),
+    /**
+     * WordPerfect (wpd)
+     */
+    WPD(".wpd"),
 
-	/**
-	 * Outlook Express (dbx)
-	 */
-	DBX(".dbx"),
+    /**
+     * Outlook Express (dbx)
+     */
+    DBX(".dbx"),
 
-	/**
-	 * Outlook (pst)
-	 */
-	PST(".pst"),
+    /**
+     * Outlook (pst)
+     */
+    PST(".pst"),
 
-	/**
-	 * Quicken (qdf)
-	 */
-	QDF(".qdf"),
+    /**
+     * Quicken (qdf)
+     */
+    QDF(".qdf"),
 
-	/**
-	 * Windows Password (pwl)
-	 */
-	PWL(".pwl"),
+    /**
+     * Windows Password (pwl)
+     */
+    PWL(".pwl"),
 
-	/**
-	 * Real Audio(ram)
-	 */
-	RAM(".ram");
+    /**
+     * Real Audio(ram)
+     */
+    RAM(".ram");
 
-	private String value;
+    private String value;
 
-	FileSuffix(String value) {
-		this.value = value;
-	}
+    FileSuffix(String value) {
+        this.value = value;
+    }
 
 }

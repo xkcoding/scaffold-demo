@@ -26,34 +26,34 @@ import java.util.Date;
 @Slf4j
 public class LoginLogUtil {
 
-	private static SysLoginLogMapper sysLoginLogMapper = SpringContextHolderUtil.getBean(SysLoginLogMapper.class);
+    private static SysLoginLogMapper sysLoginLogMapper = SpringContextHolderUtil.getBean(SysLoginLogMapper.class);
 
-	public static void saveLog(String username, Status message, LogStatus status) {
-		try {
-			UserAgent userAgent = UserAgent.parseUserAgentString(ServletUtil.getRequest().getHeader("User-Agent"));
-			// 获取客户端操作系统
-			String os = userAgent.getOperatingSystem().getName();
-			// 获取客户端浏览器
-			String browser = userAgent.getBrowser().getName();
+    public static void saveLog(String username, Status message, LogStatus status) {
+        try {
+            UserAgent userAgent = UserAgent.parseUserAgentString(ServletUtil.getRequest().getHeader("User-Agent"));
+            // 获取客户端操作系统
+            String os = userAgent.getOperatingSystem().getName();
+            // 获取客户端浏览器
+            String browser = userAgent.getBrowser().getName();
 
-			SysLoginLog sysLoginLog = new SysLoginLog();
-			sysLoginLog.setLoginName(username);
-			sysLoginLog.setStatus(status.getCode());
-			if (ObjectUtil.equal(status, LogStatus.ERROR) || ObjectUtil.equal(message, Status.LOGOUT_SUCCESS)) {
-				sysLoginLog.setIpAddress(ServletUtil.getIp());
-				sysLoginLog.setLoginLocation(Ip2AddressUtil.getAddressInLocal(ServletUtil.getIp()));
-			} else {
-				sysLoginLog.setIpAddress(SecurityUtil.getIp());
-				sysLoginLog.setLoginLocation(Ip2AddressUtil.getAddressInLocal(SecurityUtil.getIp()));
-			}
-			sysLoginLog.setBrowser(browser);
-			sysLoginLog.setOs(os);
-			sysLoginLog.setMsg(message.getMsg());
-			sysLoginLog.setLoginTime(new Date());
-			sysLoginLogMapper.insertUseGeneratedKeys(sysLoginLog);
-		} catch (Exception e) {
-			log.error("创建登录日志异常!", e);
-		}
-	}
+            SysLoginLog sysLoginLog = new SysLoginLog();
+            sysLoginLog.setLoginName(username);
+            sysLoginLog.setStatus(status.getCode());
+            if (ObjectUtil.equal(status, LogStatus.ERROR) || ObjectUtil.equal(message, Status.LOGOUT_SUCCESS)) {
+                sysLoginLog.setIpAddress(ServletUtil.getIp());
+                sysLoginLog.setLoginLocation(Ip2AddressUtil.getAddressInLocal(ServletUtil.getIp()));
+            } else {
+                sysLoginLog.setIpAddress(SecurityUtil.getIp());
+                sysLoginLog.setLoginLocation(Ip2AddressUtil.getAddressInLocal(SecurityUtil.getIp()));
+            }
+            sysLoginLog.setBrowser(browser);
+            sysLoginLog.setOs(os);
+            sysLoginLog.setMsg(message.getMsg());
+            sysLoginLog.setLoginTime(new Date());
+            sysLoginLogMapper.insertUseGeneratedKeys(sysLoginLog);
+        } catch (Exception e) {
+            log.error("创建登录日志异常!", e);
+        }
+    }
 
 }

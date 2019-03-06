@@ -19,14 +19,14 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "scaffold")
 @Data
 public class ScaffoldProperties {
-	/**
-	 * Common 配置
-	 */
-	private CommonProperties common = new CommonProperties();
+    /**
+     * Common 配置
+     */
+    private CommonProperties common = new CommonProperties();
 
-	/**
-	 * Security 配置
-	 */
-	private ScaffoldSecurityProperties security = new ScaffoldSecurityProperties();
+    /**
+     * Security 配置
+     */
+    private ScaffoldSecurityProperties security = new ScaffoldSecurityProperties();
 
 }

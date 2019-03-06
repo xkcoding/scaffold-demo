@@ -14,10 +14,10 @@ package com.xkcoding.scaffold.common;
  * @modified: yangkai.shen
  */
 public interface BaseEnum {
-	/**
-	 * 获取状态码
-	 *
-	 * @return 状态码
-	 */
-	Integer getCode();
+    /**
+     * 获取状态码
+     *
+     * @return 状态码
+     */
+    Integer getCode();
 }

@@ -36,29 +36,29 @@ import java.util.Date;
 @Component
 @Slf4j
 public class ScaffoldAuthenticationSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler {
-	@Autowired
-	private ModelMapper modelMapper;
+    @Autowired
+    private ModelMapper modelMapper;
 
-	@Autowired
-	private SysUserMapper sysUserMapper;
+    @Autowired
+    private SysUserMapper sysUserMapper;
 
-	/**
-	 * 认证成功时触发
-	 */
-	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-		log.info("【登录认证】{} 登录成功！", authentication.getPrincipal());
+    /**
+     * 认证成功时触发
+     */
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
+        log.info("【登录认证】{} 登录成功！", authentication.getPrincipal());
 
-		// 保存登录成功日志
-		LoginLogUtil.saveLog(authentication.getName(), Status.LOGIN_SUCCESS, LogStatus.SUCCESS);
+        // 保存登录成功日志
+        LoginLogUtil.saveLog(authentication.getName(), Status.LOGIN_SUCCESS, LogStatus.SUCCESS);
 
-		// 登录成功修改用户表登录ip和登录时间
-		SysUserDTO principal = (SysUserDTO) authentication.getPrincipal();
-		SysUser sysUser = modelMapper.map(principal, SysUser.class);
-		sysUser.setLoginIp(SecurityUtil.getIp());
-		sysUser.setLoginDate(new Date());
-		sysUserMapper.updateByPrimaryKeySelective(sysUser);
+        // 登录成功修改用户表登录ip和登录时间
+        SysUserDTO principal = (SysUserDTO) authentication.getPrincipal();
+        SysUser sysUser = modelMapper.map(principal, SysUser.class);
+        sysUser.setLoginIp(SecurityUtil.getIp());
+        sysUser.setLoginDate(new Date());
+        sysUserMapper.updateByPrimaryKeySelective(sysUser);
 
-		ServletUtil.renderJson(response, Api.ofMessage(Status.LOGIN_SUCCESS.getMsg()));
-	}
+        ServletUtil.renderJson(response, Api.ofMessage(Status.LOGIN_SUCCESS.getMsg()));
+    }
 }

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xkcoding.scaffold.mapper.SysRoleMenuMapper">
-	<resultMap id="BaseResultMap" type="com.xkcoding.scaffold.model.SysRoleMenu">
-		<id column="role_id" jdbcType="INTEGER" property="roleId"/>
-		<id column="menu_id" jdbcType="INTEGER" property="menuId"/>
-	</resultMap>
+    <resultMap id="BaseResultMap" type="com.xkcoding.scaffold.model.SysRoleMenu">
+        <id column="role_id" jdbcType="INTEGER" property="roleId"/>
+        <id column="menu_id" jdbcType="INTEGER" property="menuId"/>
+    </resultMap>
 
-	<select id="selectSysRoleMenuByRoleIdList" resultType="com.xkcoding.scaffold.model.SysRoleMenu">
-		SELECT * FROM sys_role_menu
-		<where>
-			<if test="roleIdList != null and roleIdList.size() > 0">
-				role_id IN
-				<foreach collection="roleIdList" index="index" item="item" open="(" close=")" separator=",">
-					#{item}
-				</foreach>
-			</if>
-		</where>
-		ORDER BY role_id
-	</select>
+    <select id="selectSysRoleMenuByRoleIdList" resultType="com.xkcoding.scaffold.model.SysRoleMenu">
+        SELECT * FROM sys_role_menu
+        <where>
+            <if test="roleIdList != null and roleIdList.size() > 0">
+                role_id IN
+                <foreach collection="roleIdList" index="index" item="item" open="(" close=")" separator=",">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        ORDER BY role_id
+    </select>
 </mapper>

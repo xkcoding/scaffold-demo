@@ -18,21 +18,20 @@ import lombok.Getter;
  */
 @Getter
 public enum UserStatus implements BaseEnum {
-	/**
-	 * 启用
-	 */
-	ENABLE(1, "启用"),
+    /**
+     * 启用
+     */
+    ENABLE(1, "启用"),
 
-	/**
-	 * 禁用
-	 */
-	DISABLE(0, "禁用");
+    /**
+     * 禁用
+     */
+    DISABLE(0, "禁用");
 
-	private Integer code;
-	private String msg;
+    private Integer code;
+    private String msg;
 
-	UserStatus(Integer code, String msg) {
-		this.code = code;
-		this.msg = msg;
-	}
-}
+    UserStatus(Integer code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }}

@@ -17,23 +17,23 @@ import lombok.Data;
  */
 @Data
 public class CommonProperties {
-	/**
-	 * 应用名
-	 */
-	private String name;
+    /**
+     * 应用名
+     */
+    private String name;
 
-	/**
-	 * 应用版本
-	 */
-	private String version;
+    /**
+     * 应用版本
+     */
+    private String version;
 
-	/**
-	 * 版权年份
-	 */
-	private String copyrightYear;
+    /**
+     * 版权年份
+     */
+    private String copyrightYear;
 
-	/**
-	 * 开发者
-	 */
-	private String developer;
+    /**
+     * 开发者
+     */
+    private String developer;
 }

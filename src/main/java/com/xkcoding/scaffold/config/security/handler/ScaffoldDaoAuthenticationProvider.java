@@ -27,25 +27,25 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Slf4j
 public class ScaffoldDaoAuthenticationProvider extends DaoAuthenticationProvider {
 
-	/**
-	 * 校验密码，如果登录失败，记录日志
-	 *
-	 * @param userDetails    数据库保存的用户信息
-	 * @param authentication 表单提交的用户信息
-	 */
-	@Override
-	protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
-		if (ObjectUtil.isNull(authentication.getCredentials())) {
-			LoginLogUtil.saveLog(authentication.getName(), Status.USERNAME_OR_PASSWORD_ERROR, LogStatus.ERROR);
-			throw new BadCredentialsException(Status.USERNAME_OR_PASSWORD_ERROR.getCode() + "");
-		}
+    /**
+     * 校验密码，如果登录失败，记录日志
+     *
+     * @param userDetails    数据库保存的用户信息
+     * @param authentication 表单提交的用户信息
+     */
+    @Override
+    protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
+        if (ObjectUtil.isNull(authentication.getCredentials())) {
+            LoginLogUtil.saveLog(authentication.getName(), Status.USERNAME_OR_PASSWORD_ERROR, LogStatus.ERROR);
+            throw new BadCredentialsException(Status.USERNAME_OR_PASSWORD_ERROR.getCode() + "");
+        }
 
-		String presentedPassword = authentication.getCredentials().toString();
+        String presentedPassword = authentication.getCredentials().toString();
 
-		if (!getPasswordEncoder().matches(presentedPassword, userDetails.getPassword())) {
-			LoginLogUtil.saveLog(authentication.getName(), Status.USERNAME_OR_PASSWORD_ERROR, LogStatus.ERROR);
-			throw new BadCredentialsException(Status.USERNAME_OR_PASSWORD_ERROR.getCode() + "");
-		}
-	}
+        if (!getPasswordEncoder().matches(presentedPassword, userDetails.getPassword())) {
+            LoginLogUtil.saveLog(authentication.getName(), Status.USERNAME_OR_PASSWORD_ERROR, LogStatus.ERROR);
+            throw new BadCredentialsException(Status.USERNAME_OR_PASSWORD_ERROR.getCode() + "");
+        }
+    }
 
 }

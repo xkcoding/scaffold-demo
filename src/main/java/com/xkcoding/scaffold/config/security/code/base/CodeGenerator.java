@@ -16,11 +16,11 @@ import org.springframework.web.context.request.ServletWebRequest;
  * @modified: yangkai.shen
  */
 public interface CodeGenerator {
-	/**
-	 * 验证码生成器接口
-	 *
-	 * @param request {@link ServletWebRequest} 这个类同时封装了request {@link javax.servlet.http.HttpServletRequest} 和 response {@link javax.servlet.http.HttpServletResponse}
-	 * @return 验证码
-	 */
-	Code generate(ServletWebRequest request);
+    /**
+     * 验证码生成器接口
+     *
+     * @param request {@link ServletWebRequest} 这个类同时封装了request {@link javax.servlet.http.HttpServletRequest} 和 response {@link javax.servlet.http.HttpServletResponse}
+     * @return 验证码
+     */
+    Code generate(ServletWebRequest request);
 }

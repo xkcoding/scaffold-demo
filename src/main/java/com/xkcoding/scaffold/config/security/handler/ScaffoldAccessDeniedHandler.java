@@ -28,12 +28,12 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class ScaffoldAccessDeniedHandler implements AccessDeniedHandler {
 
-	/**
-	 * 权限不够时触发
-	 */
-	@Override
-	public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException exception) {
-		log.error("【鉴权操作】权限不够！", exception);
-		ServletUtil.renderJson(response, Api.ofStatus(Status.FORBIDDEN));
-	}
+    /**
+     * 权限不够时触发
+     */
+    @Override
+    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException exception) {
+        log.error("【鉴权操作】权限不够！", exception);
+        ServletUtil.renderJson(response, Api.ofStatus(Status.FORBIDDEN));
+    }
 }

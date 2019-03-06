@@ -18,26 +18,25 @@ import lombok.Getter;
  */
 @Getter
 public enum MenuType implements BaseEnum {
-	/**
-	 * 目录
-	 */
-	directory(0, "目录"),
+    /**
+     * 目录
+     */
+    directory(0, "目录"),
 
-	/**
-	 * 菜单
-	 */
-	menu(1, "菜单"),
+    /**
+     * 菜单
+     */
+    menu(1, "菜单"),
 
-	/**
-	 * 按钮
-	 */
-	button(2, "按钮");
+    /**
+     * 按钮
+     */
+    button(2, "按钮");
 
-	private Integer code;
-	private String msg;
+    private Integer code;
+    private String msg;
 
-	MenuType(Integer code, String msg) {
-		this.code = code;
-		this.msg = msg;
-	}
-}
+    MenuType(Integer code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }}

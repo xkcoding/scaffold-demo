@@ -18,21 +18,20 @@ import lombok.Getter;
  */
 @Getter
 public enum LogStatus implements BaseEnum {
-	/**
-	 * 成功
-	 */
-	SUCCESS(1, "成功"),
+    /**
+     * 成功
+     */
+    SUCCESS(1, "成功"),
 
-	/**
-	 * 失败
-	 */
-	ERROR(0, "失败");
+    /**
+     * 失败
+     */
+    ERROR(0, "失败");
 
-	private Integer code;
-	private String msg;
+    private Integer code;
+    private String msg;
 
-	LogStatus(Integer code, String msg) {
-		this.code = code;
-		this.msg = msg;
-	}
-}
+    LogStatus(Integer code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }}

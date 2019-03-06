@@ -21,8 +21,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MapperScan(basePackages = {"com.xkcoding.scaffold.mapper"})
 public class ScaffoldApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ScaffoldApplication.class, args);
-		System.out.println("\n(♥◠‿◠)ﾉﾞ scaffold 启动成功 ლ(´ڡ`ლ)ﾞ\n");
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ScaffoldApplication.class, args);
+        System.out.println("\n(♥◠‿◠)ﾉﾞ scaffold 启动成功 ლ(´ڡ`ლ)ﾞ\n");
+    }
 }

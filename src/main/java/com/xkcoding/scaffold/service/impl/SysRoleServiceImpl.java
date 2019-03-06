@@ -26,29 +26,29 @@ import java.util.stream.Collectors;
  */
 @Service
 public class SysRoleServiceImpl implements SysRoleService {
-	@Autowired
-	private SysRoleMapper sysRoleMapper;
+    @Autowired
+    private SysRoleMapper sysRoleMapper;
 
-	@Autowired
-	private SysUserRoleMapper sysUserRoleMapper;
+    @Autowired
+    private SysUserRoleMapper sysUserRoleMapper;
 
-	/**
-	 * 根据用户 id 获取角色列表
-	 *
-	 * @param userId 用户 id
-	 * @return 角色列表
-	 */
-	@Override
-	public List<SysRole> listSysRolesByUserId(Integer userId) {
-		// 根据 userId 查 user-role 的对应关系
-		SysUserRole query = new SysUserRole();
-		query.setUserId(userId);
-		List<SysUserRole> relations = sysUserRoleMapper.select(query);
+    /**
+     * 根据用户 id 获取角色列表
+     *
+     * @param userId 用户 id
+     * @return 角色列表
+     */
+    @Override
+    public List<SysRole> listSysRolesByUserId(Integer userId) {
+        // 根据 userId 查 user-role 的对应关系
+        SysUserRole query = new SysUserRole();
+        query.setUserId(userId);
+        List<SysUserRole> relations = sysUserRoleMapper.select(query);
 
-		// 根据对应关系，获取角色 id 列表，查询所有role
-		List<Integer> roleIdList = relations.stream().map(SysUserRole::getRoleId).collect(Collectors.toList());
-		List<SysRole> sysRoleList = sysRoleMapper.selectSysRoleByRoleList(roleIdList);
+        // 根据对应关系，获取角色 id 列表，查询所有role
+        List<Integer> roleIdList = relations.stream().map(SysUserRole::getRoleId).collect(Collectors.toList());
+        List<SysRole> sysRoleList = sysRoleMapper.selectSysRoleByRoleList(roleIdList);
 
-		return sysRoleList;
-	}
+        return sysRoleList;
+    }
 }

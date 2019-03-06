@@ -14,13 +14,13 @@ package com.xkcoding.scaffold.aspectj.constant;
  * @modified: yangkai.shen
  */
 public class OperateStatus {
-	/**
-	 * 成功
-	 */
-	public static final Integer SUCCESS = 1;
+    /**
+     * 成功
+     */
+    public static final Integer SUCCESS = 1;
 
-	/**
-	 * 失败
-	 */
-	public static final Integer FAIL = 0;
+    /**
+     * 失败
+     */
+    public static final Integer FAIL = 0;
 }

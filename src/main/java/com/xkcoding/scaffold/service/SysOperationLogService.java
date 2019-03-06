@@ -16,10 +16,10 @@ import com.xkcoding.scaffold.model.SysOperationLog;
  * @modified: yangkai.shen
  */
 public interface SysOperationLogService {
-	/**
-	 * 新增一条操作记录
-	 *
-	 * @param operationLog 操作记录对象
-	 */
-	void insert(SysOperationLog operationLog);
+    /**
+     * 新增一条操作记录
+     *
+     * @param operationLog 操作记录对象
+     */
+    void insert(SysOperationLog operationLog);
 }

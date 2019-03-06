@@ -32,18 +32,18 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class ScaffoldLogoutSuccessHandler implements LogoutSuccessHandler {
 
-	/**
-	 * 登出成功时触发
-	 */
-	@Override
-	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-		if (ObjectUtil.isNotNull(authentication)) {
-			log.info("【退出登录】{} 登出成功！", ((UserDetails) authentication.getPrincipal()).getUsername());
+    /**
+     * 登出成功时触发
+     */
+    @Override
+    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
+        if (ObjectUtil.isNotNull(authentication)) {
+            log.info("【退出登录】{} 登出成功！", ((UserDetails) authentication.getPrincipal()).getUsername());
 
-			LoginLogUtil.saveLog(authentication.getName(), Status.LOGOUT_SUCCESS, LogStatus.SUCCESS);
-			ServletUtil.renderJson(response, Api.ofMessage(Status.LOGOUT_SUCCESS.getMsg()));
-		} else {
-			ServletUtil.renderJson(response, Api.ofStatus(Status.UNAUTHORIZED));
-		}
-	}
+            LoginLogUtil.saveLog(authentication.getName(), Status.LOGOUT_SUCCESS, LogStatus.SUCCESS);
+            ServletUtil.renderJson(response, Api.ofMessage(Status.LOGOUT_SUCCESS.getMsg()));
+        } else {
+            ServletUtil.renderJson(response, Api.ofStatus(Status.UNAUTHORIZED));
+        }
+    }
 }

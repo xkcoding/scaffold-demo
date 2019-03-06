@@ -31,15 +31,15 @@ import java.util.Objects;
 @Slf4j
 public class ScaffoldAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
-	/**
-	 * 认证失败时触发
-	 */
-	@Override
-	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) {
-		log.error("【登录认证】登录失败！", exception);
+    /**
+     * 认证失败时触发
+     */
+    @Override
+    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) {
+        log.error("【登录认证】登录失败！", exception);
 
-		Integer errorCode = Convert.toInt(exception.getMessage(), 500);
-		Status status = EnumUtil.getStatusByCode(errorCode, Status.class);
-		ServletUtil.renderJson(response, Api.ofStatus(Objects.requireNonNull(status)));
-	}
+        Integer errorCode = Convert.toInt(exception.getMessage(), 500);
+        Status status = EnumUtil.getStatusByCode(errorCode, Status.class);
+        ServletUtil.renderJson(response, Api.ofStatus(Objects.requireNonNull(status)));
+    }
 }

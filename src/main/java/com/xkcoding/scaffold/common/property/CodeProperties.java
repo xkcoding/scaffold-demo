@@ -17,13 +17,13 @@ import lombok.Data;
  */
 @Data
 public class CodeProperties {
-	/**
-	 * 图片验证码配置
-	 */
-	private ImageCodeProperties image = new ImageCodeProperties();
+    /**
+     * 图片验证码配置
+     */
+    private ImageCodeProperties image = new ImageCodeProperties();
 
-	/**
-	 * 短信验证码配置
-	 */
-	private SmsCodeProperties sms = new SmsCodeProperties();
+    /**
+     * 短信验证码配置
+     */
+    private SmsCodeProperties sms = new SmsCodeProperties();
 }

@@ -16,12 +16,12 @@ import com.xkcoding.scaffold.model.SysUser;
  * @modified: yangkai.shen
  */
 public interface SysUserService {
-	
-	/**
-	 * 根据用户名（登录名）获取用户信息
-	 *
-	 * @param loginName 登录名
-	 * @return 用户对象
-	 */
-	SysUser getUserByLoginName(String loginName);
+
+    /**
+     * 根据用户名（登录名）获取用户信息
+     *
+     * @param loginName 登录名
+     * @return 用户对象
+     */
+    SysUser getUserByLoginName(String loginName);
 }

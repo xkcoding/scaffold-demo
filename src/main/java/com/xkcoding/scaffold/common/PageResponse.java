@@ -25,15 +25,15 @@ import java.util.List;
 @AllArgsConstructor
 public class PageResponse<T> implements Serializable {
 
-	private static final long serialVersionUID = 7829232095276966115L;
+    private static final long serialVersionUID = 7829232095276966115L;
 
-	/**
-	 * 数据总条数
-	 */
-	private Long total;
+    /**
+     * 数据总条数
+     */
+    private Long total;
 
-	/**
-	 * 数据列表
-	 */
-	private List<T> list;
+    /**
+     * 数据列表
+     */
+    private List<T> list;
 }

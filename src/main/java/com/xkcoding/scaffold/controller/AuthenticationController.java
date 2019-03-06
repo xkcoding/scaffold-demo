@@ -23,13 +23,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/authentication")
 public class AuthenticationController {
 
-	/**
-	 * 需要授权
-	 *
-	 * @return {@link Status#UNAUTHORIZED}
-	 */
-	@GetMapping("/require")
-	public Api require() {
-		return Api.ofStatus(Status.UNAUTHORIZED);
-	}
+    /**
+     * 需要授权
+     *
+     * @return {@link Status#UNAUTHORIZED}
+     */
+    @GetMapping("/require")
+    public Api require() {
+        return Api.ofStatus(Status.UNAUTHORIZED);
+    }
 }

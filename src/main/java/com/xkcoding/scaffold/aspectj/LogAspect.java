@@ -48,138 +48,138 @@ import java.util.Map;
 @EnableAsync
 @Slf4j
 public class LogAspect {
-	@Autowired
-	private SysOperationLogService sysOperationLogService;
+    @Autowired
+    private SysOperationLogService sysOperationLogService;
 
-	@Autowired
-	private SysDeptMapper sysDeptMapper;
+    @Autowired
+    private SysDeptMapper sysDeptMapper;
 
-	/**
-	 * 切入点
-	 */
-	@Pointcut("@annotation(com.xkcoding.scaffold.aspectj.annotation.Log)")
-	public void logPointCut() {
+    /**
+     * 切入点
+     */
+    @Pointcut("@annotation(com.xkcoding.scaffold.aspectj.annotation.Log)")
+    public void logPointCut() {
 
-	}
+    }
 
-	/**
-	 * 前置通知 用于拦截操作
-	 *
-	 * @param joinPoint 切入点
-	 */
-	@AfterReturning(pointcut = "logPointCut()")
-	public void doBefore(JoinPoint joinPoint) {
-		handleLog(joinPoint, null);
-	}
+    /**
+     * 前置通知 用于拦截操作
+     *
+     * @param joinPoint 切入点
+     */
+    @AfterReturning(pointcut = "logPointCut()")
+    public void doBefore(JoinPoint joinPoint) {
+        handleLog(joinPoint, null);
+    }
 
-	/**
-	 * 拦截异常操作
-	 *
-	 * @param joinPoint 切入点
-	 * @param e         异常
-	 */
-	@AfterThrowing(pointcut = "logPointCut()", throwing = "e")
-	public void doAfter(JoinPoint joinPoint, Exception e) {
-		handleLog(joinPoint, e);
-	}
+    /**
+     * 拦截异常操作
+     *
+     * @param joinPoint 切入点
+     * @param e         异常
+     */
+    @AfterThrowing(pointcut = "logPointCut()", throwing = "e")
+    public void doAfter(JoinPoint joinPoint, Exception e) {
+        handleLog(joinPoint, e);
+    }
 
-	/**
-	 * 记录处理日志信息
-	 *
-	 * @param joinPoint 切入点
-	 * @param e         异常
-	 */
-	@Async
-	protected void handleLog(JoinPoint joinPoint, Exception e) {
-		Log controllerLog = getAnnotationLog(joinPoint);
+    /**
+     * 记录处理日志信息
+     *
+     * @param joinPoint 切入点
+     * @param e         异常
+     */
+    @Async
+    protected void handleLog(JoinPoint joinPoint, Exception e) {
+        Log controllerLog = getAnnotationLog(joinPoint);
 
-		// 如果没有 @Log，不记录操作日志
-		if (ObjectUtil.isNull(controllerLog)) {
-			return;
-		}
+        // 如果没有 @Log，不记录操作日志
+        if (ObjectUtil.isNull(controllerLog)) {
+            return;
+        }
 
-		// 获取当前登录用户
-		SysUserDTO currentUser = SecurityUtil.getCurrentUser();
+        // 获取当前登录用户
+        SysUserDTO currentUser = SecurityUtil.getCurrentUser();
 
-		// 构造操作日志对象
-		SysOperationLog operationLog = new SysOperationLog();
-		operationLog.setStatus(OperateStatus.SUCCESS);
+        // 构造操作日志对象
+        SysOperationLog operationLog = new SysOperationLog();
+        operationLog.setStatus(OperateStatus.SUCCESS);
 
-		// 获取登录用户 IP
-		String ip = SecurityUtil.getIp();
-		operationLog.setOperationIp(ip);
+        // 获取登录用户 IP
+        String ip = SecurityUtil.getIp();
+        operationLog.setOperationIp(ip);
 
-		// 根据 IP 获取地址
-		operationLog.setOperationLocation(Ip2AddressUtil.getAddressInLocal(ip));
-		// 设置请求地址
-		operationLog.setOperationUrl(ServletUtil.getRequest().getRequestURI());
-		if (currentUser != null) {
-			operationLog.setOperationName(currentUser.getUsername());
-			if (ObjectUtil.isNotNull(currentUser.getDeptId())) {
-				SysDept sysDept = sysDeptMapper.selectByPrimaryKey(currentUser.getDeptId());
-				operationLog.setDeptName(sysDept.getDeptName());
-			}
-		}
+        // 根据 IP 获取地址
+        operationLog.setOperationLocation(Ip2AddressUtil.getAddressInLocal(ip));
+        // 设置请求地址
+        operationLog.setOperationUrl(ServletUtil.getRequest().getRequestURI());
+        if (currentUser != null) {
+            operationLog.setOperationName(currentUser.getUsername());
+            if (ObjectUtil.isNotNull(currentUser.getDeptId())) {
+                SysDept sysDept = sysDeptMapper.selectByPrimaryKey(currentUser.getDeptId());
+                operationLog.setDeptName(sysDept.getDeptName());
+            }
+        }
 
-		// 如果存在异常，操作日志填充异常信息
-		if (e != null) {
-			operationLog.setStatus(OperateStatus.FAIL);
-			operationLog.setErrorMsg(StrUtil.sub(e.getMessage(), 0, 2000));
-		}
-		// 设置方法名称
-		String className = joinPoint.getTarget().getClass().getName();
-		String methodName = joinPoint.getSignature().getName();
-		operationLog.setMethod(className + "." + methodName + "()");
-		// 处理设置注解上的参数
-		getControllerMethodDescription(controllerLog, operationLog);
-		// 设置操作时间
-		operationLog.setOperationTime(new Date());
-		// 保存数据库
-		sysOperationLogService.insert(operationLog);
-	}
+        // 如果存在异常，操作日志填充异常信息
+        if (e != null) {
+            operationLog.setStatus(OperateStatus.FAIL);
+            operationLog.setErrorMsg(StrUtil.sub(e.getMessage(), 0, 2000));
+        }
+        // 设置方法名称
+        String className = joinPoint.getTarget().getClass().getName();
+        String methodName = joinPoint.getSignature().getName();
+        operationLog.setMethod(className + "." + methodName + "()");
+        // 处理设置注解上的参数
+        getControllerMethodDescription(controllerLog, operationLog);
+        // 设置操作时间
+        operationLog.setOperationTime(new Date());
+        // 保存数据库
+        sysOperationLogService.insert(operationLog);
+    }
 
-	/**
-	 * 获取注解中对方法的描述信息 用于Controller层注解
-	 *
-	 * @param controllerLog Controller 层 @Log 注解
-	 * @param operationLog  操作日志对象
-	 */
-	private void getControllerMethodDescription(Log controllerLog, SysOperationLog operationLog) {
-		// 设置模块名
-		operationLog.setTitle(controllerLog.title());
-		// 设置功能请求
-		operationLog.setAction(controllerLog.action());
-		if (controllerLog.keepRequestData()) {
-			setRequestData(operationLog);
-		}
+    /**
+     * 获取注解中对方法的描述信息 用于Controller层注解
+     *
+     * @param controllerLog Controller 层 @Log 注解
+     * @param operationLog  操作日志对象
+     */
+    private void getControllerMethodDescription(Log controllerLog, SysOperationLog operationLog) {
+        // 设置模块名
+        operationLog.setTitle(controllerLog.title());
+        // 设置功能请求
+        operationLog.setAction(controllerLog.action());
+        if (controllerLog.keepRequestData()) {
+            setRequestData(operationLog);
+        }
 
-	}
+    }
 
-	/**
-	 * 获取请求的参数，放到操作日志中
-	 *
-	 * @param operationLog 操作日志对象
-	 */
-	private void setRequestData(SysOperationLog operationLog) {
-		Map<String, String[]> map = ServletUtil.getRequest().getParameterMap();
-		String params = JSONUtil.toJsonStr(map);
-		operationLog.setOperationParam(StrUtil.sub(params, 0, 255));
-	}
+    /**
+     * 获取请求的参数，放到操作日志中
+     *
+     * @param operationLog 操作日志对象
+     */
+    private void setRequestData(SysOperationLog operationLog) {
+        Map<String, String[]> map = ServletUtil.getRequest().getParameterMap();
+        String params = JSONUtil.toJsonStr(map);
+        operationLog.setOperationParam(StrUtil.sub(params, 0, 255));
+    }
 
-	/**
-	 * 是否存在 @Log，存在就获取 Log，不存在就返回
-	 *
-	 * @param joinPoint 切入点
-	 * @return Log 注解
-	 */
-	private Log getAnnotationLog(JoinPoint joinPoint) {
-		Signature signature = joinPoint.getSignature();
-		MethodSignature methodSignature = (MethodSignature) signature;
-		Method method = methodSignature.getMethod();
-		if (ObjectUtil.isNotNull(method)) {
-			return method.getAnnotation(Log.class);
-		}
-		return null;
-	}
+    /**
+     * 是否存在 @Log，存在就获取 Log，不存在就返回
+     *
+     * @param joinPoint 切入点
+     * @return Log 注解
+     */
+    private Log getAnnotationLog(JoinPoint joinPoint) {
+        Signature signature = joinPoint.getSignature();
+        MethodSignature methodSignature = (MethodSignature) signature;
+        Method method = methodSignature.getMethod();
+        if (ObjectUtil.isNotNull(method)) {
+            return method.getAnnotation(Log.class);
+        }
+        return null;
+    }
 
 }

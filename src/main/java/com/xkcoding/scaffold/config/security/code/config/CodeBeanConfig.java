@@ -23,15 +23,15 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class CodeBeanConfig {
-	@Autowired
-	private ScaffoldProperties scaffoldProperties;
+    @Autowired
+    private ScaffoldProperties scaffoldProperties;
 
-	@Bean
-	@ConditionalOnMissingBean(name = "imageGenerator")
-	public CodeGenerator imageCodeGenerator() {
-		ImageCodeGenerator imageCodeGenerator = new ImageCodeGenerator();
-		imageCodeGenerator.setScaffoldProperties(scaffoldProperties);
-		return imageCodeGenerator;
-	}
+    @Bean
+    @ConditionalOnMissingBean(name = "imageGenerator")
+    public CodeGenerator imageCodeGenerator() {
+        ImageCodeGenerator imageCodeGenerator = new ImageCodeGenerator();
+        imageCodeGenerator.setScaffoldProperties(scaffoldProperties);
+        return imageCodeGenerator;
+    }
 
 }

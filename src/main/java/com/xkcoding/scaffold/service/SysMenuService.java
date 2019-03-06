@@ -21,27 +21,27 @@ import java.util.List;
  */
 public interface SysMenuService {
 
-	/**
-	 * 根据角色 id 获取菜单列表
-	 *
-	 * @param roleId 角色 id
-	 * @return 菜单列表
-	 */
-	List<SysMenu> listSysMenusByRoleId(Integer roleId);
+    /**
+     * 根据角色 id 获取菜单列表
+     *
+     * @param roleId 角色 id
+     * @return 菜单列表
+     */
+    List<SysMenu> listSysMenusByRoleId(Integer roleId);
 
-	/**
-	 * 根据角色列表获取菜单列表
-	 *
-	 * @param roleList 角色列表
-	 * @return 菜单列表
-	 */
-	List<SysMenu> listSysMenusByRoleList(List<SysRole> roleList);
+    /**
+     * 根据角色列表获取菜单列表
+     *
+     * @param roleList 角色列表
+     * @return 菜单列表
+     */
+    List<SysMenu> listSysMenusByRoleList(List<SysRole> roleList);
 
-	/**
-	 * 菜单列表 包含权限基础信息
-	 *
-	 * @param visible 菜单是否可见
-	 * @return 菜单列表
-	 */
-	List<SysMenuDTO> listAllSysMenu(Integer visible);
+    /**
+     * 菜单列表 包含权限基础信息
+     *
+     * @param visible 菜单是否可见
+     * @return 菜单列表
+     */
+    List<SysMenuDTO> listAllSysMenu(Integer visible);
 }

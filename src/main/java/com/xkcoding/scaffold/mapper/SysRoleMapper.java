@@ -23,11 +23,11 @@ import java.util.List;
 @Repository
 public interface SysRoleMapper extends MyMapper<SysRole> {
 
-	/**
-	 * 根据角色 id 列表查询角色列表
-	 *
-	 * @param roleIdList 用户 id 列表
-	 * @return 角色列表
-	 */
-	List<SysRole> selectSysRoleByRoleList(@Param("roleIdList") List<Integer> roleIdList);
+    /**
+     * 根据角色 id 列表查询角色列表
+     *
+     * @param roleIdList 用户 id 列表
+     * @return 角色列表
+     */
+    List<SysRole> selectSysRoleByRoleList(@Param("roleIdList") List<Integer> roleIdList);
 }

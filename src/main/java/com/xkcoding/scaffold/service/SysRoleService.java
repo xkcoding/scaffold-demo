@@ -19,11 +19,11 @@ import java.util.List;
  */
 public interface SysRoleService {
 
-	/**
-	 * 根据用户 id 获取角色列表
-	 *
-	 * @param userId 用户 id
-	 * @return 角色列表
-	 */
-	List<SysRole> listSysRolesByUserId(Integer userId);
+    /**
+     * 根据用户 id 获取角色列表
+     *
+     * @param userId 用户 id
+     * @return 角色列表
+     */
+    List<SysRole> listSysRolesByUserId(Integer userId);
 }

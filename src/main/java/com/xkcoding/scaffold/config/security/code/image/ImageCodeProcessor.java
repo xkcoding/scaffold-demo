@@ -27,19 +27,19 @@ import java.io.IOException;
 @Component("imageCodeProcessor")
 public class ImageCodeProcessor extends AbstractCodeProcessor<ImageCode> {
 
-	/**
-	 * 发送校验码，由子类实现，图片验证码就是写入 response 中
-	 *
-	 * @param request {@link ServletWebRequest} 这个类同时封装了request {@link HttpServletRequest} 和 response {@link HttpServletResponse}
-	 * @param code    验证码
-	 * @throws ScaffoldException 全局异常
-	 */
-	@Override
-	protected void send(ServletWebRequest request, ImageCode code) throws ScaffoldException {
-		try {
-			ImageIO.write(code.getImage(), "JPEG", request.getResponse().getOutputStream());
-		} catch (IOException e) {
-			throw new ScaffoldException(Status.CODE_SEND_ERROR);
-		}
-	}
+    /**
+     * 发送校验码，由子类实现，图片验证码就是写入 response 中
+     *
+     * @param request {@link ServletWebRequest} 这个类同时封装了request {@link HttpServletRequest} 和 response {@link HttpServletResponse}
+     * @param code    验证码
+     * @throws ScaffoldException 全局异常
+     */
+    @Override
+    protected void send(ServletWebRequest request, ImageCode code) throws ScaffoldException {
+        try {
+            ImageIO.write(code.getImage(), "JPEG", request.getResponse().getOutputStream());
+        } catch (IOException e) {
+            throw new ScaffoldException(Status.CODE_SEND_ERROR);
+        }
+    }
 }

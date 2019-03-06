@@ -14,33 +14,33 @@ package com.xkcoding.scaffold.common.constant;
  * @modified: yangkai.shen
  */
 public interface ScaffoldConst {
-	/**
-	 * 逗号
-	 */
-	String COMMA = ",";
+    /**
+     * 逗号
+     */
+    String COMMA = ",";
 
-	/**
-	 * 默认的处理验证码的url前缀
-	 */
-	String DEFAULT_VALIDATE_CODE_URL_PREFIX = "/code";
+    /**
+     * 默认的处理验证码的url前缀
+     */
+    String DEFAULT_VALIDATE_CODE_URL_PREFIX = "/code";
 
-	/**
-	 * 登录页面地址
-	 */
-	String AUTHENTICATION_LOGIN_PAGE = "/authentication/require";
+    /**
+     * 登录页面地址
+     */
+    String AUTHENTICATION_LOGIN_PAGE = "/authentication/require";
 
-	/**
-	 * 默认的用户名密码登录请求处理url
-	 */
-	String DEFAULT_LOGIN_PROCESSING_URL_FORM = "/authentication/login";
+    /**
+     * 默认的用户名密码登录请求处理url
+     */
+    String DEFAULT_LOGIN_PROCESSING_URL_FORM = "/authentication/login";
 
-	/**
-	 * 验证图片验证码时，http请求中默认的携带图片验证码信息的参数的名称
-	 */
-	String DEFAULT_PARAMETER_NAME_CODE_IMAGE = "imageCode";
+    /**
+     * 验证图片验证码时，http请求中默认的携带图片验证码信息的参数的名称
+     */
+    String DEFAULT_PARAMETER_NAME_CODE_IMAGE = "imageCode";
 
-	/**
-	 * 验证短信验证码时，http请求中默认的携带短信验证码信息的参数的名称
-	 */
-	String DEFAULT_PARAMETER_NAME_CODE_SMS = "smsCode";
+    /**
+     * 验证短信验证码时，http请求中默认的携带短信验证码信息的参数的名称
+     */
+    String DEFAULT_PARAMETER_NAME_CODE_SMS = "smsCode";
 }

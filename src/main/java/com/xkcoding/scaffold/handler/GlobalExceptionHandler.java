@@ -27,21 +27,22 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-	@ExceptionHandler(value = Exception.class)
-	@ResponseBody
-	public Api handlerException(Exception e) {
-		if (e instanceof NoHandlerFoundException) {
-			log.error("【全局异常拦截】NoHandlerFoundException: 请求方法 {}, 请求路径 {}", ((NoHandlerFoundException) e).getRequestURL(), ((NoHandlerFoundException) e).getHttpMethod());
-			return Api.ofStatus(Status.REQUEST_NOT_FOUND);
-		} else if (e instanceof ScaffoldException) {
-			log.error("【全局异常拦截】ScaffoldException: 状态码 {}, 异常信息 {}", ((ScaffoldException) e).getCode(), e.getMessage());
-			return new Api(((ScaffoldException) e).getCode(), e.getMessage(), ((ScaffoldException) e).getData());
-		} else if (e instanceof AccessDeniedException) {
-			log.error("【全局异常拦截】AccessDeniedException: 异常信息 {}", e.getMessage());
-			return Api.ofStatus(Status.FORBIDDEN);
-		}
+    @ExceptionHandler(value = Exception.class)
+    @ResponseBody
+    public Api handlerException(Exception e) {
+        if (e instanceof NoHandlerFoundException) {
+            log.error("【全局异常拦截】NoHandlerFoundException: 请求方法 {}, 请求路径 {}", ((NoHandlerFoundException) e).getRequestURL(), ((NoHandlerFoundException) e)
+                    .getHttpMethod());
+            return Api.ofStatus(Status.REQUEST_NOT_FOUND);
+        } else if (e instanceof ScaffoldException) {
+            log.error("【全局异常拦截】ScaffoldException: 状态码 {}, 异常信息 {}", ((ScaffoldException) e).getCode(), e.getMessage());
+            return new Api(((ScaffoldException) e).getCode(), e.getMessage(), ((ScaffoldException) e).getData());
+        } else if (e instanceof AccessDeniedException) {
+            log.error("【全局异常拦截】AccessDeniedException: 异常信息 {}", e.getMessage());
+            return Api.ofStatus(Status.FORBIDDEN);
+        }
 
-		log.error("【全局异常拦截】: 异常信息 {} ", e.getMessage());
-		return Api.ofStatus(Status.INTERNAL_SERVER_ERROR);
-	}
+        log.error("【全局异常拦截】: 异常信息 {} ", e.getMessage());
+        return Api.ofStatus(Status.INTERNAL_SERVER_ERROR);
+    }
 }

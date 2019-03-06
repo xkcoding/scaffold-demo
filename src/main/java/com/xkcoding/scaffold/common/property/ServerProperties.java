@@ -20,15 +20,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @Data
 public class ServerProperties {
-	/**
-	 * 上下文路径
-	 */
-	@Value("${server.servlet.context-path:/}")
-	private String contextPath;
+    /**
+     * 上下文路径
+     */
+    @Value("${server.servlet.context-path:/}")
+    private String contextPath;
 
-	/**
-	 * 端口号
-	 */
-	@Value("${server.port:8080}")
-	private String port;
+    /**
+     * 端口号
+     */
+    @Value("${server.port:8080}")
+    private String port;
 }

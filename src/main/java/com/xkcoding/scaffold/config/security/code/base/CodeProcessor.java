@@ -17,24 +17,24 @@ import org.springframework.web.context.request.ServletWebRequest;
  * @modified: yangkai.shen
  */
 public interface CodeProcessor {
-	/**
-	 * 验证码放入session时的前缀
-	 */
-	String SESSION_KEY_PREFIX = "SCAFFOLD_SESSION_KEY_FOR_CODE_";
+    /**
+     * 验证码放入session时的前缀
+     */
+    String SESSION_KEY_PREFIX = "SCAFFOLD_SESSION_KEY_FOR_CODE_";
 
-	/**
-	 * 创建校验码
-	 *
-	 * @param request {@link ServletWebRequest} 这个类同时封装了request {@link javax.servlet.http.HttpServletRequest} 和 response {@link javax.servlet.http.HttpServletResponse}
-	 * @throws ScaffoldException 全局异常
-	 */
-	void create(ServletWebRequest request) throws ScaffoldException;
+    /**
+     * 创建校验码
+     *
+     * @param request {@link ServletWebRequest} 这个类同时封装了request {@link javax.servlet.http.HttpServletRequest} 和 response {@link javax.servlet.http.HttpServletResponse}
+     * @throws ScaffoldException 全局异常
+     */
+    void create(ServletWebRequest request) throws ScaffoldException;
 
-	/**
-	 * 校验验证码
-	 *
-	 * @param request {@link ServletWebRequest} 这个类同时封装了request {@link javax.servlet.http.HttpServletRequest} 和 response {@link javax.servlet.http.HttpServletResponse}
-	 * @throws ScaffoldException 全局异常
-	 */
-	void validate(ServletWebRequest request) throws ScaffoldException;
+    /**
+     * 校验验证码
+     *
+     * @param request {@link ServletWebRequest} 这个类同时封装了request {@link javax.servlet.http.HttpServletRequest} 和 response {@link javax.servlet.http.HttpServletResponse}
+     * @throws ScaffoldException 全局异常
+     */
+    void validate(ServletWebRequest request) throws ScaffoldException;
 }

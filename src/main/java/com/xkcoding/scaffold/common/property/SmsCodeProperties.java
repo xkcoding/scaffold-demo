@@ -17,18 +17,18 @@ import lombok.Data;
  */
 @Data
 public class SmsCodeProperties {
-	/**
-	 * 长度，默认长度为6位
-	 */
-	private int length = 6;
+    /**
+     * 长度，默认长度为6位
+     */
+    private int length = 6;
 
-	/**
-	 * 过期时间，默认过期时间 60s
-	 */
-	private int expireIn = 60;
+    /**
+     * 过期时间，默认过期时间 60s
+     */
+    private int expireIn = 60;
 
-	/**
-	 * url
-	 */
-	private String url;
+    /**
+     * url
+     */
+    private String url;
 }

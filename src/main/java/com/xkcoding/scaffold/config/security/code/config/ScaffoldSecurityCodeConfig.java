@@ -23,11 +23,11 @@ import org.springframework.stereotype.Component;
  */
 @Component("scaffoldSecurityCodeConfig")
 public class ScaffoldSecurityCodeConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
-	@Autowired
-	private CodeFilter codeFilter;
+    @Autowired
+    private CodeFilter codeFilter;
 
-	@Override
-	public void configure(HttpSecurity http) throws Exception {
-		http.addFilterBefore(codeFilter, AbstractPreAuthenticatedProcessingFilter.class);
-	}
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http.addFilterBefore(codeFilter, AbstractPreAuthenticatedProcessingFilter.class);
+    }
 }

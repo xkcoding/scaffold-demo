@@ -21,16 +21,16 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysOperationLogServiceImpl implements SysOperationLogService {
-	@Autowired
-	private SysOperationLogMapper sysOperationLogMapper;
+    @Autowired
+    private SysOperationLogMapper sysOperationLogMapper;
 
-	/**
-	 * 新增一条操作记录
-	 *
-	 * @param operationLog 操作记录对象
-	 */
-	@Override
-	public void insert(SysOperationLog operationLog) {
-		sysOperationLogMapper.insertUseGeneratedKeys(operationLog);
-	}
+    /**
+     * 新增一条操作记录
+     *
+     * @param operationLog 操作记录对象
+     */
+    @Override
+    public void insert(SysOperationLog operationLog) {
+        sysOperationLogMapper.insertUseGeneratedKeys(operationLog);
+    }
 }

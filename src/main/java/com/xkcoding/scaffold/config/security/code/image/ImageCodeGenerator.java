@@ -29,27 +29,34 @@ import java.awt.image.BufferedImage;
  */
 @Data
 public class ImageCodeGenerator implements CodeGenerator {
-	private ScaffoldProperties scaffoldProperties;
+    private ScaffoldProperties scaffoldProperties;
 
-	/**
-	 * 验证码生成器接口
-	 *
-	 * @param request {@link ServletWebRequest} 这个类同时封装了request {@link HttpServletRequest} 和 response {@link HttpServletResponse}
-	 * @return 验证码
-	 */
-	@Override
-	public Code generate(ServletWebRequest request) {
-		// 获取请求中的验证码宽高
-		int width = ServletRequestUtils.getIntParameter(request.getRequest(), "width", scaffoldProperties.getSecurity().getCode().getImage().getWidth());
-		int height = ServletRequestUtils.getIntParameter(request.getRequest(), "height", scaffoldProperties.getSecurity().getCode().getImage().getHeight());
+    /**
+     * 验证码生成器接口
+     *
+     * @param request {@link ServletWebRequest} 这个类同时封装了request {@link HttpServletRequest} 和 response {@link HttpServletResponse}
+     * @return 验证码
+     */
+    @Override
+    public Code generate(ServletWebRequest request) {
+        // 获取请求中的验证码宽高
+        int width = ServletRequestUtils.getIntParameter(request.getRequest(), "width", scaffoldProperties.getSecurity()
+                .getCode()
+                .getImage()
+                .getWidth());
+        int height = ServletRequestUtils.getIntParameter(request.getRequest(), "height", scaffoldProperties.getSecurity()
+                .getCode()
+                .getImage()
+                .getHeight());
 
-		// 生成随机验证码
-		int length = scaffoldProperties.getSecurity().getCode().getImage().getLength();
-		String randomCode = "";
-		for (int i = 0; i < length; i++) {
-			randomCode = StrUtil.concat(true, randomCode, String.valueOf(RandomUtil.randomChar()));
-		}
-		BufferedImage image = (BufferedImage) CaptchaUtil.createLineCaptcha(width, height, length, 0).createImage(randomCode);
-		return new ImageCode(image, randomCode, scaffoldProperties.getSecurity().getCode().getImage().getExpireIn());
-	}
+        // 生成随机验证码
+        int length = scaffoldProperties.getSecurity().getCode().getImage().getLength();
+        String randomCode = "";
+        for (int i = 0; i < length; i++) {
+            randomCode = StrUtil.concat(true, randomCode, String.valueOf(RandomUtil.randomChar()));
+        }
+        BufferedImage image = (BufferedImage) CaptchaUtil.createLineCaptcha(width, height, length, 0)
+                .createImage(randomCode);
+        return new ImageCode(image, randomCode, scaffoldProperties.getSecurity().getCode().getImage().getExpireIn());
+    }
 }

@@ -19,33 +19,33 @@ import java.time.LocalDateTime;
  */
 @Data
 public class Code {
-	/**
-	 * 验证码
-	 */
-	private String code;
+    /**
+     * 验证码
+     */
+    private String code;
 
-	/**
-	 * 过期时间
-	 */
-	private LocalDateTime expireTime;
+    /**
+     * 过期时间
+     */
+    private LocalDateTime expireTime;
 
-	public Code() {
-	}
+    public Code() {
+    }
 
-	public Code(String code, int expireIn) {
-		this.code = code;
-		this.expireTime = LocalDateTime.now().plusSeconds(expireIn);
-	}
+    public Code(String code, int expireIn) {
+        this.code = code;
+        this.expireTime = LocalDateTime.now().plusSeconds(expireIn);
+    }
 
-	public Code(String code, LocalDateTime expireTime) {
-		this.code = code;
-		this.expireTime = expireTime;
-	}
+    public Code(String code, LocalDateTime expireTime) {
+        this.code = code;
+        this.expireTime = expireTime;
+    }
 
-	/**
-	 * 是否过期
-	 */
-	public boolean isExpried() {
-		return LocalDateTime.now().isAfter(expireTime);
-	}
+    /**
+     * 是否过期
+     */
+    public boolean isExpried() {
+        return LocalDateTime.now().isAfter(expireTime);
+    }
 }

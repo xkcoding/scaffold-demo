@@ -18,21 +18,20 @@ import lombok.Getter;
  */
 @Getter
 public enum DeleteStatus implements BaseEnum {
-	/**
-	 * 已删除
-	 */
-	DELETED(1, "已删除"),
+    /**
+     * 已删除
+     */
+    DELETED(1, "已删除"),
 
-	/**
-	 * 未删除
-	 */
-	NOT_DELETED(0, "未删除");
+    /**
+     * 未删除
+     */
+    NOT_DELETED(0, "未删除");
 
-	private Integer code;
-	private String msg;
+    private Integer code;
+    private String msg;
 
-	DeleteStatus(Integer code, String msg) {
-		this.code = code;
-		this.msg = msg;
-	}
-}
+    DeleteStatus(Integer code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }}

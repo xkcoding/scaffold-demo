@@ -19,18 +19,18 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Log {
-	/**
-	 * 模块名
-	 */
-	String title() default "";
+    /**
+     * 模块名
+     */
+    String title() default "";
 
-	/**
-	 * 功能
-	 */
-	String action() default "";
+    /**
+     * 功能
+     */
+    String action() default "";
 
-	/**
-	 * 是否保存请求参数
-	 */
-	boolean keepRequestData() default true;
+    /**
+     * 是否保存请求参数
+     */
+    boolean keepRequestData() default true;
 }

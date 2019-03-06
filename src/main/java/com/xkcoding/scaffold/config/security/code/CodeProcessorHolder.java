@@ -24,20 +24,20 @@ import java.util.Map;
  */
 @Component
 public class CodeProcessorHolder {
-	@Autowired
-	private Map<String, CodeProcessor> codeProcessors;
+    @Autowired
+    private Map<String, CodeProcessor> codeProcessors;
 
-	public CodeProcessor findCodeProcessor(CodeType type) throws ScaffoldException {
-		return findCodeProcessor(type.toString().toLowerCase());
-	}
+    public CodeProcessor findCodeProcessor(CodeType type) throws ScaffoldException {
+        return findCodeProcessor(type.toString().toLowerCase());
+    }
 
-	public CodeProcessor findCodeProcessor(String type) throws ScaffoldException {
-		String name = type.toLowerCase() + CodeProcessor.class.getSimpleName();
-		CodeProcessor processor = codeProcessors.get(name);
-		if (processor == null) {
-			throw new ScaffoldException(Status.INTERNAL_SERVER_ERROR.getCode(), "验证码生成器" + name + "不存在");
-		}
-		return processor;
-	}
+    public CodeProcessor findCodeProcessor(String type) throws ScaffoldException {
+        String name = type.toLowerCase() + CodeProcessor.class.getSimpleName();
+        CodeProcessor processor = codeProcessors.get(name);
+        if (processor == null) {
+            throw new ScaffoldException(Status.INTERNAL_SERVER_ERROR.getCode(), "验证码生成器" + name + "不存在");
+        }
+        return processor;
+    }
 
 }

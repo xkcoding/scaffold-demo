@@ -31,116 +31,116 @@ import java.io.IOException;
  */
 @Slf4j
 public class ServletUtil {
-	/**
-	 * 获取当前请求的 RequestAttributes
-	 */
-	public static ServletRequestAttributes getRequestAttributes() {
-		RequestAttributes attributes = RequestContextHolder.currentRequestAttributes();
-		return (ServletRequestAttributes) attributes;
-	}
+    /**
+     * 获取当前请求的 RequestAttributes
+     */
+    public static ServletRequestAttributes getRequestAttributes() {
+        RequestAttributes attributes = RequestContextHolder.currentRequestAttributes();
+        return (ServletRequestAttributes) attributes;
+    }
 
-	/**
-	 * 获取 IP
-	 */
-	public static String getIp() {
-		return IpUtil.getUserIP(getRequest());
-	}
+    /**
+     * 获取 IP
+     */
+    public static String getIp() {
+        return IpUtil.getUserIP(getRequest());
+    }
 
-	/**
-	 * 获取 Request
-	 */
-	public static HttpServletRequest getRequest() {
-		return getRequestAttributes().getRequest();
-	}
+    /**
+     * 获取 Request
+     */
+    public static HttpServletRequest getRequest() {
+        return getRequestAttributes().getRequest();
+    }
 
-	/**
-	 * 获取 Response
-	 */
-	public static HttpServletResponse getResponse() {
-		return getRequestAttributes().getResponse();
-	}
+    /**
+     * 获取 Response
+     */
+    public static HttpServletResponse getResponse() {
+        return getRequestAttributes().getResponse();
+    }
 
-	/**
-	 * 获取 Session
-	 */
-	public static HttpSession getSession() {
-		return getRequest().getSession();
-	}
+    /**
+     * 获取 Session
+     */
+    public static HttpSession getSession() {
+        return getRequest().getSession();
+    }
 
-	/**
-	 * 获取String参数
-	 */
-	public static String getParameter(String name) {
-		return getRequest().getParameter(name);
-	}
+    /**
+     * 获取String参数
+     */
+    public static String getParameter(String name) {
+        return getRequest().getParameter(name);
+    }
 
-	/**
-	 * 获取String参数
-	 */
-	public static String getParameter(String name, String defaultValue) {
-		return Convert.toStr(getRequest().getParameter(name), defaultValue);
-	}
+    /**
+     * 获取String参数
+     */
+    public static String getParameter(String name, String defaultValue) {
+        return Convert.toStr(getRequest().getParameter(name), defaultValue);
+    }
 
-	/**
-	 * 获取Integer参数
-	 */
-	public static Integer getParameterToInt(String name) {
-		return Convert.toInt(getRequest().getParameter(name));
-	}
+    /**
+     * 获取Integer参数
+     */
+    public static Integer getParameterToInt(String name) {
+        return Convert.toInt(getRequest().getParameter(name));
+    }
 
-	/**
-	 * 获取Integer参数
-	 */
-	public static Integer getParameterToInt(String name, Integer defaultValue) {
-		return Convert.toInt(getRequest().getParameter(name), defaultValue);
-	}
+    /**
+     * 获取Integer参数
+     */
+    public static Integer getParameterToInt(String name, Integer defaultValue) {
+        return Convert.toInt(getRequest().getParameter(name), defaultValue);
+    }
 
-	/**
-	 * 使用 Response 渲染 json 数据到客户端
-	 *
-	 * @param response 输出流
-	 * @param data     渲染数据
-	 */
-	public static void renderJson(HttpServletResponse response, Object data) {
-		try {
-			response.setContentType("application/json");
-			response.setCharacterEncoding("utf-8");
-			JSONObject jsonData = JSONUtil.parseObj(data, false);
-			String json = JSONUtil.toJsonStr(jsonData);
-			response.getWriter().print(json);
-		} catch (IOException e) {
-			log.error("【JSON 渲染】使用 Response 渲染 json 数据到客户端，[json]：{}", JSONUtil.toJsonStr(data));
-			log.error("【JSON 渲染】发生异常！", e);
-		}
-	}
+    /**
+     * 使用 Response 渲染 json 数据到客户端
+     *
+     * @param response 输出流
+     * @param data     渲染数据
+     */
+    public static void renderJson(HttpServletResponse response, Object data) {
+        try {
+            response.setContentType("application/json");
+            response.setCharacterEncoding("utf-8");
+            JSONObject jsonData = JSONUtil.parseObj(data, false);
+            String json = JSONUtil.toJsonStr(jsonData);
+            response.getWriter().print(json);
+        } catch (IOException e) {
+            log.error("【JSON 渲染】使用 Response 渲染 json 数据到客户端，[json]：{}", JSONUtil.toJsonStr(data));
+            log.error("【JSON 渲染】发生异常！", e);
+        }
+    }
 
-	/**
-	 * 是否是Ajax异步请求
-	 *
-	 * @param request 请求
-	 */
-	public static boolean isAjaxRequest(HttpServletRequest request) {
+    /**
+     * 是否是Ajax异步请求
+     *
+     * @param request 请求
+     */
+    public static boolean isAjaxRequest(HttpServletRequest request) {
 
-		String accept = request.getHeader("accept");
-		if (StrUtil.containsIgnoreCase(accept, ContentType.JSON.getValue())) {
-			return true;
-		}
+        String accept = request.getHeader("accept");
+        if (StrUtil.containsIgnoreCase(accept, ContentType.JSON.getValue())) {
+            return true;
+        }
 
-		String xRequestedWith = request.getHeader("X-Requested-With");
-		if (StrUtil.containsIgnoreCase(xRequestedWith, ContentType.XML_HTTP_REQUEST.getValue())) {
-			return true;
-		}
+        String xRequestedWith = request.getHeader("X-Requested-With");
+        if (StrUtil.containsIgnoreCase(xRequestedWith, ContentType.XML_HTTP_REQUEST.getValue())) {
+            return true;
+        }
 
-		String uri = request.getRequestURI();
-		if (StrUtil.containsAnyIgnoreCase(uri, FileSuffix.JSON.getValue(), FileSuffix.XML.getValue())) {
-			return true;
-		}
+        String uri = request.getRequestURI();
+        if (StrUtil.containsAnyIgnoreCase(uri, FileSuffix.JSON.getValue(), FileSuffix.XML.getValue())) {
+            return true;
+        }
 
-		String ajax = request.getParameter("__ajax");
-		if (StrUtil.containsAnyIgnoreCase(ajax, FileSuffix.JSON.getValue(), FileSuffix.XML.getValue())) {
-			return true;
-		}
+        String ajax = request.getParameter("__ajax");
+        if (StrUtil.containsAnyIgnoreCase(ajax, FileSuffix.JSON.getValue(), FileSuffix.XML.getValue())) {
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

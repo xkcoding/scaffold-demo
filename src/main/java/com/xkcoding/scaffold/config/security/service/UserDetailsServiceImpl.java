@@ -41,59 +41,59 @@ import java.util.List;
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-	@Autowired
-	private ModelMapper modelMapper;
+    @Autowired
+    private ModelMapper modelMapper;
 
-	@Autowired
-	private SysUserService sysUserService;
+    @Autowired
+    private SysUserService sysUserService;
 
-	@Autowired
-	private SysRoleService sysRoleService;
+    @Autowired
+    private SysRoleService sysRoleService;
 
-	@Autowired
-	private SysMenuService sysMenuService;
+    @Autowired
+    private SysMenuService sysMenuService;
 
-	/**
-	 * 根据登录名查询用户信息，账号异常时保存日志信息
-	 *
-	 * @param username 用户名
-	 * @return {@link SysUserDTO}
-	 * @throws UsernameNotFoundException 账号不存在
-	 */
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// 根据登录名查询用户
-		SysUser loginUser = sysUserService.getUserByLoginName(username);
+    /**
+     * 根据登录名查询用户信息，账号异常时保存日志信息
+     *
+     * @param username 用户名
+     * @return {@link SysUserDTO}
+     * @throws UsernameNotFoundException 账号不存在
+     */
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // 根据登录名查询用户
+        SysUser loginUser = sysUserService.getUserByLoginName(username);
 
-		// 账号不存在
-		if (ObjectUtil.isNull(loginUser)) {
-			throw new UsernameNotFoundException(Status.USER_NOT_EXIST.getCode() + "");
-		}
+        // 账号不存在
+        if (ObjectUtil.isNull(loginUser)) {
+            throw new UsernameNotFoundException(Status.USER_NOT_EXIST.getCode() + "");
+        }
 
-		// 账号逻辑删除
-		DeleteStatus deleteStatus = EnumUtil.getStatusByCode(loginUser.getDelFlag(), DeleteStatus.class);
-		if (ObjectUtil.equal(deleteStatus, DeleteStatus.DELETED)) {
-			LoginLogUtil.saveLog(username, Status.USER_DELETED, LogStatus.ERROR);
-			throw new DisabledException(Status.USER_DELETED.getCode() + "");
-		}
+        // 账号逻辑删除
+        DeleteStatus deleteStatus = EnumUtil.getStatusByCode(loginUser.getDelFlag(), DeleteStatus.class);
+        if (ObjectUtil.equal(deleteStatus, DeleteStatus.DELETED)) {
+            LoginLogUtil.saveLog(username, Status.USER_DELETED, LogStatus.ERROR);
+            throw new DisabledException(Status.USER_DELETED.getCode() + "");
+        }
 
-		// 账号禁用
-		UserStatus userStatus = EnumUtil.getStatusByCode(loginUser.getStatus(), UserStatus.class);
-		if (ObjectUtil.equal(userStatus, UserStatus.DISABLE)) {
-			LoginLogUtil.saveLog(username, Status.USER_DISABLE, LogStatus.ERROR);
-			throw new LockedException(Status.USER_DISABLE.getCode() + "");
-		}
+        // 账号禁用
+        UserStatus userStatus = EnumUtil.getStatusByCode(loginUser.getStatus(), UserStatus.class);
+        if (ObjectUtil.equal(userStatus, UserStatus.DISABLE)) {
+            LoginLogUtil.saveLog(username, Status.USER_DISABLE, LogStatus.ERROR);
+            throw new LockedException(Status.USER_DISABLE.getCode() + "");
+        }
 
-		// 根据用户查询对应角色
-		List<SysRole> sysRoleList = sysRoleService.listSysRolesByUserId(loginUser.getId());
+        // 根据用户查询对应角色
+        List<SysRole> sysRoleList = sysRoleService.listSysRolesByUserId(loginUser.getId());
 
-		// 根据角色查询对应菜单
-		List<SysMenu> sysMenuList = sysMenuService.listSysMenusByRoleList(sysRoleList);
+        // 根据角色查询对应菜单
+        List<SysMenu> sysMenuList = sysMenuService.listSysMenusByRoleList(sysRoleList);
 
-		// 对象转换
-		SysUserDTO sysUserDTO = modelMapper.map(loginUser, SysUserDTO.class);
-		sysUserDTO.setRoles(Sets.newHashSet(sysRoleList));
-		sysUserDTO.setMenus(Sets.newHashSet(sysMenuList));
-		return sysUserDTO;
-	}
+        // 对象转换
+        SysUserDTO sysUserDTO = modelMapper.map(loginUser, SysUserDTO.class);
+        sysUserDTO.setRoles(Sets.newHashSet(sysRoleList));
+        sysUserDTO.setMenus(Sets.newHashSet(sysMenuList));
+        return sysUserDTO;
+    }
 }

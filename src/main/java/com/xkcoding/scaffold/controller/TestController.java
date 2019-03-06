@@ -29,30 +29,30 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class TestController {
 
-	/**
-	 * 测试 AOP 记录操作日志
-	 *
-	 * @param hasError 是否有错误
-	 * @return {@link Api}
-	 * @throws ScaffoldException 全局异常
-	 */
-	@Log(title = "测试模块-操作日志", action = ActionType.INSERT)
-	@GetMapping("/operate/log")
-	public Api testOperateLog(Boolean hasError) throws ScaffoldException {
-		log.info("【测试】AOP 记录操作日志");
-		if (ObjectUtil.isNotNull(hasError) && hasError) {
-			simulateException();
-		}
-		return Api.ofSuccess();
-	}
+    /**
+     * 测试 AOP 记录操作日志
+     *
+     * @param hasError 是否有错误
+     * @return {@link Api}
+     * @throws ScaffoldException 全局异常
+     */
+    @Log(title = "测试模块-操作日志", action = ActionType.INSERT)
+    @GetMapping("/operate/log")
+    public Api testOperateLog(Boolean hasError) throws ScaffoldException {
+        log.info("【测试】AOP 记录操作日志");
+        if (ObjectUtil.isNotNull(hasError) && hasError) {
+            simulateException();
+        }
+        return Api.ofSuccess();
+    }
 
-	/**
-	 * 模拟异常
-	 *
-	 * @throws ScaffoldException 全局异常{@link Status#INTERNAL_SERVER_ERROR}
-	 */
-	private void simulateException() throws ScaffoldException {
-		log.error("【测试】AOP 记录操作日志，发生异常！");
-		throw new ScaffoldException(Status.INTERNAL_SERVER_ERROR);
-	}
+    /**
+     * 模拟异常
+     *
+     * @throws ScaffoldException 全局异常{@link Status#INTERNAL_SERVER_ERROR}
+     */
+    private void simulateException() throws ScaffoldException {
+        log.error("【测试】AOP 记录操作日志，发生异常！");
+        throw new ScaffoldException(Status.INTERNAL_SERVER_ERROR);
+    }
 }

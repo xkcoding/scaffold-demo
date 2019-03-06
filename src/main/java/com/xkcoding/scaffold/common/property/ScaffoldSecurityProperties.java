@@ -17,8 +17,8 @@ import lombok.Data;
  */
 @Data
 public class ScaffoldSecurityProperties {
-	/**
-	 * 验证码配置
-	 */
-	private CodeProperties code = new CodeProperties();
+    /**
+     * 验证码配置
+     */
+    private CodeProperties code = new CodeProperties();
 }

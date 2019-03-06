@@ -19,20 +19,20 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class ImageCodeProperties extends SmsCodeProperties {
-	/**
-	 * 宽度
-	 */
-	private int width = 100;
+    /**
+     * 宽度
+     */
+    private int width = 100;
 
-	/**
-	 * 高度
-	 */
-	private int height = 40;
+    /**
+     * 高度
+     */
+    private int height = 40;
 
-	/**
-	 * 默认长度为4位
-	 */
-	public ImageCodeProperties() {
-		setLength(4);
-	}
+    /**
+     * 默认长度为4位
+     */
+    public ImageCodeProperties() {
+        setLength(4);
+    }
 }

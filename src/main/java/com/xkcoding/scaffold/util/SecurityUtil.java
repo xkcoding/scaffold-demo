@@ -21,63 +21,63 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
  * @modified: yangkai.shen
  */
 public class SecurityUtil {
-	/**
-	 * 获取当前上下文的认证信息
-	 *
-	 * @return 获取当前上下文的认证信息
-	 */
-	public static Authentication getAuthentication() {
-		return SecurityContextHolder.getContext().getAuthentication();
-	}
+    /**
+     * 获取当前上下文的认证信息
+     *
+     * @return 获取当前上下文的认证信息
+     */
+    public static Authentication getAuthentication() {
+        return SecurityContextHolder.getContext().getAuthentication();
+    }
 
-	/**
-	 * 获取当前上下文的认证信息的细节
-	 *
-	 * @return 获取当前上下文的认证信息的细节
-	 */
-	public static WebAuthenticationDetails getWebAuthenticationDetails() {
-		return (WebAuthenticationDetails) getAuthentication().getDetails();
-	}
+    /**
+     * 获取当前上下文的认证信息的细节
+     *
+     * @return 获取当前上下文的认证信息的细节
+     */
+    public static WebAuthenticationDetails getWebAuthenticationDetails() {
+        return (WebAuthenticationDetails) getAuthentication().getDetails();
+    }
 
-	/**
-	 * 获取登录用户的 SessionId
-	 *
-	 * @return SessionId
-	 */
-	public static String getSessionId() {
-		return getWebAuthenticationDetails().getSessionId();
-	}
+    /**
+     * 获取登录用户的 SessionId
+     *
+     * @return SessionId
+     */
+    public static String getSessionId() {
+        return getWebAuthenticationDetails().getSessionId();
+    }
 
-	/**
-	 * 获取登录用户的 IP
-	 *
-	 * @return IP
-	 */
-	public static String getIp() {
-		String ip = getWebAuthenticationDetails().getRemoteAddress();
-		if (StrUtil.equals(ip, IpUtil.LOCAL_INNER_LOOP_IP)) {
-			return IpUtil.LOCAL_IP;
-		}
-		return ip;
-	}
+    /**
+     * 获取登录用户的 IP
+     *
+     * @return IP
+     */
+    public static String getIp() {
+        String ip = getWebAuthenticationDetails().getRemoteAddress();
+        if (StrUtil.equals(ip, IpUtil.LOCAL_INNER_LOOP_IP)) {
+            return IpUtil.LOCAL_IP;
+        }
+        return ip;
+    }
 
-	/**
-	 * 获取当前登录用户
-	 *
-	 * @return 当前登录用户
-	 */
-	public static SysUserDTO getCurrentUser() {
-		Object principal = getAuthentication().getPrincipal();
-		if (principal instanceof SysUserDTO) {
-			return (SysUserDTO) principal;
-		}
-		return null;
-	}
+    /**
+     * 获取当前登录用户
+     *
+     * @return 当前登录用户
+     */
+    public static SysUserDTO getCurrentUser() {
+        Object principal = getAuthentication().getPrincipal();
+        if (principal instanceof SysUserDTO) {
+            return (SysUserDTO) principal;
+        }
+        return null;
+    }
 
-	/**
-	 * 登出当前登录用户
-	 */
-	public static void logout() {
-		new SecurityContextLogoutHandler().logout(ServletUtil.getRequest(), ServletUtil.getResponse(), getAuthentication());
-	}
+    /**
+     * 登出当前登录用户
+     */
+    public static void logout() {
+        new SecurityContextLogoutHandler().logout(ServletUtil.getRequest(), ServletUtil.getResponse(), getAuthentication());
+    }
 }

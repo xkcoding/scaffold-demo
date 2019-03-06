@@ -24,19 +24,19 @@ import java.util.List;
 @Repository
 public interface SysMenuMapper extends MyMapper<SysMenu> {
 
-	/**
-	 * 根据角色 id 列表查询菜单列表
-	 *
-	 * @param roleIdList 用户 id 列表
-	 * @return 菜单列表
-	 */
-	List<SysMenu> selectSysMenuByRoleList(@Param("roleIdList") List<Integer> roleIdList);
+    /**
+     * 根据角色 id 列表查询菜单列表
+     *
+     * @param roleIdList 用户 id 列表
+     * @return 菜单列表
+     */
+    List<SysMenu> selectSysMenuByRoleList(@Param("roleIdList") List<Integer> roleIdList);
 
-	/**
-	 * 所有菜单列表，包含权限基础信息
-	 *
-	 * @param visible 菜单是否可见
-	 * @return 所有菜单列表，包含权限基础信息
-	 */
-	List<SysMenuDTO> selectSysMenuList(@Param("visible") Integer visible);
+    /**
+     * 所有菜单列表，包含权限基础信息
+     *
+     * @param visible 菜单是否可见
+     * @return 所有菜单列表，包含权限基础信息
+     */
+    List<SysMenuDTO> selectSysMenuList(@Param("visible") Integer visible);
 }
